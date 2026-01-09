@@ -148,7 +148,7 @@ export function AnimatedNavbar() {
                 <motion.nav
                     className={cn(
                         'mx-auto flex items-center justify-between',
-                        'backdrop-blur-md bg-[hsl(212_31%_12%/0.85)]',
+                        'backdrop-blur-md bg-black/80',
                         'border border-white/10',
                         'motion-reduce:transition-none'
                     )}
@@ -252,7 +252,7 @@ export function AnimatedNavbar() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-40 md:hidden bg-neutral-900/98 backdrop-blur-lg pt-24 px-6"
+                        className="fixed inset-0 z-40 md:hidden bg-black/98 backdrop-blur-lg pt-24 px-6"
                     >
                         <motion.nav
                             initial={{ y: -20, opacity: 0 }}
