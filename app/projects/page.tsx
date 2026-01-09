@@ -26,7 +26,7 @@ export default function ProjectsPage() {
             <div className="mt-12">
                 <GlowyGrid>
                     {projects.map((project) => (
-                        <ProjectCard key={project.id} project={project} />
+                        <ProjectCard key={project.slug} project={project} />
                     ))}
                 </GlowyGrid>
             </div>
