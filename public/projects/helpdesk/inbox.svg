@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#1a1d24"/>
+  <rect x="20" y="20" width="760" height="50" rx="8" fill="#252830"/>
+  <text x="50" y="52" font-family="system-ui" font-size="18" fill="#fff">Inbox</text>
+  <rect x="650" y="30" width="110" height="30" rx="6" fill="#10b981"/>
+  <rect x="20" y="90" width="200" height="340" rx="8" fill="#252830"/>
+  <rect x="40" y="110" width="160" height="50" rx="4" fill="#3b82f6"/>
+  <rect x="40" y="170" width="160" height="50" rx="4" fill="#1f2937"/>
+  <rect x="40" y="230" width="160" height="50" rx="4" fill="#1f2937"/>
+  <rect x="40" y="290" width="160" height="50" rx="4" fill="#1f2937"/>
+  <rect x="240" y="90" width="540" height="340" rx="8" fill="#252830"/>
+  <rect x="260" y="110" width="300" height="24" rx="4" fill="#374151"/>
+  <rect x="260" y="150" width="200" height="16" rx="3" fill="#4b5563"/>
+  <rect x="260" y="190" width="500" height="60" rx="4" fill="#1f2937"/>
+  <rect x="260" y="270" width="500" height="60" rx="4" fill="#1f2937"/>
+  <rect x="260" y="350" width="500" height="60" rx="4" fill="#1f2937"/>
+  <circle cx="280" cy="220" r="8" fill="#f59e0b"/>
+  <circle cx="280" cy="300" r="8" fill="#10b981"/>
+  <circle cx="280" cy="380" r="8" fill="#ef4444"/>
+  <text x="400" y="440" font-family="system-ui" font-size="14" fill="#6b7280" text-anchor="middle">Helpdesk - Ticket Inbox</text>
+</svg>

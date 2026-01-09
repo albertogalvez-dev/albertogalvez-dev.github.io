@@ -40,7 +40,7 @@ export function FeaturedProjects() {
                 <div className="mt-12">
                     <GlowyGrid>
                         {featured.map((project) => (
-                            <ProjectCard key={project.id} project={project} />
+                            <ProjectCard key={project.slug} project={project} />
                         ))}
                     </GlowyGrid>
                 </div>
