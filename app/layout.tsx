@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import { AnimatedNavbar } from '@/components/animated-navbar';
 import { Footer } from '@/components/footer';
-import { NeonCursor } from '@/components/neon-cursor';
 import { Toaster } from 'sonner';
 import './globals.css';
 
@@ -36,7 +35,6 @@ export default function RootLayout({
     return (
         <html lang="es" className="dark">
             <body className={`${inter.className} ${jetbrainsMono.variable} text-white`}>
-                <NeonCursor />
                 <AnimatedNavbar />
                 <main className="min-h-screen">{children}</main>
                 <Footer />
@@ -45,3 +43,4 @@ export default function RootLayout({
         </html>
     );
 }
+
