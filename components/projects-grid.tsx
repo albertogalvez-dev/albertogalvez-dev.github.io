@@ -24,13 +24,16 @@ const statusStyles: Record<ProjectStatus, string> = {
 };
 
 function getVideoEmbedUrl(video: ProjectMediaVideo): string {
-    if (video.type === 'youtube') {
-        return `https://www.youtube.com/embed/${video.id}`;
+    switch (video.type) {
+        case 'youtube':
+            return `https://www.youtube.com/embed/${video.id}`;
+        case 'vimeo':
+            return `https://player.vimeo.com/video/${video.id}`;
+        case 'mp4':
+            return video.src;
+        default:
+            return '';
     }
-    if (video.type === 'vimeo') {
-        return `https://player.vimeo.com/video/${video.id}`;
-    }
-    return video.src;
 }
 
 export function ProjectsGrid({ projects }: ProjectsGridProps) {
