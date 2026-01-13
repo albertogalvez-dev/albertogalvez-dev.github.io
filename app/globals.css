@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+    --primary: 82 85% 67%;
+    --primary-foreground: 0 0% 0%;
+    --primary-hover: 83 78% 55%;
+    --secondary: 142 69% 58%;
+    --secondary-foreground: 0 0% 0%;
+    --accent: 0 0% 8%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 0 0% 4%;
+    --muted-foreground: 215 20% 65%;
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 82 85% 67%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: none;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+/* Draw Border Button Effect */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: hsl(var(--primary));
+  background: transparent;
+  border: 2px solid hsl(var(--primary));
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: color 0.5s;
+  overflow: hidden;
+}
+
+.btn:hover {
+  color: hsl(var(--primary-hover));
+}
+
+.draw-border::before,
+.draw-border::after {
+  border: 0 solid transparent;
+  box-sizing: border-box;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 9999px;
+}
+
+.draw-border::before {
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.draw-border::after {
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.draw-border:hover::before,
+.draw-border:hover::after {
+  border-color: hsl(var(--primary-hover));
+  transition: border-color 0s, width 0.25s, height 0.25s;
+  width: 100%;
+  height: 100%;
+}
+
+.draw-border:hover::before {
+  transition-delay: 0s, 0s, 0.25s;
+}
+
+.draw-border:hover::after {
+  transition-delay: 0s, 0.25s, 0s;
+}
+
+.btn:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 4px;
+}
+
+/* Typewriter Caret Animation */
+@keyframes caret {
+
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
