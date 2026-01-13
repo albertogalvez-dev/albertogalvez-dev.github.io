@@ -31,14 +31,7 @@ export function ProjectCard({ project, showStatus }: ProjectCardProps) {
             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.06] md:p-8 motion-reduce:transition-none"
             data-project-id={project.id}
         >
-            {/* Stretched Link for the whole card */}
-            <Link
-                href={`/projects/${project.id}`}
-                className="absolute inset-0 z-0 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
-                aria-label={`View details for ${project.title}`}
-            />
-
-            <div className="relative z-10 flex items-start justify-between gap-4">
+            <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0">
                     <h3 className="text-lg font-semibold tracking-tight text-white sm:text-xl">
                         {project.title}
@@ -72,7 +65,7 @@ export function ProjectCard({ project, showStatus }: ProjectCardProps) {
                 </div>
             </div>
 
-            <div className="relative z-10 mt-6 flex flex-wrap gap-2">
+            <div className="mt-6 flex flex-wrap gap-2">
                 {stackPreview.map((tech) => (
                     <span
                         key={tech}
@@ -88,7 +81,7 @@ export function ProjectCard({ project, showStatus }: ProjectCardProps) {
                 )}
             </div>
 
-            <div className="relative z-10 mt-8 flex flex-wrap gap-3">
+            <div className="relative z-20 mt-8 flex flex-wrap gap-3">
                 {project.repoUrl && (
                     <Link
                         href={project.repoUrl}
@@ -113,6 +106,13 @@ export function ProjectCard({ project, showStatus }: ProjectCardProps) {
                     </Link>
                 )}
             </div>
+
+            {/* Stretched Link for the whole card */}
+            <Link
+                href={`/projects/${project.id}`}
+                className="absolute inset-0 z-10 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background"
+                aria-label={`View details for ${project.title}`}
+            />
 
             <div
                 aria-hidden="true"
