@@ -8,9 +8,9 @@ import { getProjectById, getAllProjects, ProjectMediaVideo } from '@/content/pro
 import { cn } from '@/lib/utils';
 
 interface Props {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 }
 
 // Generate static params for all projects
@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const project = getProjectById(params.slug);
+    const { slug } = await params;
+    const project = getProjectById(slug);
     if (!project) {
         return {
             title: 'Project Not Found',
@@ -59,8 +60,9 @@ function getVideoEmbedUrl(video: ProjectMediaVideo): string {
     }
 }
 
-export default function ProjectPage({ params }: Props) {
-    const project = getProjectById(params.slug);
+export default async function ProjectPage({ params }: Props) {
+    const { slug } = await params;
+    const project = getProjectById(slug);
 
     if (!project) {
         notFound();
