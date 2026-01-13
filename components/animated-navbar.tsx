@@ -148,8 +148,8 @@ export function AnimatedNavbar() {
                 <motion.nav
                     className={cn(
                         'mx-auto flex items-center justify-between',
-                        'backdrop-blur-md bg-[#0f1219]/90',
-                        'border border-white/10',
+                        'backdrop-blur-md bg-card/85',
+                        'border border-border',
                         'motion-reduce:transition-none'
                     )}
                     initial={false}
@@ -174,7 +174,7 @@ export function AnimatedNavbar() {
                         className="flex items-center shrink-0 group"
                     >
                         <motion.span
-                            className="text-xl font-bold text-white font-mono"
+                            className="text-xl font-bold text-primary font-mono"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -197,8 +197,8 @@ export function AnimatedNavbar() {
                                         'relative px-4 py-2 text-sm font-medium rounded-lg',
                                         'transition-colors duration-200',
                                         isActive
-                                            ? 'text-green-400'
-                                            : 'text-neutral-400 hover:text-white'
+                                            ? 'text-primary'
+                                            : 'text-muted-foreground hover:text-foreground'
                                     )}
                                 >
                                     {item.label}
@@ -218,7 +218,7 @@ export function AnimatedNavbar() {
                     <div className="flex items-center gap-3">
                         <motion.button
                             onClick={scrollToContact}
-                            className="hidden md:inline-flex items-center justify-center rounded-full font-medium text-sm bg-green-500 text-neutral-900"
+                            className="hidden md:inline-flex items-center justify-center rounded-full font-medium text-sm bg-primary text-primary-foreground"
                             initial={false}
                             animate={{
                                 paddingLeft: isScrolled ? 16 : 20,
@@ -226,7 +226,7 @@ export function AnimatedNavbar() {
                                 paddingTop: isScrolled ? 8 : 10,
                                 paddingBottom: isScrolled ? 8 : 10,
                             }}
-                            whileHover={{ scale: 1.02, backgroundColor: 'rgb(74 222 128)' }}
+                            whileHover={{ scale: 1.02, backgroundColor: 'rgb(163 230 53)' }}
                             whileTap={{ scale: 0.98 }}
                             transition={{ ...CONFIG.spring, type: 'spring' }}
                         >
@@ -236,7 +236,7 @@ export function AnimatedNavbar() {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="md:hidden p-2 text-neutral-400 hover:text-white transition-colors"
+                            className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
                             aria-label="Toggle menu"
                         >
                             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -252,7 +252,7 @@ export function AnimatedNavbar() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-40 md:hidden bg-[#0f1219]/98 backdrop-blur-lg pt-24 px-6"
+                        className="fixed inset-0 z-40 md:hidden bg-card/95 backdrop-blur-lg pt-24 px-6"
                     >
                         <motion.nav
                             initial={{ y: -20, opacity: 0 }}
@@ -282,8 +282,8 @@ export function AnimatedNavbar() {
                                             className={cn(
                                                 'block px-4 py-3 text-lg font-medium rounded-lg transition-colors',
                                                 isActive
-                                                    ? 'bg-green-500/10 text-green-400'
-                                                    : 'text-white hover:bg-white/5'
+                                                    ? 'bg-primary/10 text-primary'
+                                                    : 'text-foreground hover:bg-white/5'
                                             )}
                                         >
                                             {item.label}
@@ -296,7 +296,7 @@ export function AnimatedNavbar() {
                                 animate={{ x: 0, opacity: 1 }}
                                 transition={{ delay: 0.25 }}
                                 onClick={scrollToContact}
-                                className="mt-4 px-4 py-3 text-lg font-medium rounded-lg bg-green-500 text-neutral-900 hover:bg-green-400 transition-colors"
+                                className="mt-4 px-4 py-3 text-lg font-medium rounded-lg bg-primary text-primary-foreground hover:bg-primary-hover transition-colors"
                             >
                                 Contact Me
                             </motion.button>

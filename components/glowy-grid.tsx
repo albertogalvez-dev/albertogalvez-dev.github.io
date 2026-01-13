@@ -36,7 +36,7 @@ export function GlowyGrid({ children }: GlowyGridProps) {
             <div
                 className="pointer-events-none absolute -inset-px transition-opacity duration-300 opacity-0 group-hover/grid:opacity-100"
                 style={{
-                    background: `radial-gradient(600px circle at var(--x) var(--y), rgba(16, 185, 129, 0.25), transparent 40%)`,
+                    background: `radial-gradient(600px circle at var(--x) var(--y), rgba(190, 242, 100, 0.25), transparent 40%)`,
                     zIndex: 10,
                 }}
                 aria-hidden="true"

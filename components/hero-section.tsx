@@ -17,7 +17,7 @@ function TypeCaret({ className }: { className?: string }) {
         <span
             aria-hidden="true"
             className={[
-                'ml-1 inline-block align-[0.08em] text-emerald-300',
+                'ml-1 inline-block align-[0.08em] text-primary',
                 'animate-[caret_1s_steps(1,end)_infinite] motion-reduce:animate-none',
                 className,
             ].join(' ')}
@@ -131,7 +131,7 @@ export const HeroSection = memo(function HeroSection() {
                                 <div className="w-full sm:w-[240px]">
                                     <a
                                         href="#projects"
-                                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-emerald-400 px-5 py-2.5 text-base font-semibold text-neutral-900 transition-colors hover:bg-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 sm:h-11 sm:px-6 sm:text-lg motion-reduce:transition-none"
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:h-11 sm:px-6 sm:text-lg motion-reduce:transition-none"
                                     >
                                         Projects
                                         <ArrowRight className="h-5 w-5" aria-hidden="true" />
@@ -164,7 +164,7 @@ export const HeroSection = memo(function HeroSection() {
                                 <div className="flex gap-4 flex-col w-full min-[475px]:flex-row min-[475px]:w-fit">
                                     <a
                                         href={`mailto:${PROFILE.email}`}
-                                        className="inline-flex w-full min-[475px]:w-fit items-center justify-center gap-2 rounded-full bg-emerald-400 px-5 py-2.5 text-base font-semibold text-neutral-900 transition-colors hover:bg-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 motion-reduce:transition-none"
+                                        className="inline-flex w-full min-[475px]:w-fit items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none"
                                     >
                                         <Mail className="h-5 w-5" aria-hidden="true" />
                                         Contact Me
@@ -174,13 +174,13 @@ export const HeroSection = memo(function HeroSection() {
                                         <button
                                             type="button"
                                             onClick={copyEmail}
-                                            className="inline-flex w-full min-[475px]:w-fit items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-base font-medium text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 motion-reduce:transition-none"
+                                            className="inline-flex w-full min-[475px]:w-fit items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-base font-medium text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none"
                                         >
                                             Copy Email
                                         </button>
 
                                         {showCopied && (
-                                            <div className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-emerald-400 px-3 py-1 text-sm font-medium text-neutral-900">
+                                            <div className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">
                                                 Copied!
                                             </div>
                                         )}
@@ -192,7 +192,7 @@ export const HeroSection = memo(function HeroSection() {
                                         aria-label="Github"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/70 transition-colors hover:text-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 motion-reduce:transition-none"
+                                        className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none"
                                         href={PROFILE.githubUrl}
                                     >
                                         <Github className="h-5 w-5" aria-hidden="true" />
@@ -201,7 +201,7 @@ export const HeroSection = memo(function HeroSection() {
                                         aria-label="LinkedIn"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/70 transition-colors hover:text-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 motion-reduce:transition-none"
+                                        className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none"
                                         href={PROFILE.linkedinUrl}
                                     >
                                         <Linkedin className="h-5 w-5" aria-hidden="true" />

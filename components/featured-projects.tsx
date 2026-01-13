@@ -29,7 +29,7 @@ export function FeaturedProjects() {
 
                         <Link
                             href="/projects"
-                            className="inline-flex w-fit items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 motion-reduce:transition-none"
+                            className="inline-flex w-fit items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none"
                         >
                             View All Projects
                             <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -40,7 +40,7 @@ export function FeaturedProjects() {
                 <div className="mt-12">
                     <GlowyGrid>
                         {featured.map((project) => (
-                            <ProjectCard key={project.slug} project={project} />
+                            <ProjectCard key={project.id} project={project} />
                         ))}
                     </GlowyGrid>
                 </div>
@@ -48,4 +48,3 @@ export function FeaturedProjects() {
         </section>
     );
 }
-

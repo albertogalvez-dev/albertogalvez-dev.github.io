@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="es" className="dark">
-            <body className={`${inter.className} ${jetbrainsMono.variable} text-white`}>
+            <body className={`${inter.className} ${jetbrainsMono.variable} text-foreground`}>
                 <AnimatedNavbar />
                 <main className="min-h-screen">{children}</main>
                 <Footer />
@@ -43,4 +43,3 @@ export default function RootLayout({
         </html>
     );
 }
-

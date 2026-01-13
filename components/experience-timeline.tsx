@@ -39,7 +39,7 @@ export function ExperienceTimeline() {
                                         <span>{exp.period}</span>
                                     </div>
 
-                                    <h3 className="mt-2 text-xl font-semibold text-green-400 sm:text-2xl">
+                                    <h3 className="mt-2 text-xl font-semibold text-primary sm:text-2xl">
                                         {exp.role}
                                     </h3>
 
@@ -79,4 +79,3 @@ export function ExperienceTimeline() {
         </section>
     );
 }
-

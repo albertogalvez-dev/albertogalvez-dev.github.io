@@ -11,7 +11,7 @@ export function Footer() {
                         <a
                             href="#home"
                             aria-label="Back to top"
-                            className="inline-flex items-center justify-center rounded-md font-mono text-[32px] font-bold leading-none text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
+                            className="inline-flex items-center justify-center rounded-md font-mono text-[32px] font-bold leading-none text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
                             {'{ AG }'}
                         </a>
@@ -24,7 +24,7 @@ export function Footer() {
                     <div className="mt-6 flex flex-col sm:flex-row items-center gap-3">
                         <a
                             href={`mailto:${PROFILE.email}`}
-                            className="inline-flex h-11 items-center justify-center rounded-full bg-green-500 px-6 text-sm font-semibold text-neutral-900 shadow-sm transition-colors hover:bg-green-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
+                            className="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                         >
                             Contact Me
                         </a>
@@ -38,7 +38,7 @@ export function Footer() {
                             target="_blank"
                             rel="noreferrer noopener"
                             aria-label="GitHub"
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/70 transition-colors hover:text-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 motion-reduce:transition-none"
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none"
                         >
                             <Github className="h-5 w-5" aria-hidden="true" />
                         </a>
@@ -48,7 +48,7 @@ export function Footer() {
                             target="_blank"
                             rel="noreferrer noopener"
                             aria-label="LinkedIn"
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/70 transition-colors hover:text-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 motion-reduce:transition-none"
+                            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/70 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none"
                         >
                             <Linkedin className="h-5 w-5" aria-hidden="true" />
                         </a>
