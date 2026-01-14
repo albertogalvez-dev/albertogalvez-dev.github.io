@@ -46,25 +46,53 @@
     },
     {
         "id": "queue",
-        "title": "Queue! - Sistema de Gestión de Colas",
-        "status": "coming_soon",
+        "title": "QUEUE! - Healthcare Queue & Triage Demo",
+        "status": "completed",
         "role": "Full Stack Developer",
-        "shortDescription": "Aplicación para gestión de turnos y colas de atención al cliente en tiempo real.",
-        "longDescription": "Sistema de gestión de colas para optimizar la atención al cliente.\nIncluye pantallas de turno, notificaciones y métricas de espera.",
+        "shortDescription": "SaaS demo for healthcare queue management with real-time kiosks and triage.",
+        "longDescription": "QUEUE! is a comprehensive healthcare queue management system designed to optimize patient flow in clinics and hospitals. It features a touch-friendly kiosk for patient check-in, an advanced operator console for triage and queue control, and dynamic TV displays for waiting rooms.\n\nThe system handles the full lifecycle of a patient visit: from self-service ticket issuance with ID recognition to priority-based calling and analytical reporting. It is designed as a modular SaaS platform capable of running in hybrid environments.",
         "highlights": [
-            "Gestión de turnos en tiempo real",
-            "Pantallas informativas",
-            "Métricas y reportes de espera"
+            "Real-time Queue Sync (SSE)",
+            "Touch Kiosk & TV Display interfaces",
+            "Low-latency .NET Minimal APIs",
+            "Dockerized Microservices Architecture"
         ],
         "featured": true,
         "stack": [
-            "Node.js",
-            "Express",
-            "Socket.io",
             "React",
-            "MongoDB"
+            "TypeScript",
+            "TailwindCSS",
+            ".NET 8",
+            "PostgreSQL",
+            "Docker",
+            "Nginx"
         ],
-        "repoUrl": "https://github.com/albertogalvez-dev/queue"
+        "repoUrl": "https://github.com/albertogalvez-dev/QUEUE",
+        "challenges": "Synchronization of real-time state between the kiosk, operator panel, and TV displays using Server-Sent Events (SSE) proved challenging under high concurrency. We solved this by implementing a robust event buffering system in the .NET backend to ensure no updates were lost during connection flickers.",
+        "media": {
+            "images": [
+                {
+                    "src": "/projects/queue/01_landing.png",
+                    "alt": "QUEUE Landing Page"
+                },
+                {
+                    "src": "/projects/queue/02_kiosco_input.png",
+                    "alt": "Patient Kiosk Interface"
+                },
+                {
+                    "src": "/projects/queue/05_operador_panel.png",
+                    "alt": "Operator Triage Console"
+                },
+                {
+                    "src": "/projects/queue/tvfuncionando.png",
+                    "alt": "Waiting Room TV Display"
+                },
+                {
+                    "src": "/projects/queue/07_analitica.png",
+                    "alt": "Real-time Analytics Dashboard"
+                }
+            ]
+        }
     },
     {
         "id": "cms",

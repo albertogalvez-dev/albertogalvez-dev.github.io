@@ -38,6 +38,7 @@ export interface Project {
     repoUrl?: string;
     demoUrl?: string;
     media?: ProjectMedia;
+    challenges?: string;
 }
 
 export const projects: Project[] = projectsData as Project[];

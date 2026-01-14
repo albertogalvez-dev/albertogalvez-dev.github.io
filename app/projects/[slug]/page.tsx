@@ -154,6 +154,20 @@ export default async function ProjectPage({ params }: Props) {
                         )}
                     </section>
 
+                    {/* Challenges */}
+                    {project.challenges && (
+                        <section>
+                            <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+                                Engineering Challenges
+                            </h2>
+                            <div className="rounded-xl border border-white/10 bg-white/5 p-6">
+                                <p className="text-base leading-relaxed text-white/75">
+                                    {project.challenges}
+                                </p>
+                            </div>
+                        </section>
+                    )}
+
                     {/* Media */}
                     <section>
                         <h2 className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
