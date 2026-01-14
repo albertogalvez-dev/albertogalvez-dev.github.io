@@ -104,37 +104,24 @@ export default async function ProjectPage({ params }: Props) {
 
                     <div className="flex flex-wrap gap-3">
                         {project.repoUrl && (
-                            <a
-                                href={project.repoUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:bg-white/10"
-                            >
-                                <Github className="h-4 w-4" aria-hidden="true" />
-                                Repo
-                            </a>
-                        )}
-
-                        {project.demoUrl ? (
-                            <a
-                                href={project.demoUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover"
-                            >
-                                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                                Demo Live
-                            </a>
-                        ) : (
                             <button
                                 type="button"
                                 disabled
-                                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white/50 cursor-not-allowed"
+                                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/50 cursor-not-allowed"
                             >
-                                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                                Demo Live (Coming soon)
+                                <Github className="h-4 w-4" aria-hidden="true" />
+                                Repo
                             </button>
                         )}
+
+                        <button
+                            type="button"
+                            disabled
+                            className="inline-flex items-center gap-2 rounded-full bg-primary/50 px-5 py-2.5 text-sm font-semibold text-primary-foreground/70 cursor-not-allowed"
+                        >
+                            <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                            Demo Live
+                        </button>
                     </div>
                 </div>
             </header>

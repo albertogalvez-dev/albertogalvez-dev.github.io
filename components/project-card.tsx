@@ -83,27 +83,25 @@ export function ProjectCard({ project, showStatus }: ProjectCardProps) {
 
             <div className="relative z-20 mt-8 flex flex-wrap gap-3">
                 {project.repoUrl && (
-                    <Link
-                        href={project.repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none"
+                    <button
+                        type="button"
+                        disabled
+                        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/50 cursor-not-allowed"
                     >
                         <Github className="h-4 w-4" aria-hidden="true" />
                         Repo
-                    </Link>
+                    </button>
                 )}
 
                 {project.demoUrl && (
-                    <Link
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none"
+                    <button
+                        type="button"
+                        disabled
+                        className="inline-flex items-center gap-2 rounded-full bg-primary/50 px-4 py-2 text-sm font-semibold text-primary-foreground/70 cursor-not-allowed"
                     >
                         <ExternalLink className="h-4 w-4" aria-hidden="true" />
                         Live
-                    </Link>
+                    </button>
                 )}
             </div>
 

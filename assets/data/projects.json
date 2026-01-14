@@ -2,7 +2,7 @@
     {
         "id": "project-1",
         "title": "Sistema de Gestion de Inventario",
-        "status": "in_progress",
+        "status": "coming_soon",
         "role": "Full Stack Developer",
         "shortDescription": "Aplicacion full-stack CRUD para gestion de inventario con Java Spring Boot, MySQL y frontend en JavaScript.",
         "longDescription": "Plataforma interna para registrar entradas y salidas, controlar stock y generar reportes operativos.\nIncluye modulos de productos, proveedores y alertas para quiebres de stock.",
@@ -12,13 +12,20 @@
             "Reportes exportables"
         ],
         "featured": true,
-        "stack": ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
+        "stack": [
+            "Java",
+            "Spring Boot",
+            "MySQL",
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
         "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name"
     },
     {
         "id": "project-2",
         "title": "Portfolio Responsive",
-        "status": "completed",
+        "status": "coming_soon",
         "role": "Frontend Developer",
         "shortDescription": "Sitio web portfolio personal diseno con HTML5, CSS3 y JavaScript. Totalmente responsive y optimizado.",
         "longDescription": "Portfolio personal con secciones de proyectos, habilidades y contacto.\nOptimizado para rendimiento y adaptado a multiples dispositivos.",
@@ -28,14 +35,19 @@
             "SEO basico y performance"
         ],
         "featured": true,
-        "stack": ["HTML", "CSS", "JavaScript", "Responsive Design"],
+        "stack": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Responsive Design"
+        ],
         "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name",
         "demoUrl": "https://albertogalvez-dev.github.io/TODO-add-repo-name"
     },
     {
         "id": "project-3",
         "title": "API REST de Gestion de Tareas",
-        "status": "in_progress",
+        "status": "coming_soon",
         "role": "Backend Developer",
         "shortDescription": "API RESTful para gestion de tareas con autenticacion JWT, desarrollada con Node.js y Express.",
         "longDescription": "API para crear, asignar y priorizar tareas con autenticacion basada en JWT.\nIncluye endpoints paginados y validaciones para flujos de trabajo.",
@@ -45,13 +57,19 @@
             "Documentacion de endpoints"
         ],
         "featured": true,
-        "stack": ["Node.js", "Express", "JWT", "REST API", "MySQL"],
+        "stack": [
+            "Node.js",
+            "Express",
+            "JWT",
+            "REST API",
+            "MySQL"
+        ],
         "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name"
     },
     {
         "id": "project-4",
         "title": "Diseno de Base de Datos E-Commerce",
-        "status": "completed",
+        "status": "coming_soon",
         "role": "Database Designer",
         "shortDescription": "Diseno completo de base de datos relacional para plataforma e-commerce con diagramas ER y normalizacion.",
         "longDescription": "Modelo relacional para catalogo, pedidos y clientes con integridad referencial.\nIncluye reglas de normalizacion y vistas para consultas frecuentes.",
@@ -61,13 +79,18 @@
             "Indices para rendimiento"
         ],
         "featured": true,
-        "stack": ["MySQL", "Database Design", "ER Diagrams", "Normalization"],
+        "stack": [
+            "MySQL",
+            "Database Design",
+            "ER Diagrams",
+            "Normalization"
+        ],
         "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name"
     },
     {
         "id": "wms",
         "title": "WMS - Warehouse Management System",
-        "status": "in_progress",
+        "status": "coming_soon",
         "role": "Full Stack Developer & DevOps",
         "shortDescription": "WMS web app para entradas, ubicaciones, picking y despacho con foco operativo.",
         "longDescription": "Sistema WMS para flujos de recepcion, ubicaciones y picking guiado.\nIncluye paneles operativos y reportes en tiempo real.",
@@ -77,7 +100,14 @@
             "Panel operativo en tiempo real"
         ],
         "featured": false,
-        "stack": ["Java", "Spring Boot", "PostgreSQL", "Docker", "Redis", "React"],
+        "stack": [
+            "Java",
+            "Spring Boot",
+            "PostgreSQL",
+            "Docker",
+            "Redis",
+            "React"
+        ],
         "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name"
     },
     {
@@ -93,7 +123,13 @@
             "Base de conocimiento"
         ],
         "featured": false,
-        "stack": ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS"],
+        "stack": [
+            "Next.js",
+            "TypeScript",
+            "PostgreSQL",
+            "Prisma",
+            "Tailwind CSS"
+        ],
         "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name"
     }
 ]
