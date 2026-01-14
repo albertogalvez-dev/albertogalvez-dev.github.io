@@ -2,14 +2,15 @@
     {
         "id": "wms",
         "title": "WMS - Warehouse Management System",
-        "status": "coming_soon",
+        "status": "completed",
         "role": "Full Stack Developer & DevOps",
-        "shortDescription": "WMS web app para entradas, ubicaciones, picking y despacho con foco operativo.",
-        "longDescription": "Sistema WMS para flujos de recepcion, ubicaciones y picking guiado.\nIncluye paneles operativos y reportes en tiempo real.",
+        "shortDescription": "Production-ready WMS with order-to-shipment workflow, wave picking, and ZPL label printing.",
+        "longDescription": "A complete Warehouse Management System built with Java 17, Spring Boot 3, and PostgreSQL. This system handles the full order-to-shipment lifecycle including order management, wave picking, handheld packing operations, and real-time tote tracking.\n\nFeatures a web backoffice for administrators and managers, a mobile-optimized handheld interface for warehouse floor operations, and automatic ZPL label generation with carrier integration. Role-based access control ensures appropriate permissions for Admin, Manager, Picker, and Packer roles.",
         "highlights": [
-            "Picking por oleadas",
-            "Trazabilidad de lotes",
-            "Panel operativo en tiempo real"
+            "Complete Order-to-Shipment Workflow",
+            "Wave Picking & Handheld Packing",
+            "ZPL Label Generation & Carrier Integration",
+            "Role-based Access Control (Admin, Manager, Picker, Packer)"
         ],
         "featured": true,
         "stack": [
@@ -17,10 +18,41 @@
             "Spring Boot",
             "PostgreSQL",
             "Docker",
-            "Redis",
-            "React"
+            "Nginx",
+            "JavaScript",
+            "HTML",
+            "CSS"
         ],
-        "repoUrl": "https://github.com/albertogalvez-dev/wms"
+        "repoUrl": "https://github.com/albertogalvez-dev/wms-warehouse-management",
+        "challenges": "Implementing real-time tote tracking across multiple warehouse zones required a careful balance between data consistency and performance. We implemented an event-driven architecture using database triggers and a polling mechanism to ensure up-to-date location data without excessive database load.",
+        "media": {
+            "images": [
+                {
+                    "src": "/projects/wms/landing.png",
+                    "alt": "Landing Page"
+                },
+                {
+                    "src": "/projects/wms/dashboard.png",
+                    "alt": "Operations Dashboard"
+                },
+                {
+                    "src": "/projects/wms/orders.png",
+                    "alt": "Order Management"
+                },
+                {
+                    "src": "/projects/wms/products.png",
+                    "alt": "Product Catalog"
+                },
+                {
+                    "src": "/projects/wms/waves.png",
+                    "alt": "Wave Picking"
+                },
+                {
+                    "src": "/projects/wms/shipments.png",
+                    "alt": "Shipment Tracking"
+                }
+            ]
+        }
     },
     {
         "id": "helpdesk",
