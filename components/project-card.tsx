@@ -83,14 +83,16 @@ export function ProjectCard({ project, showStatus }: ProjectCardProps) {
 
             <div className="relative z-20 mt-8 flex flex-wrap gap-3">
                 {project.repoUrl && (
-                    <button
-                        type="button"
-                        disabled
-                        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/50 cursor-not-allowed"
+                    <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10 hover:text-white"
+                        onClick={(e) => e.stopPropagation()}
                     >
                         <Github className="h-4 w-4" aria-hidden="true" />
                         Repo
-                    </button>
+                    </a>
                 )}
 
                 {project.demoUrl && (
