@@ -55,12 +55,10 @@ export function ProjectCard({ project, showStatus }: ProjectCardProps) {
                     <span
                         className={cn(
                             'whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset',
-                            showStatus
-                                ? 'bg-white/5 text-white/70 ring-white/10'
-                                : 'bg-primary/10 text-primary ring-primary/20'
+                            statusStyles[project.status]
                         )}
                     >
-                        {project.role}
+                        {statusLabels[project.status]}
                     </span>
                 </div>
             </div>

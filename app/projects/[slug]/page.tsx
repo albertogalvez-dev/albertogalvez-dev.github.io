@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ExternalLink, Github, ArrowLeft } from 'lucide-react';
 import { PageContainer } from '@/components/page-container';
 import { SectionSpark } from '@/components/SectionSpark';
+import { ProjectGallery } from '@/components/project-gallery';
 import { getProjectById, getAllProjects, ProjectMediaVideo } from '@/content/projects';
 import { cn } from '@/lib/utils';
 
@@ -177,64 +178,7 @@ export default async function ProjectPage({ params }: Props) {
                         {project.media &&
                             ((project.media.images && project.media.images.length > 0) ||
                                 (project.media.videos && project.media.videos.length > 0)) ? (
-                            <div className="space-y-8">
-                                {/* Videos */}
-                                {project.media.videos && project.media.videos.length > 0 && (
-                                    <div className="space-y-6">
-                                        {project.media.videos.map((video, index) => (
-                                            <div
-                                                key={`${video.type}-${video.title}-${index}`}
-                                                className="overflow-hidden rounded-xl border border-white/10 bg-black/40"
-                                            >
-                                                <div className="aspect-video w-full">
-                                                    {video.type === 'mp4' ? (
-                                                        <video
-                                                            controls
-                                                            preload="metadata"
-                                                            poster={video.poster}
-                                                            className="h-full w-full"
-                                                        >
-                                                            <source src={video.src} type="video/mp4" />
-                                                        </video>
-                                                    ) : (
-                                                        <iframe
-                                                            src={getVideoEmbedUrl(video)}
-                                                            title={video.title}
-                                                            className="h-full w-full"
-                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                            allowFullScreen
-                                                        />
-                                                    )}
-                                                </div>
-                                                <p className="border-t border-white/5 bg-white/5 px-4 py-3 text-sm font-medium text-white/80">
-                                                    {video.title}
-                                                </p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-
-                                {/* Images */}
-                                {project.media.images && project.media.images.length > 0 && (
-                                    <div className="grid gap-6 sm:grid-cols-2">
-                                        {project.media.images.map((image) => (
-                                            <div
-                                                key={image.src}
-                                                className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 transition-colors hover:border-white/20"
-                                            >
-                                                <div className="aspect-[4/3]">
-                                                    <img
-                                                        src={image.src}
-                                                        alt={image.alt}
-                                                        loading="lazy"
-                                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                                    />
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
+                            <ProjectGallery media={project.media} />
                         ) : (
                             <div className="rounded-xl border border-dashed border-white/15 bg-white/5 px-8 py-12 text-center">
                                 <p className="text-white/40">Media content coming soon.</p>

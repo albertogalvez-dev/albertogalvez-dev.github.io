@@ -46,7 +46,7 @@
     },
     {
         "id": "queue",
-        "title": "QUEUE! - Healthcare Queue & Triage Demo",
+        "title": "QUEUE! - Healthcare Queue",
         "status": "completed",
         "role": "Full Stack Developer",
         "shortDescription": "SaaS demo for healthcare queue management with real-time kiosks and triage.",
@@ -63,6 +63,7 @@
             "TypeScript",
             "TailwindCSS",
             ".NET 8",
+            "C#",
             "PostgreSQL",
             "Docker",
             "Nginx"
