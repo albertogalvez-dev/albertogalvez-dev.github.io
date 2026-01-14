@@ -1,93 +1,5 @@
 [
     {
-        "id": "project-1",
-        "title": "Sistema de Gestion de Inventario",
-        "status": "coming_soon",
-        "role": "Full Stack Developer",
-        "shortDescription": "Aplicacion full-stack CRUD para gestion de inventario con Java Spring Boot, MySQL y frontend en JavaScript.",
-        "longDescription": "Plataforma interna para registrar entradas y salidas, controlar stock y generar reportes operativos.\nIncluye modulos de productos, proveedores y alertas para quiebres de stock.",
-        "highlights": [
-            "ABM de productos y proveedores",
-            "Alertas de stock minimo",
-            "Reportes exportables"
-        ],
-        "featured": true,
-        "stack": [
-            "Java",
-            "Spring Boot",
-            "MySQL",
-            "HTML",
-            "CSS",
-            "JavaScript"
-        ],
-        "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name"
-    },
-    {
-        "id": "project-2",
-        "title": "Portfolio Responsive",
-        "status": "coming_soon",
-        "role": "Frontend Developer",
-        "shortDescription": "Sitio web portfolio personal diseno con HTML5, CSS3 y JavaScript. Totalmente responsive y optimizado.",
-        "longDescription": "Portfolio personal con secciones de proyectos, habilidades y contacto.\nOptimizado para rendimiento y adaptado a multiples dispositivos.",
-        "highlights": [
-            "Layout responsive mobile-first",
-            "Animaciones sutiles y consistentes",
-            "SEO basico y performance"
-        ],
-        "featured": true,
-        "stack": [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "Responsive Design"
-        ],
-        "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name",
-        "demoUrl": "https://albertogalvez-dev.github.io/TODO-add-repo-name"
-    },
-    {
-        "id": "project-3",
-        "title": "API REST de Gestion de Tareas",
-        "status": "coming_soon",
-        "role": "Backend Developer",
-        "shortDescription": "API RESTful para gestion de tareas con autenticacion JWT, desarrollada con Node.js y Express.",
-        "longDescription": "API para crear, asignar y priorizar tareas con autenticacion basada en JWT.\nIncluye endpoints paginados y validaciones para flujos de trabajo.",
-        "highlights": [
-            "CRUD de tareas con filtros",
-            "Auth JWT con roles",
-            "Documentacion de endpoints"
-        ],
-        "featured": true,
-        "stack": [
-            "Node.js",
-            "Express",
-            "JWT",
-            "REST API",
-            "MySQL"
-        ],
-        "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name"
-    },
-    {
-        "id": "project-4",
-        "title": "Diseno de Base de Datos E-Commerce",
-        "status": "coming_soon",
-        "role": "Database Designer",
-        "shortDescription": "Diseno completo de base de datos relacional para plataforma e-commerce con diagramas ER y normalizacion.",
-        "longDescription": "Modelo relacional para catalogo, pedidos y clientes con integridad referencial.\nIncluye reglas de normalizacion y vistas para consultas frecuentes.",
-        "highlights": [
-            "ERD completo",
-            "Normalizacion hasta 3FN",
-            "Indices para rendimiento"
-        ],
-        "featured": true,
-        "stack": [
-            "MySQL",
-            "Database Design",
-            "ER Diagrams",
-            "Normalization"
-        ],
-        "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name"
-    },
-    {
         "id": "wms",
         "title": "WMS - Warehouse Management System",
         "status": "coming_soon",
@@ -99,7 +11,7 @@
             "Trazabilidad de lotes",
             "Panel operativo en tiempo real"
         ],
-        "featured": false,
+        "featured": true,
         "stack": [
             "Java",
             "Spring Boot",
@@ -108,7 +20,7 @@
             "Redis",
             "React"
         ],
-        "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name"
+        "repoUrl": "https://github.com/albertogalvez-dev/wms"
     },
     {
         "id": "helpdesk",
@@ -122,7 +34,7 @@
             "Etiquetas y prioridades",
             "Base de conocimiento"
         ],
-        "featured": false,
+        "featured": true,
         "stack": [
             "Next.js",
             "TypeScript",
@@ -130,6 +42,50 @@
             "Prisma",
             "Tailwind CSS"
         ],
-        "repoUrl": "https://github.com/albertogalvez-dev/TODO-add-repo-name"
+        "repoUrl": "https://github.com/albertogalvez-dev/helpdesk"
+    },
+    {
+        "id": "queue",
+        "title": "Queue! - Sistema de Gestión de Colas",
+        "status": "coming_soon",
+        "role": "Full Stack Developer",
+        "shortDescription": "Aplicación para gestión de turnos y colas de atención al cliente en tiempo real.",
+        "longDescription": "Sistema de gestión de colas para optimizar la atención al cliente.\nIncluye pantallas de turno, notificaciones y métricas de espera.",
+        "highlights": [
+            "Gestión de turnos en tiempo real",
+            "Pantallas informativas",
+            "Métricas y reportes de espera"
+        ],
+        "featured": true,
+        "stack": [
+            "Node.js",
+            "Express",
+            "Socket.io",
+            "React",
+            "MongoDB"
+        ],
+        "repoUrl": "https://github.com/albertogalvez-dev/queue"
+    },
+    {
+        "id": "cms",
+        "title": "CMS - Content Management System",
+        "status": "coming_soon",
+        "role": "Full Stack Developer",
+        "shortDescription": "Sistema de gestión de contenidos headless con API REST y panel de administración.",
+        "longDescription": "CMS headless para crear y gestionar contenido dinámico.\nIncluye editor WYSIWYG, gestión de medios y API para consumo externo.",
+        "highlights": [
+            "Editor WYSIWYG intuitivo",
+            "Gestión de medios",
+            "API REST documentada"
+        ],
+        "featured": true,
+        "stack": [
+            "Next.js",
+            "TypeScript",
+            "PostgreSQL",
+            "Prisma",
+            "AWS S3"
+        ],
+        "repoUrl": "https://github.com/albertogalvez-dev/cms"
     }
 ]
