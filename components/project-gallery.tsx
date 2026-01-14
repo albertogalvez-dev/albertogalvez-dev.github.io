@@ -2,11 +2,9 @@
 
 import { useState } from 'react';
 import { X, ZoomIn } from 'lucide-react';
-import { ProjectMedia } from '@/content/projects';
-
-import { useState } from 'react';
-import { X, ZoomIn } from 'lucide-react';
 import { ProjectMedia, ProjectMediaVideo } from '@/content/projects';
+
+
 
 interface ProjectGalleryProps {
     media: ProjectMedia;
