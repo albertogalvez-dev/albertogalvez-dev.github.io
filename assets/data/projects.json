@@ -24,25 +24,54 @@
     },
     {
         "id": "helpdesk",
-        "title": "Helpdesk Ticketing Platform",
-        "status": "coming_soon",
+        "title": "Helpdesk MVP - IT Support Platform",
+        "status": "completed",
         "role": "Full Stack Developer",
-        "shortDescription": "Plataforma de tickets con SLAs, colas de soporte y base de conocimiento.",
-        "longDescription": "Herramienta para gestionar incidencias con flujos de aprobacion y SLAs.\nIncluye portal de autoservicio y panel para agentes.",
+        "shortDescription": "B2B IT Remote Support Platform with multi-tenant architecture and SLA management.",
+        "longDescription": "Helpdesk MVP is a modern, multi-tenant helpdesk application built for remote IT support teams. It features complete workspace isolation for B2B clients, SLA management with configurable policies, and role-based access control.\n\nThe platform includes a customer portal for self-service ticket creation and tracking, an agent console with unified inbox, and a comprehensive admin panel for SLA configuration. Background jobs handle SLA checking and email notifications via Redis Queue.",
         "highlights": [
-            "Automatizaciones SLA",
-            "Etiquetas y prioridades",
-            "Base de conocimiento"
+            "Multi-tenant Architecture with Workspace Isolation",
+            "Configurable SLA Policies & Escalation",
+            "Role-based Access (Admin, Agent, Customer)",
+            "Background Jobs with Redis Queue"
         ],
         "featured": true,
         "stack": [
-            "Next.js",
+            "React",
             "TypeScript",
+            "TailwindCSS",
+            "Python",
+            "FastAPI",
             "PostgreSQL",
-            "Prisma",
-            "Tailwind CSS"
+            "Redis",
+            "Docker"
         ],
-        "repoUrl": "https://github.com/albertogalvez-dev/helpdesk"
+        "repoUrl": "https://github.com/albertogalvez-dev/helpdesk-mvp",
+        "challenges": "Implementing multi-tenant workspace isolation while maintaining shared infrastructure required careful database schema design. We used PostgreSQL Row-Level Security combined with a custom middleware to ensure complete data isolation between tenants without performance overhead.",
+        "media": {
+            "images": [
+                {
+                    "src": "/projects/helpdesk/home.png",
+                    "alt": "Landing Page"
+                },
+                {
+                    "src": "/projects/helpdesk/login.png",
+                    "alt": "Login Page"
+                },
+                {
+                    "src": "/projects/helpdesk/agent-admin-workspace.png",
+                    "alt": "Agent Admin Workspace"
+                },
+                {
+                    "src": "/projects/helpdesk/agent-admin-slas.png",
+                    "alt": "SLA Management Panel"
+                },
+                {
+                    "src": "/projects/helpdesk/contact.png",
+                    "alt": "Contact Page"
+                }
+            ]
+        }
     },
     {
         "id": "queue",
