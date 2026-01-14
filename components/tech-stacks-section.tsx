@@ -4,52 +4,7 @@ import { TECH_STACKS } from '@/lib/constants';
 import { PageContainer } from '@/components/page-container';
 import { SectionSpark } from '@/components/SectionSpark';
 import { ScrollReveal } from '@/components/scroll-reveal';
-
-// Map technology names to Devicon icon names (for CDN)
-// Format: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{name}/{name}-{variant}.svg
-const DEVICON_MAP: Record<string, string> = {
-    // Frontend
-    'HTML': 'html5/html5-original',
-    'CSS': 'css3/css3-original',
-    'JavaScript': 'javascript/javascript-original',
-    'TypeScript': 'typescript/typescript-original',
-    'Angular': 'angularjs/angularjs-original',
-    'Astro': 'astro/astro-original',
-    'React': 'react/react-original',
-    'Tailwind CSS': 'tailwindcss/tailwindcss-original',
-    // Backend
-    'Java': 'java/java-original',
-    'Kotlin': 'kotlin/kotlin-original',
-    'C#': 'csharp/csharp-original',
-    'C++': 'cplusplus/cplusplus-original',
-    'PHP': 'php/php-original',
-    'Python': 'python/python-original',
-    // Frameworks
-    'Spring Boot': 'spring/spring-original',
-    '.NET': 'dotnetcore/dotnetcore-original',
-    'FastAPI': 'fastapi/fastapi-original',
-    // Database
-    'PostgreSQL': 'postgresql/postgresql-original',
-    'MySQL': 'mysql/mysql-original',
-    'MariaDB': 'mariadb/mariadb-original',
-    'Oracle Database': 'oracle/oracle-original',
-    'MongoDB': 'mongodb/mongodb-original',
-    // DevOps / Cloud
-    'Docker': 'docker/docker-original',
-    'Kubernetes': 'kubernetes/kubernetes-original',
-    'GitHub Actions': 'github/github-original',
-    'Git': 'git/git-original',
-    'Linux': 'linux/linux-original',
-    'AWS': 'amazonwebservices/amazonwebservices-plain-wordmark',
-    'Azure': 'azure/azure-original',
-};
-
-// Generate Devicon CDN URL
-function getDeviconUrl(techName: string): string | null {
-    const iconPath = DEVICON_MAP[techName];
-    if (!iconPath) return null;
-    return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${iconPath}.svg`;
-}
+import { getDeviconUrl } from '@/lib/utils';
 
 export function TechStacksSection() {
     return (

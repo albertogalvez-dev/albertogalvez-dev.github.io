@@ -87,10 +87,6 @@
                 {
                     "src": "/projects/queue/tvfuncionando.png",
                     "alt": "Waiting Room TV Display"
-                },
-                {
-                    "src": "/projects/queue/07_analitica.png",
-                    "alt": "Real-time Analytics Dashboard"
                 }
             ]
         }

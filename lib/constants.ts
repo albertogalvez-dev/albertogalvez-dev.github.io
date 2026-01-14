@@ -57,6 +57,54 @@ export const TECH_STACKS = [
     },
 ];
 
+// Map technology names to Devicon icon names (for CDN)
+// Format: https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{name}/{name}-{variant}.svg
+export const DEVICON_MAP: Record<string, string> = {
+    // Frontend
+    'HTML': 'html5/html5-original',
+    'CSS': 'css3/css3-original',
+    'JavaScript': 'javascript/javascript-original',
+    'TypeScript': 'typescript/typescript-original',
+    'Angular': 'angularjs/angularjs-original',
+    'Astro': 'astro/astro-original',
+    'React': 'react/react-original',
+    'Tailwind CSS': 'tailwindcss/tailwindcss-original',
+    'TailwindCSS': 'tailwindcss/tailwindcss-original', // Add alias for project data
+    // Backend
+    'Java': 'java/java-original',
+    'Kotlin': 'kotlin/kotlin-original',
+    'C#': 'csharp/csharp-original',
+    'C++': 'cplusplus/cplusplus-original',
+    'PHP': 'php/php-plain', // Note: some icons might be plain
+    'Python': 'python/python-original',
+    // Frameworks
+    'Spring Boot': 'spring/spring-original',
+    '.NET': 'dotnetcore/dotnetcore-original',
+    '.NET 8': 'dotnetcore/dotnetcore-original', // Alias
+    'FastAPI': 'fastapi/fastapi-original',
+    // Database
+    'PostgreSQL': 'postgresql/postgresql-original',
+    'MySQL': 'mysql/mysql-original',
+    'MariaDB': 'mariadb/mariadb-original',
+    'Oracle Database': 'oracle/oracle-original',
+    'MongoDB': 'mongodb/mongodb-original',
+    'Redis': 'redis/redis-original', // Add Redis
+    // DevOps / Cloud
+    'Docker': 'docker/docker-original',
+    'Kubernetes': 'kubernetes/kubernetes-original',
+    'GitHub Actions': 'github/github-original',
+    'Git': 'git/git-original',
+    'Linux': 'linux/linux-original',
+    'AWS': 'amazonwebservices/amazonwebservices-plain-wordmark',
+    'AWS S3': 'amazonwebservices/amazonwebservices-plain-wordmark', // Alias
+    'Azure': 'azure/azure-original',
+    'Prisma': 'prisma/prisma-original', // Add Prisma
+    'Nginx': 'nginx/nginx-original', // Add Nginx
+    'Node.js': 'nodejs/nodejs-original', // Add Node.js
+    'Express': 'express/express-original', // Add Express
+    'Socket.io': 'socketio/socketio-original', // Add Socket.io
+};
+
 export const SOCIAL_LINKS = {
     github: SITE_CONFIG.github,
     linkedin: SITE_CONFIG.linkedin,

@@ -42,16 +42,7 @@ export function ProjectCard({ project, showStatus }: ProjectCardProps) {
                 </div>
 
                 <div className="flex shrink-0 flex-col items-end gap-2 text-right">
-                    {showStatus && (
-                        <span
-                            className={cn(
-                                'whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset',
-                                statusStyles[project.status]
-                            )}
-                        >
-                            {statusLabels[project.status]}
-                        </span>
-                    )}
+
                     <span
                         className={cn(
                             'whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset',

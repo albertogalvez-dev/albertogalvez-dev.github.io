@@ -38,3 +38,11 @@ export async function copyToClipboard(text: string): Promise<boolean> {
         }
     }
 }
+
+import { DEVICON_MAP } from './constants';
+
+export function getDeviconUrl(techName: string): string | null {
+    const iconUrl = DEVICON_MAP[techName];
+    if (!iconUrl) return null;
+    return `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${iconUrl}.svg`;
+}
