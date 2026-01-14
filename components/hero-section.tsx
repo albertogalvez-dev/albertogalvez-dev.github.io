@@ -17,7 +17,7 @@ function TypeCaret({ className }: { className?: string }) {
         <span
             aria-hidden="true"
             className={[
-                'ml-1 inline-block align-[0.08em] text-primary',
+                'ml-1 inline align-baseline text-primary',
                 'animate-[caret_1s_steps(1,end)_infinite] motion-reduce:animate-none',
                 className,
             ].join(' ')}
