@@ -155,7 +155,7 @@
     {
         "id": "field-report-pro",
         "title": "Field Report Pro",
-        "status": "coming_soon",
+        "status": "completed",
         "role": "Android",
         "shortDescription": "Offline-first incident reporting app with photo attachments, annotation, and background sync.",
         "longDescription": "Field Report Pro is an offline-first Android app for incident reporting in the field. Users can capture photos, add annotations, and keep working without connectivity thanks to a local-first data model.\n\nWhen the device is back online, WorkManager syncs drafts and attachments in the background with clear progress feedback. The app is built with Jetpack Compose, Room, and DataStore for reliable state and a fast UI.",
@@ -169,23 +169,48 @@
         "featured": true,
         "stack": [
             "Kotlin",
-            "Jetpack Compose",
-            "Room",
-            "DataStore",
-            "WorkManager",
-            "Coil",
-            "Paparazzi",
-            "GitHub Actions"
+            "HTML",
+            "PowerShell"
         ],
         "repoUrl": "https://github.com/albertogalvez-dev/field-report-pro",
         "media": {
             "images": [
                 {
                     "src": "/projects/field-report-pro/home_light.png",
-                    "alt": "Field Report Pro home screen"
+                    "alt": "Home Screen (Light)"
+                },
+                {
+                    "src": "/projects/field-report-pro/home_dark.png",
+                    "alt": "Home Screen (Dark)"
+                },
+                {
+                    "src": "/projects/field-report-pro/form.png",
+                    "alt": "Incident Form"
+                },
+                {
+                    "src": "/projects/field-report-pro/detail.png",
+                    "alt": "Incident Detail"
+                },
+                {
+                    "src": "/projects/field-report-pro/annotate_dark.png",
+                    "alt": "Photo Annotation (Dark)"
+                },
+                {
+                    "src": "/projects/field-report-pro/empty_state.png",
+                    "alt": "Empty State"
+                },
+                {
+                    "src": "/projects/field-report-pro/settings_dark.png",
+                    "alt": "Settings (Dark)"
+                },
+                {
+                    "src": "/projects/field-report-pro/sync.png",
+                    "alt": "Background Sync"
                 }
             ]
         }
     }
 ]
+
+
 
