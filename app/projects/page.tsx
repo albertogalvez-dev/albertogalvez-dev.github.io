@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { PageContainer } from '@/components/page-container';
 import { SectionSpark } from '@/components/SectionSpark';
-import { ProjectCard } from '@/components/project-card';
-import { GlowyGrid } from '@/components/glowy-grid';
+import { ProjectsGrid } from '@/components/projects-grid';
 import { getAllProjects } from '@/content/projects';
 
 export const metadata: Metadata = {
@@ -24,11 +23,7 @@ export default function ProjectsPage() {
             </p>
 
             <div className="mt-12">
-                <GlowyGrid>
-                    {projects.map((project) => (
-                        <ProjectCard key={project.id} project={project} />
-                    ))}
-                </GlowyGrid>
+                <ProjectsGrid projects={projects} />
             </div>
         </PageContainer>
     );
