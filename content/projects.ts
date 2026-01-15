@@ -49,15 +49,24 @@ export const projects: Project[] = [
     },
     {
         id: 'project-4',
-        title: 'Diseño de Base de Datos E-Commerce',
+        title: 'Field Report Pro',
         shortDescription:
-            'Diseño completo de base de datos relacional para plataforma e-commerce con diagramas ER y normalización.',
-        role: 'Database Designer',
+            'Offline-first incident reporting app with photo attachments, annotation, and background sync.',
+        role: 'Android (Kotlin) ? Offline-first',
         featured: true,
-        tech: ['MySQL', 'Database Design', 'ER Diagrams', 'Normalization'],
-        repoUrl: 'https://github.com/albertogalvez-dev/TODO-add-repo-name', // TODO: Replace with actual repo
+        tech: [
+            'Kotlin',
+            'Jetpack Compose',
+            'Room',
+            'DataStore',
+            'WorkManager',
+            'Coil',
+            'Paparazzi',
+            'GitHub Actions',
+        ],
+        repoUrl: 'https://github.com/albertogalvez-dev/field-report-pro',
         liveUrl: undefined,
-        image: '/projects/project-4.png', // TODO: Add actual project screenshot
+        image: '/projects/field-report-pro.png',
     },
 ];
 
