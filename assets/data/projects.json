@@ -1,0 +1,216 @@
+[
+    {
+        "id": "wms",
+        "title": "WMS - Warehouse Management System",
+        "status": "completed",
+        "role": "Full Stack Developer & DevOps",
+        "shortDescription": "Production-ready WMS with order-to-shipment workflow, wave picking, and ZPL label printing.",
+        "longDescription": "A complete Warehouse Management System built with Java 17, Spring Boot 3, and PostgreSQL. This system handles the full order-to-shipment lifecycle including order management, wave picking, handheld packing operations, and real-time tote tracking.\n\nFeatures a web backoffice for administrators and managers, a mobile-optimized handheld interface for warehouse floor operations, and automatic ZPL label generation with carrier integration. Role-based access control ensures appropriate permissions for Admin, Manager, Picker, and Packer roles.",
+        "highlights": [
+            "Complete Order-to-Shipment Workflow",
+            "Wave Picking & Handheld Packing",
+            "ZPL Label Generation & Carrier Integration",
+            "Role-based Access Control (Admin, Manager, Picker, Packer)"
+        ],
+        "featured": true,
+        "stack": [
+            "Java",
+            "Spring Boot",
+            "PostgreSQL",
+            "Docker",
+            "Nginx",
+            "JavaScript",
+            "HTML",
+            "CSS"
+        ],
+        "repoUrl": "https://github.com/albertogalvez-dev/wms-warehouse-management",
+        "challenges": "Implementing real-time tote tracking across multiple warehouse zones required a careful balance between data consistency and performance. We implemented an event-driven architecture using database triggers and a polling mechanism to ensure up-to-date location data without excessive database load.",
+        "media": {
+            "images": [
+                {
+                    "src": "/projects/wms/landing.png",
+                    "alt": "Landing Page"
+                },
+                {
+                    "src": "/projects/wms/dashboard.png",
+                    "alt": "Operations Dashboard"
+                },
+                {
+                    "src": "/projects/wms/orders.png",
+                    "alt": "Order Management"
+                },
+                {
+                    "src": "/projects/wms/products.png",
+                    "alt": "Product Catalog"
+                },
+                {
+                    "src": "/projects/wms/waves.png",
+                    "alt": "Wave Picking"
+                },
+                {
+                    "src": "/projects/wms/shipments.png",
+                    "alt": "Shipment Tracking"
+                }
+            ]
+        }
+    },
+    {
+        "id": "helpdesk",
+        "title": "Helpdesk MVP - IT Support Platform",
+        "status": "completed",
+        "role": "Full Stack Developer",
+        "shortDescription": "B2B IT Remote Support Platform with multi-tenant architecture and SLA management.",
+        "longDescription": "Helpdesk MVP is a modern, multi-tenant helpdesk application built for remote IT support teams. It features complete workspace isolation for B2B clients, SLA management with configurable policies, and role-based access control.\n\nThe platform includes a customer portal for self-service ticket creation and tracking, an agent console with unified inbox, and a comprehensive admin panel for SLA configuration. Background jobs handle SLA checking and email notifications via Redis Queue.",
+        "highlights": [
+            "Multi-tenant Architecture with Workspace Isolation",
+            "Configurable SLA Policies & Escalation",
+            "Role-based Access (Admin, Agent, Customer)",
+            "Background Jobs with Redis Queue"
+        ],
+        "featured": true,
+        "stack": [
+            "React",
+            "TypeScript",
+            "TailwindCSS",
+            "Python",
+            "FastAPI",
+            "PostgreSQL",
+            "Redis",
+            "Docker"
+        ],
+        "repoUrl": "https://github.com/albertogalvez-dev/helpdesk-mvp",
+        "challenges": "Implementing multi-tenant workspace isolation while maintaining shared infrastructure required careful database schema design. We used PostgreSQL Row-Level Security combined with a custom middleware to ensure complete data isolation between tenants without performance overhead.",
+        "media": {
+            "images": [
+                {
+                    "src": "/projects/helpdesk/home.png",
+                    "alt": "Landing Page"
+                },
+                {
+                    "src": "/projects/helpdesk/login.png",
+                    "alt": "Login Page"
+                },
+                {
+                    "src": "/projects/helpdesk/agent-admin-workspace.png",
+                    "alt": "Agent Admin Workspace"
+                },
+                {
+                    "src": "/projects/helpdesk/agent-admin-slas.png",
+                    "alt": "SLA Management Panel"
+                },
+                {
+                    "src": "/projects/helpdesk/contact.png",
+                    "alt": "Contact Page"
+                }
+            ]
+        }
+    },
+    {
+        "id": "queue",
+        "title": "QUEUE! - Healthcare Queue",
+        "status": "completed",
+        "role": "Full Stack Developer",
+        "shortDescription": "SaaS demo for healthcare queue management with real-time kiosks and triage.",
+        "longDescription": "QUEUE! is a comprehensive healthcare queue management system designed to optimize patient flow in clinics and hospitals. It features a touch-friendly kiosk for patient check-in, an advanced operator console for triage and queue control, and dynamic TV displays for waiting rooms.\n\nThe system handles the full lifecycle of a patient visit: from self-service ticket issuance with ID recognition to priority-based calling and analytical reporting. It is designed as a modular SaaS platform capable of running in hybrid environments.",
+        "highlights": [
+            "Real-time Queue Sync (SSE)",
+            "Touch Kiosk & TV Display interfaces",
+            "Low-latency .NET Minimal APIs",
+            "Dockerized Microservices Architecture"
+        ],
+        "featured": true,
+        "stack": [
+            "React",
+            "TypeScript",
+            "TailwindCSS",
+            ".NET 8",
+            "C#",
+            "PostgreSQL",
+            "Docker",
+            "Nginx"
+        ],
+        "repoUrl": "https://github.com/albertogalvez-dev/QUEUE",
+        "challenges": "Synchronization of real-time state between the kiosk, operator panel, and TV displays using Server-Sent Events (SSE) proved challenging under high concurrency. We solved this by implementing a robust event buffering system in the .NET backend to ensure no updates were lost during connection flickers.",
+        "media": {
+            "images": [
+                {
+                    "src": "/projects/queue/01_landing.png",
+                    "alt": "QUEUE Landing Page"
+                },
+                {
+                    "src": "/projects/queue/02_kiosco_input.png",
+                    "alt": "Patient Kiosk Interface"
+                },
+                {
+                    "src": "/projects/queue/05_operador_panel.png",
+                    "alt": "Operator Triage Console"
+                },
+                {
+                    "src": "/projects/queue/tvfuncionando.png",
+                    "alt": "Waiting Room TV Display"
+                }
+            ]
+        }
+    },
+    {
+        "id": "field-report-pro",
+        "title": "Field Report Pro",
+        "status": "completed",
+        "role": "Android",
+        "shortDescription": "Offline-first incident reporting app with photo attachments, annotation, and background sync.",
+        "longDescription": "Field Report Pro is an offline-first Android app for incident reporting in the field. Users can capture photos, add annotations, and keep working without connectivity thanks to a local-first data model.\n\nWhen the device is back online, WorkManager syncs drafts and attachments in the background with clear progress feedback. The app is built with Jetpack Compose, Room, and DataStore for reliable state and a fast UI.",
+        "highlights": [
+            "Offline-first data layer with Room",
+            "Background sync with WorkManager and progress feedback",
+            "Photo attachments from camera or gallery",
+            "On-device photo annotation and export",
+            "Deterministic UI screenshots with Paparazzi and CI"
+        ],
+        "featured": true,
+        "stack": [
+            "Kotlin",
+            "HTML",
+            "PowerShell"
+        ],
+        "repoUrl": "https://github.com/albertogalvez-dev/field-report-pro",
+        "media": {
+            "images": [
+                {
+                    "src": "/projects/field-report-pro/home_light.png",
+                    "alt": "Home Screen (Light)"
+                },
+                {
+                    "src": "/projects/field-report-pro/home_dark.png",
+                    "alt": "Home Screen (Dark)"
+                },
+                {
+                    "src": "/projects/field-report-pro/form.png",
+                    "alt": "Incident Form"
+                },
+                {
+                    "src": "/projects/field-report-pro/detail.png",
+                    "alt": "Incident Detail"
+                },
+                {
+                    "src": "/projects/field-report-pro/annotate_dark.png",
+                    "alt": "Photo Annotation (Dark)"
+                },
+                {
+                    "src": "/projects/field-report-pro/empty_state.png",
+                    "alt": "Empty State"
+                },
+                {
+                    "src": "/projects/field-report-pro/settings_dark.png",
+                    "alt": "Settings (Dark)"
+                },
+                {
+                    "src": "/projects/field-report-pro/sync.png",
+                    "alt": "Background Sync"
+                }
+            ]
+        }
+    }
+]
+
+
+
