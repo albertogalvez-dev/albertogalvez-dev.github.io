@@ -40,11 +40,11 @@
         "id": "echo2action",
         "title": "Echo2Action - Feedback Intelligence",
         "status": "completed",
-        "role": "Proyecto desarrollado con Daniel (danicode-dev)",
+        "role": "Proyecto desarrollado con Daniel - https://github.com/danicode-dev",
         "shortDescription": "Convierte reseñas públicas de tiendas físicas en insights priorizados y acciones generadas con IA.",
         "longDescription": "Echo2Action fue el proyecto que desarrollé junto a mi amigo Daniel durante GEN AI ARENA de SIDN. Analiza reseñas públicas de Google Reviews, Google Play y Trustpilot, las clasifica por sentimiento, severidad, tema, etapa del cliente y punto de contacto, y agrupa las fricciones para priorizar qué debe atender primero un equipo de marketing, CX u operaciones.\n\nEl piloto se centró en tiendas físicas de Granada y demostró cómo transformar feedback disperso en acciones concretas: FAQs, mejoras de copy, respuestas públicas sugeridas y recomendaciones operativas generadas con Gemini. La interfaz en Next.js permite consultar KPIs, explorar reseñas, ver tiendas en mapa y revisar clusters de problemas con evidencia.",
         "highlights": [
-            "Desarrollado junto a Daniel, mi amigo y colaborador del proyecto",
+            "Desarrollado junto a Daniel, mi amigo y colaborador del proyecto: https://github.com/danicode-dev",
             "Clasificación de reseñas por sentimiento, severidad y etapa del cliente",
             "Priorización de fricciones mediante impact score",
             "Generación de acciones con IA para marketing, CX y operaciones"
