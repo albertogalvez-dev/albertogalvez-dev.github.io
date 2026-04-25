@@ -26,6 +26,7 @@
             "Docker",
             "Terraform"
         ],
+        "repoUrl": "https://github.com/albertogalvez-dev/sidn-genaiarena-equipo3",
         "challenges": "El reto principal fue convertir fuentes de marketing muy distintas en una experiencia ejecutiva coherente. Para conseguirlo, el equipo separó la capa de datos, los informes de Looker Studio y la interfaz de Next.js, de forma que la demo pudiera enseñar valor de negocio sin depender de explicar la complejidad interna.",
         "media": {
             "images": [
@@ -62,6 +63,7 @@
             "Gemini",
             "Docker"
         ],
+        "repoUrl": "https://github.com/albertogalvez-dev/sidn-genaiarena-echo2action",
         "challenges": "La parte más delicada fue pasar de reseñas sueltas a decisiones accionables. El pipeline tenía que limpiar datos, clasificar comentarios, agrupar problemas similares y generar recomendaciones útiles sin perder la trazabilidad de la evidencia original.",
         "media": {
             "images": [
