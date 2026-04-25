@@ -1,5 +1,78 @@
 [
     {
+        "id": "bior-strategy",
+        "title": "BIOR Strategy - Inteligencia competitiva con IA",
+        "status": "completed",
+        "role": "Proyecto grupal en GEN AI ARENA de SIDN",
+        "shortDescription": "Dashboard y agente de inteligencia competitiva para convertir datos de marketing digital en informes accionables.",
+        "longDescription": "BIOR Strategy fue el proyecto grupal desarrollado en GEN AI ARENA, el hackathon de IA aplicada al marketing organizado por SIDN. La solución reúne señales de SEO, paid media, redes sociales, reputación online y medios externos para comparar una marca con sus competidores y presentar un informe ejecutivo en un dashboard.\n\nEl proyecto combinó ingesta y transformación de datos, BigQuery, Looker Studio, un frontend en Next.js y un agente LLM pensado para consultar insights en lenguaje natural. Al ser un trabajo grupal, mi aportación se integró dentro de un equipo multidisciplinar con más participantes, priorizando una demo clara, una interfaz usable y una arquitectura preparada para crecer.",
+        "highlights": [
+            "Proyecto grupal desarrollado con más participantes del evento",
+            "Benchmark multi-competidor para marketing digital",
+            "Dashboard ejecutivo con Looker Studio y Next.js",
+            "Agente de IA para consultar insights en lenguaje natural"
+        ],
+        "featured": true,
+        "stack": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "TailwindCSS",
+            "Python",
+            "FastAPI",
+            "BigQuery",
+            "Looker Studio",
+            "Vertex AI",
+            "Docker",
+            "Terraform"
+        ],
+        "challenges": "El reto principal fue convertir fuentes de marketing muy distintas en una experiencia ejecutiva coherente. Para conseguirlo, el equipo separó la capa de datos, los informes de Looker Studio y la interfaz de Next.js, de forma que la demo pudiera enseñar valor de negocio sin depender de explicar la complejidad interna.",
+        "media": {
+            "images": [
+                {
+                    "src": "/projects/bior/logo-bior.png",
+                    "alt": "Logo de BIOR Strategy"
+                }
+            ]
+        }
+    },
+    {
+        "id": "echo2action",
+        "title": "Echo2Action - Feedback Intelligence",
+        "status": "completed",
+        "role": "Proyecto desarrollado con Daniel (danicode-dev)",
+        "shortDescription": "Convierte reseñas públicas de tiendas físicas en insights priorizados y acciones generadas con IA.",
+        "longDescription": "Echo2Action fue el proyecto que desarrollé junto a mi amigo Daniel durante GEN AI ARENA de SIDN. Analiza reseñas públicas de Google Reviews, Google Play y Trustpilot, las clasifica por sentimiento, severidad, tema, etapa del cliente y punto de contacto, y agrupa las fricciones para priorizar qué debe atender primero un equipo de marketing, CX u operaciones.\n\nEl piloto se centró en tiendas físicas de Granada y demostró cómo transformar feedback disperso en acciones concretas: FAQs, mejoras de copy, respuestas públicas sugeridas y recomendaciones operativas generadas con Gemini. La interfaz en Next.js permite consultar KPIs, explorar reseñas, ver tiendas en mapa y revisar clusters de problemas con evidencia.",
+        "highlights": [
+            "Desarrollado junto a Daniel, mi amigo y colaborador del proyecto",
+            "Clasificación de reseñas por sentimiento, severidad y etapa del cliente",
+            "Priorización de fricciones mediante impact score",
+            "Generación de acciones con IA para marketing, CX y operaciones"
+        ],
+        "featured": true,
+        "stack": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "TailwindCSS",
+            "Python",
+            "FastAPI",
+            "BigQuery",
+            "Vertex AI",
+            "Gemini",
+            "Docker"
+        ],
+        "challenges": "La parte más delicada fue pasar de reseñas sueltas a decisiones accionables. El pipeline tenía que limpiar datos, clasificar comentarios, agrupar problemas similares y generar recomendaciones útiles sin perder la trazabilidad de la evidencia original.",
+        "media": {
+            "images": [
+                {
+                    "src": "/projects/echo2action/echo2action-logo.svg",
+                    "alt": "Logo de Echo2Action"
+                }
+            ]
+        }
+    },
+    {
         "id": "wms",
         "title": "WMS - Warehouse Management System",
         "status": "completed",

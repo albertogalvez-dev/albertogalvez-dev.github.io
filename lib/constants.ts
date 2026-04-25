@@ -24,7 +24,7 @@ export const STATS = [
     },
     {
         label: 'Successful projects',
-        value: '4+',
+        value: '6+',
         description: 'Presentable apps and coursework deliverables',
     },
     {
