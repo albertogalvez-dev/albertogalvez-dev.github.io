@@ -8,10 +8,6 @@ import LangToggle from "../components/LangToggle.astro";
 
 const projects = await getCollection("projects");
 const sorted = projects.sort((a, b) => a.data.order - b.data.order);
-// Years únicos para el filtro — auto-poblado desde los .md
-const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
-  Number(b) - Number(a)
-);
 ---
 
 <Layout>
@@ -68,39 +64,20 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
   <main class="deck">
     <p class="intro">FULL STACK DEVELOPER</p>
 
-    <!-- Filter — Tipo (Personales/Empresa) + Año.
-         Los dos filtros se combinan con AND. Cada slot lleva data-type y data-year. -->
-    <div class="deck-filters">
-      <div class="deck-filter" role="tablist" aria-label="Filtro por tipo">
-        <span class="filter-label" data-en="Type">Tipo</span>
-        <button type="button" class="filter-btn is-active" data-filter-type="type" data-filter="all" role="tab" aria-selected="true">
-          <span data-en="All">Todos</span>
-          <span class="filter-count">{sorted.length}</span>
-        </button>
-        <button type="button" class="filter-btn" data-filter-type="type" data-filter="personal" role="tab" aria-selected="false">
-          <span data-en="Personal">Personales</span>
-          <span class="filter-count">{sorted.filter(p => p.data.type === "Personal").length}</span>
-        </button>
-        <button type="button" class="filter-btn" data-filter-type="type" data-filter="cliente" role="tab" aria-selected="false">
-          <span data-en="Company">Empresa</span>
-          <span class="filter-count">{sorted.filter(p => p.data.type === "Cliente").length}</span>
-        </button>
-      </div>
-
-      {years.length > 1 && (
-        <div class="deck-filter" role="tablist" aria-label="Filtro por año">
-          <span class="filter-label" data-en="Year">Año</span>
-          <button type="button" class="filter-btn is-active" data-filter-type="year" data-filter="all" role="tab" aria-selected="true">
-            <span data-en="All">Todos</span>
-          </button>
-          {years.map((y) => (
-            <button type="button" class="filter-btn" data-filter-type="year" data-filter={y} role="tab" aria-selected="false">
-              <span>{y}</span>
-              <span class="filter-count">{sorted.filter(p => p.data.year === y).length}</span>
-            </button>
-          ))}
-        </div>
-      )}
+    <!-- Filter — solo Tipo (Personales/Empresa). -->
+    <div class="deck-filter" role="tablist" aria-label="Filtro de proyectos">
+      <button type="button" class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+        <span data-en="All">Todos</span>
+        <span class="filter-count">{sorted.length}</span>
+      </button>
+      <button type="button" class="filter-btn" data-filter="personal" role="tab" aria-selected="false">
+        <span data-en="Personal">Personales</span>
+        <span class="filter-count">{sorted.filter(p => p.data.type === "Personal").length}</span>
+      </button>
+      <button type="button" class="filter-btn" data-filter="cliente" role="tab" aria-selected="false">
+        <span data-en="Company">Empresa</span>
+        <span class="filter-count">{sorted.filter(p => p.data.type === "Cliente").length}</span>
+      </button>
     </div>
 
     <div class="deck-stage" data-current="0">
@@ -109,7 +86,6 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
           class:list={["deck-slot", { "is-active": i === 0 }]}
           data-idx={i}
           data-type={proj.data.type === "Cliente" ? "cliente" : "personal"}
-          data-year={proj.data.year}
         >
           <ProjectCard
             title={proj.data.title}
@@ -144,6 +120,9 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
 
 <style is:global>
   /* === LIGHT MODE OVERRIDE para el deck === */
+  html, body {
+    overflow-x: hidden;
+  }
   body {
     background: #fafafa !important;
     color: #1a1a22 !important;
@@ -633,15 +612,7 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
     to   { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  /* === FILTROS — tabs minimalistas estilo Linear === */
-  .deck-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    align-items: center;
-    justify-content: center;
-  }
-
+  /* === FILTRO — tabs minimalistas estilo Linear === */
   .deck-filter {
     display: inline-flex;
     align-items: center;
@@ -655,16 +626,7 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.7),
       0 4px 14px rgba(20, 18, 40, 0.06);
-  }
-
-  .filter-label {
-    padding: 0 10px 0 12px;
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.24em;
-    color: rgba(20, 20, 30, 0.42);
-    text-transform: uppercase;
+    max-width: 100%;
   }
 
   .filter-btn {
@@ -716,7 +678,6 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
       padding: 96px 14px 80px;
       gap: 18px;
     }
-
     .intro {
       font-size: 11px;
       letter-spacing: 0.24em;
@@ -726,37 +687,16 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
     .topbar {
       padding: 18px 14px;
     }
-    .topbar-left {
-      gap: 14px;
-    }
-    .links {
-      gap: 8px;
-    }
-    .links a {
-      width: 32px;
-      height: 32px;
-    }
-    .links svg {
-      width: 18px;
-      height: 18px;
-    }
+    .topbar-left { gap: 14px; }
+    .links { gap: 8px; }
+    .links a { width: 32px; height: 32px; }
+    .links svg { width: 18px; height: 18px; }
 
-    /* Filtros — apilar TIPO y AÑO en filas separadas + compactar */
-    .deck-filters {
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-    }
+    /* Filtro: una sola fila centrada, compacto */
     .deck-filter {
-      width: 100%;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
       padding: 3px;
-    }
-    .filter-label {
-      padding: 0 6px 0 8px;
-      font-size: 9px;
-      letter-spacing: 0.2em;
     }
     .filter-btn {
       padding: 6px 12px;
@@ -769,36 +709,27 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
     }
 
     /* Counter y arrows del nav más pequeños */
-    .deck-nav {
-      gap: 14px;
-    }
+    .deck-nav { gap: 14px; }
     .deck-nav button {
       width: 38px;
       height: 38px;
       font-size: 20px;
     }
-  }
 
-  /* === Móvil estrecho — esconder filter-label para ganar espacio === */
-  @media (max-width: 420px) {
-    .filter-label {
-      display: none;
-    }
-    .deck-filter {
-      gap: 2px;
-    }
-    .filter-btn {
-      padding: 6px 10px;
-      font-size: 11px;
-    }
-  }
-
-  /* === AudioPlayer no pisar el card en móvil === */
-  @media (max-width: 720px) {
+    /* AudioPlayer fuera del camino */
     :global(.audio-btn) {
       bottom: 14px !important;
       right: 14px !important;
       transform: scale(0.85);
+    }
+  }
+
+  /* === Móvil muy estrecho — apretar más === */
+  @media (max-width: 380px) {
+    .deck-filter { gap: 2px; }
+    .filter-btn {
+      padding: 6px 10px;
+      font-size: 11px;
     }
   }
 </style>
@@ -815,25 +746,18 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
     const counterTotal = document.querySelector<HTMLSpanElement>(".counter-total");
     const filterBtns = Array.from(document.querySelectorAll<HTMLButtonElement>(".filter-btn"));
 
-    let activeType: string = "all"; // "all" | "personal" | "cliente"
-    let activeYear: string = "all"; // "all" | "2026" | ...
+    let activeFilter: string = "all"; // "all" | "personal" | "cliente"
     let visibleSlots: HTMLDivElement[] = allSlots;
     let current = 0;
 
     function applyFilter() {
       visibleSlots = allSlots.filter((slot) => {
         const t = slot.getAttribute("data-type") || "personal";
-        const y = slot.getAttribute("data-year") || "";
-        const typeOk = activeType === "all" || activeType === t;
-        const yearOk = activeYear === "all" || activeYear === y;
-        return typeOk && yearOk;
+        return activeFilter === "all" || activeFilter === t;
       });
       allSlots.forEach((slot) => {
         const t = slot.getAttribute("data-type") || "personal";
-        const y = slot.getAttribute("data-year") || "";
-        const inFilter =
-          (activeType === "all" || activeType === t) &&
-          (activeYear === "all" || activeYear === y);
+        const inFilter = activeFilter === "all" || activeFilter === t;
         slot.toggleAttribute("data-hidden", !inFilter);
       });
       current = 0;
@@ -876,22 +800,13 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
       }
     });
 
-    // Click en los filtros — el botón sabe a qué grupo pertenece (tipo o año)
     filterBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        const filterType = btn.getAttribute("data-filter-type") || "type";
-        const f = btn.getAttribute("data-filter") || "all";
-
-        if (filterType === "type") activeType = f;
-        else if (filterType === "year") activeYear = f;
-
-        // Marca solo el botón clickeado como activo dentro de SU grupo
+        activeFilter = btn.getAttribute("data-filter") || "all";
         filterBtns.forEach((b) => {
-          if (b.getAttribute("data-filter-type") === filterType) {
-            const isActive = b === btn;
-            b.classList.toggle("is-active", isActive);
-            b.setAttribute("aria-selected", isActive ? "true" : "false");
-          }
+          const isActive = b === btn;
+          b.classList.toggle("is-active", isActive);
+          b.setAttribute("aria-selected", isActive ? "true" : "false");
         });
         applyFilter();
       });
