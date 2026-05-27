@@ -709,6 +709,98 @@ const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
     color: #fafafa;
     opacity: 0.9;
   }
+
+  /* ============ MOBILE / NARROW ============ */
+  @media (max-width: 720px) {
+    .deck {
+      padding: 96px 14px 80px;
+      gap: 18px;
+    }
+
+    .intro {
+      font-size: 11px;
+      letter-spacing: 0.24em;
+    }
+
+    /* Topbar más compacto + iconos más pequeños */
+    .topbar {
+      padding: 18px 14px;
+    }
+    .topbar-left {
+      gap: 14px;
+    }
+    .links {
+      gap: 8px;
+    }
+    .links a {
+      width: 32px;
+      height: 32px;
+    }
+    .links svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Filtros — apilar TIPO y AÑO en filas separadas + compactar */
+    .deck-filters {
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+    .deck-filter {
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 3px;
+    }
+    .filter-label {
+      padding: 0 6px 0 8px;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+    }
+    .filter-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      gap: 6px;
+    }
+    .filter-count {
+      font-size: 9px;
+      padding: 1px 6px;
+    }
+
+    /* Counter y arrows del nav más pequeños */
+    .deck-nav {
+      gap: 14px;
+    }
+    .deck-nav button {
+      width: 38px;
+      height: 38px;
+      font-size: 20px;
+    }
+  }
+
+  /* === Móvil estrecho — esconder filter-label para ganar espacio === */
+  @media (max-width: 420px) {
+    .filter-label {
+      display: none;
+    }
+    .deck-filter {
+      gap: 2px;
+    }
+    .filter-btn {
+      padding: 6px 10px;
+      font-size: 11px;
+    }
+  }
+
+  /* === AudioPlayer no pisar el card en móvil === */
+  @media (max-width: 720px) {
+    :global(.audio-btn) {
+      bottom: 14px !important;
+      right: 14px !important;
+      transform: scale(0.85);
+    }
+  }
 </style>
 
 <script>

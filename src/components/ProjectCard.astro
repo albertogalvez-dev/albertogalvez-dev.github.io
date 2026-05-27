@@ -442,4 +442,69 @@ const demoDomain = getDomain(demo);
     opacity: 1;
     transform: translate(2px, -2px);
   }
+
+  /* ============ MOBILE ADJUSTMENTS ============ */
+  @media (max-width: 720px) {
+    .card {
+      border-radius: 22px;
+    }
+
+    /* Logo zone más compacta */
+    .card-logo {
+      padding: 36px 18px 28px;
+      gap: 12px;
+      aspect-ratio: auto;
+    }
+    .logo-mark {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+    }
+    .logo-mark svg {
+      width: 50px;
+      height: 50px;
+    }
+    .logo-title {
+      font-size: clamp(24px, 7vw, 30px);
+    }
+    .logo-tagline {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+    }
+    .card-logo::after {
+      width: 220px;
+      height: 220px;
+    }
+
+    /* Body más compacto */
+    .card-body {
+      padding: 20px 22px 24px;
+    }
+    .meta {
+      margin-bottom: 14px;
+    }
+    .summary {
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .stack {
+      margin-bottom: 18px;
+      gap: 5px;
+    }
+    .stack li {
+      padding: 4px 9px;
+      font-size: 10px;
+    }
+
+    /* Botones — más espacio para que respiren */
+    .actions {
+      gap: 6px;
+    }
+    .btn-primary,
+    .btn-secondary,
+    .btn-ghost {
+      padding: 10px 14px;
+      font-size: 11px;
+    }
+  }
 </style>
