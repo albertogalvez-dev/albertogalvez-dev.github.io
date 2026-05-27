@@ -8,6 +8,10 @@ import LangToggle from "../components/LangToggle.astro";
 
 const projects = await getCollection("projects");
 const sorted = projects.sort((a, b) => a.data.order - b.data.order);
+// Years únicos para el filtro — auto-poblado desde los .md
+const years = Array.from(new Set(sorted.map((p) => p.data.year))).sort((a, b) =>
+  Number(b) - Number(a)
+);
 ---
 
 <Layout>
@@ -64,21 +68,39 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
   <main class="deck">
     <p class="intro">FULL STACK DEVELOPER</p>
 
-    <!-- Filter — Todos / Personales / Empresa.
-         Cada proyecto lleva data-type en el slot para que el filtro lo lea. -->
-    <div class="deck-filter" role="tablist" aria-label="Filtro de proyectos">
-      <button type="button" class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
-        <span data-en="All">Todos</span>
-        <span class="filter-count">{sorted.length}</span>
-      </button>
-      <button type="button" class="filter-btn" data-filter="personal" role="tab" aria-selected="false">
-        <span data-en="Personal">Personales</span>
-        <span class="filter-count">{sorted.filter(p => p.data.type === "Personal").length}</span>
-      </button>
-      <button type="button" class="filter-btn" data-filter="cliente" role="tab" aria-selected="false">
-        <span data-en="Company">Empresa</span>
-        <span class="filter-count">{sorted.filter(p => p.data.type === "Cliente").length}</span>
-      </button>
+    <!-- Filter — Tipo (Personales/Empresa) + Año.
+         Los dos filtros se combinan con AND. Cada slot lleva data-type y data-year. -->
+    <div class="deck-filters">
+      <div class="deck-filter" role="tablist" aria-label="Filtro por tipo">
+        <span class="filter-label" data-en="Type">Tipo</span>
+        <button type="button" class="filter-btn is-active" data-filter-type="type" data-filter="all" role="tab" aria-selected="true">
+          <span data-en="All">Todos</span>
+          <span class="filter-count">{sorted.length}</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter-type="type" data-filter="personal" role="tab" aria-selected="false">
+          <span data-en="Personal">Personales</span>
+          <span class="filter-count">{sorted.filter(p => p.data.type === "Personal").length}</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter-type="type" data-filter="cliente" role="tab" aria-selected="false">
+          <span data-en="Company">Empresa</span>
+          <span class="filter-count">{sorted.filter(p => p.data.type === "Cliente").length}</span>
+        </button>
+      </div>
+
+      {years.length > 1 && (
+        <div class="deck-filter" role="tablist" aria-label="Filtro por año">
+          <span class="filter-label" data-en="Year">Año</span>
+          <button type="button" class="filter-btn is-active" data-filter-type="year" data-filter="all" role="tab" aria-selected="true">
+            <span data-en="All">Todos</span>
+          </button>
+          {years.map((y) => (
+            <button type="button" class="filter-btn" data-filter-type="year" data-filter={y} role="tab" aria-selected="false">
+              <span>{y}</span>
+              <span class="filter-count">{sorted.filter(p => p.data.year === y).length}</span>
+            </button>
+          ))}
+        </div>
+      )}
     </div>
 
     <div class="deck-stage" data-current="0">
@@ -87,6 +109,7 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
           class:list={["deck-slot", { "is-active": i === 0 }]}
           data-idx={i}
           data-type={proj.data.type === "Cliente" ? "cliente" : "personal"}
+          data-year={proj.data.year}
         >
           <ProjectCard
             title={proj.data.title}
@@ -610,9 +633,18 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
     to   { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  /* === FILTRO — tabs minimalistas estilo Linear === */
+  /* === FILTROS — tabs minimalistas estilo Linear === */
+  .deck-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+
   .deck-filter {
     display: inline-flex;
+    align-items: center;
     gap: 4px;
     padding: 4px;
     border-radius: 999px;
@@ -623,6 +655,16 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.7),
       0 4px 14px rgba(20, 18, 40, 0.06);
+  }
+
+  .filter-label {
+    padding: 0 10px 0 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    color: rgba(20, 20, 30, 0.42);
+    text-transform: uppercase;
   }
 
   .filter-btn {
@@ -681,19 +723,25 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
     const counterTotal = document.querySelector<HTMLSpanElement>(".counter-total");
     const filterBtns = Array.from(document.querySelectorAll<HTMLButtonElement>(".filter-btn"));
 
-    let activeFilter: "all" | "personal" | "cliente" = "all";
+    let activeType: string = "all"; // "all" | "personal" | "cliente"
+    let activeYear: string = "all"; // "all" | "2026" | ...
     let visibleSlots: HTMLDivElement[] = allSlots;
     let current = 0;
 
     function applyFilter() {
       visibleSlots = allSlots.filter((slot) => {
         const t = slot.getAttribute("data-type") || "personal";
-        return activeFilter === "all" || activeFilter === t;
+        const y = slot.getAttribute("data-year") || "";
+        const typeOk = activeType === "all" || activeType === t;
+        const yearOk = activeYear === "all" || activeYear === y;
+        return typeOk && yearOk;
       });
-      // Slots fuera del filtro: data-hidden true para CSS los oculte
       allSlots.forEach((slot) => {
         const t = slot.getAttribute("data-type") || "personal";
-        const inFilter = activeFilter === "all" || activeFilter === t;
+        const y = slot.getAttribute("data-year") || "";
+        const inFilter =
+          (activeType === "all" || activeType === t) &&
+          (activeYear === "all" || activeYear === y);
         slot.toggleAttribute("data-hidden", !inFilter);
       });
       current = 0;
@@ -736,15 +784,22 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
       }
     });
 
-    // Click en los filtros
+    // Click en los filtros — el botón sabe a qué grupo pertenece (tipo o año)
     filterBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        const f = (btn.getAttribute("data-filter") as typeof activeFilter) || "all";
-        activeFilter = f;
+        const filterType = btn.getAttribute("data-filter-type") || "type";
+        const f = btn.getAttribute("data-filter") || "all";
+
+        if (filterType === "type") activeType = f;
+        else if (filterType === "year") activeYear = f;
+
+        // Marca solo el botón clickeado como activo dentro de SU grupo
         filterBtns.forEach((b) => {
-          const isActive = b === btn;
-          b.classList.toggle("is-active", isActive);
-          b.setAttribute("aria-selected", isActive ? "true" : "false");
+          if (b.getAttribute("data-filter-type") === filterType) {
+            const isActive = b === btn;
+            b.classList.toggle("is-active", isActive);
+            b.setAttribute("aria-selected", isActive ? "true" : "false");
+          }
         });
         applyFilter();
       });

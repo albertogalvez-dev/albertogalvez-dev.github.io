@@ -61,37 +61,46 @@ import LangToggle from "../components/LangToggle.astro";
         </h1>
         <p
           class="page-lead"
-          data-en="Hi, I'm Alberto. Full stack developer in Granada."
+          data-en="Alberto, Granada, 2026.<br>Full stack since before I knew it was called that."
         >
-          Hola, soy Alberto. Desarrollador full stack en Granada.
+          Alberto, Granada, 2026.<br />Full stack desde antes de saber que se llamaba así.
         </p>
       </div>
     </header>
 
     <section class="block">
-      <h2 data-en="What I do">Qué hago</h2>
+      <h2 data-en="What I believe">En lo que creo</h2>
+      <ul class="beliefs">
+        <li data-en="That the problem matters more than the stack.">
+          Que el problema importa más que el stack.
+        </li>
+        <li data-en="That an hour of thinking saves a week of coding.">
+          Que una hora pensando ahorra una semana programando.
+        </li>
+        <li data-en="That shipping beats perfecting.">
+          Que shipear vence a perfeccionar.
+        </li>
+        <li data-en="That a good question is worth a thousand lines of code.">
+          Que una buena pregunta vale más que mil líneas de código.
+        </li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h2 data-en="What I've built this past year">En lo que he trabajado este último año</h2>
       <p
-        data-en="I build software end-to-end. My projects range from internal systems (WMS, helpdesk) to commercial websites (clients via Sempatiza), mobile apps and AI experiments."
+        data-en="An operational warehouse management system. An offline-first Android app. A multi-tenant helpdesk. An AI whiteboard that reinterprets sketches. Half a dozen commercial websites. And an SEO content platform with AI that refuses to make up data."
       >
-        Construyo software de punta a punta. Mis proyectos van de sistemas internos (WMS, helpdesk) a webs comerciales (clientes via Sempatiza), apps mobile y experimentos con IA.
+        Un WMS de almacén operativo. Una app Android offline-first. Un helpdesk multi-tenant. Una pizarra con IA que reinterpreta bocetos. Media docena de webs comerciales. Y una plataforma de contenido SEO con IA que se niega a inventar datos.
       </p>
     </section>
 
     <section class="block">
-      <h2 data-en="How I work">Cómo trabajo</h2>
+      <h2 data-en="What's next">Lo que viene</h2>
       <p
-        data-en="I design before I code. I iterate fast but clean. I prefer hitting the root cause over patching. I don't mind if it's Java, Python, .NET or React — I pick the tool that fits the problem."
+        data-en="More of the same — but better.<br>And the projects you propose, if they fit."
       >
-        Diseño antes de programar. Itero rápido pero limpio. Prefiero ir al problema raíz antes que parchear. Me da igual si es Java, Python, .NET o React — elijo la tool que encaje con el problema.
-      </p>
-    </section>
-
-    <section class="block">
-      <h2 data-en="Right now">Ahora mismo</h2>
-      <p
-        data-en="Shaping PROJECTX (SEO content platform with AI pipeline) and sandbox-malaga (Astro 5 + Payload v3). Open to side projects."
-      >
-        Dando forma a PROJECTX (plataforma de contenido SEO con pipeline IA) y al sandbox-malaga (Astro 5 + Payload v3). Abierto a proyectos paralelos.
+        Más de lo mismo, pero mejor.<br />Y los proyectos que tú propongas, si encajan.
       </p>
     </section>
 
@@ -319,15 +328,15 @@ import LangToggle from "../components/LangToggle.astro";
   }
 
   .block {
-    margin: 0 0 36px;
-    padding-top: 28px;
+    margin: 0 0 44px;
+    padding-top: 32px;
     border-top: 1px solid rgba(0, 0, 0, 0.07);
   }
   .block h2 {
-    margin: 0 0 10px;
+    margin: 0 0 18px;
     font-family: var(--sans);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: rgba(20, 20, 30, 0.5);
@@ -335,10 +344,37 @@ import LangToggle from "../components/LangToggle.astro";
   .block p {
     margin: 0;
     font-family: var(--sans);
-    font-size: 16px;
+    font-size: clamp(17px, 1.4vw, 19px);
     font-weight: 400;
-    line-height: 1.7;
-    color: rgba(20, 20, 30, 0.85);
+    line-height: 1.65;
+    color: rgba(20, 20, 30, 0.88);
+  }
+
+  /* Lista de "creencias" — sin bullets, cada línea con peso visual */
+  .beliefs {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .beliefs li {
+    position: relative;
+    padding-left: 22px;
+    font-family: var(--sans);
+    font-size: clamp(17px, 1.4vw, 19px);
+    font-weight: 500;
+    line-height: 1.5;
+    color: rgba(20, 20, 30, 0.88);
+  }
+  .beliefs li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgba(20, 20, 30, 0.32);
+    font-weight: 400;
   }
 
   .page-actions {
