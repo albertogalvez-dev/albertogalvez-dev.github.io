@@ -13,7 +13,6 @@ build: "Sandbox paralelo en VPS OVH con workflow híbrido (edición local Window
 stack: ["Astro 5", "Payload v3", "PostgreSQL", "TypeScript", "Docker"]
 accent: "#92400e"
 accent2: "#d97706"
-repo: "https://github.com/albertogalvez-dev/projectx-sandbox-malaga"
 logoIcon: "paw"
 order: 5
 ---
