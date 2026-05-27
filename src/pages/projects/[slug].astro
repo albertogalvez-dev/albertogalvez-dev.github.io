@@ -1,0 +1,584 @@
+---
+// Página de detalle de proyecto — presentación normal.
+// Mismo layout para todos los proyectos. El guiño visual viene de los accent colors
+// (accent + accent2) que cada proyecto define en su .md. Se reflejan en:
+// — blobs de fondo
+// — pill de tipo/año
+// — botones primarios
+// — borde de las imágenes
+// — pills del stack
+// — sombras del hover
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import LangToggle from "../../components/LangToggle.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((proj) => ({
+    params: { slug: proj.id },
+    props: { proj },
+  }));
+}
+
+const { proj } = Astro.props;
+const data = proj.data;
+const gallery = data.gallery ?? (data.cover ? [data.cover] : []);
+---
+
+<Layout title={`${data.title} · Alberto Gálvez`}>
+  <!-- Fondo con los dos accents del proyecto — guiño cromático sutil -->
+  <div
+    class="project-ambient"
+    style={`--accent: ${data.accent}; --accent2: ${data.accent2};`}
+  >
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="ambient-tint"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <a class="brand" href="/">ag</a>
+      <a class="nav-link" href="/deck/" data-en="projects">proyectos</a>
+      <a class="nav-link" href="/about/" data-en="about">sobre mí</a>
+    </div>
+    <nav class="links" aria-label="Enlaces">
+      <a href="https://github.com/albertogalvez-dev" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+          <path d="M9 18c-4.51 2-5-2-7-2"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/alberto-galvez-aguado/" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-12h4v2"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+      <a href="mailto:albertogalvezde0@gmail.com" aria-label="Email" title="Email">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+      </a>
+      <LangToggle />
+    </nav>
+  </header>
+
+  <main
+    class="project"
+    style={`--accent: ${data.accent}; --accent2: ${data.accent2};`}
+  >
+    <a class="back-link" href="/deck/" data-en="← back to projects">← volver a proyectos</a>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-meta">
+        <span class="meta-pill" data-en={data.type_en || data.type}>{data.type}</span>
+        <span class="meta-sep">·</span>
+        <span class="meta-year">{data.year}</span>
+      </div>
+
+      <h1 class="hero-title">{data.title}</h1>
+
+      {data.tagline && (
+        <p class="hero-tagline" data-en={data.tagline_en || data.tagline}>{data.tagline}</p>
+      )}
+
+      <p class="hero-summary" data-en={data.summary_en || data.summary}>{data.summary}</p>
+
+      <div class="hero-actions">
+        {data.repo && (
+          <a class="cta-primary" href={data.repo} target="_blank" rel="noreferrer">
+            <span data-en="View code">Ver código</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H8M17 7V16"/>
+            </svg>
+          </a>
+        )}
+        {data.demo && (
+          <a class="cta-ghost" href={data.demo} target="_blank" rel="noreferrer" data-en="Live demo">
+            Demo en vivo
+          </a>
+        )}
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    {gallery.length > 0 && (
+      <section class="gallery">
+        {gallery.map((img, i) => (
+          <figure class:list={["shot", { wide: i === 0 }]}>
+            <Image
+              src={img}
+              alt={`${data.title} ${i + 1}`}
+              widths={[800, 1200, 1600]}
+              sizes="(max-width: 768px) 92vw, 1100px"
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          </figure>
+        ))}
+      </section>
+    )}
+
+    <!-- DETAIL BLOCKS -->
+    <section class="details">
+      <article class="detail-block">
+        <span class="block-num">01</span>
+        <h3 data-en="Problem">Problema</h3>
+        <p>{data.problem}</p>
+      </article>
+
+      <article class="detail-block">
+        <span class="block-num">02</span>
+        <h3 data-en="Build">Construcción</h3>
+        <p>{data.build}</p>
+      </article>
+
+      <article class="detail-block detail-block--stack">
+        <span class="block-num">03</span>
+        <h3 data-en="Stack">Stack</h3>
+        <ul class="stack-list">
+          {data.stack.map((tech) => <li>{tech}</li>)}
+        </ul>
+      </article>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="bottom-cta">
+      <p class="cta-text" data-en="Want to talk about this project or anything else?">
+        ¿Quieres hablar sobre este proyecto o cualquier otra cosa?
+      </p>
+      <div class="bottom-actions">
+        <a class="cta-primary" href="mailto:albertogalvezde0@gmail.com">
+          <span data-en="Let's talk">Hablemos</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+        <a class="cta-ghost" href="/deck/" data-en="← back to projects">← volver a proyectos</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style is:global>
+  body {
+    background: #fafafa !important;
+    color: #1a1a22 !important;
+    --ink: #1a1a22;
+    --ink-muted: rgba(20, 20, 30, 0.55);
+    --ink-soft: rgba(20, 20, 30, 0.78);
+    --glass-border: rgba(0, 0, 0, 0.06);
+  }
+</style>
+
+<style>
+  /* ============ AMBIENT BG (los blobs heredan accent del proyecto) ============ */
+  .project-ambient {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+    pointer-events: none;
+    background: linear-gradient(180deg, #fafafa 0%, #f4f4f7 100%);
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    will-change: transform;
+  }
+  .blob-a {
+    top: -12%;
+    left: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--accent) 40%, transparent),
+      transparent 60%
+    );
+    opacity: 0.55;
+    animation: blob-drift 28s ease-in-out infinite;
+  }
+  .blob-b {
+    bottom: -15%;
+    right: -15%;
+    width: 55vw;
+    height: 55vw;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--accent2) 45%, transparent),
+      transparent 65%
+    );
+    opacity: 0.5;
+    animation: blob-drift 34s ease-in-out -8s infinite reverse;
+  }
+  .ambient-tint {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 50%,
+      rgba(250, 250, 252, 0.55) 100%
+    );
+  }
+  @keyframes blob-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(4%, -3%) scale(1.04); }
+    66%      { transform: translate(-3%, 4%) scale(0.98); }
+  }
+
+  /* ============ TOPBAR ============ */
+  .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px clamp(20px, 5vw, 56px);
+    pointer-events: none;
+  }
+  .topbar-left, .brand, .nav-link, .links a {
+    pointer-events: auto;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 22px; }
+  .brand {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+    color: var(--ink-soft);
+  }
+  .nav-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+    color: var(--ink-muted);
+    position: relative;
+    padding: 4px 0;
+    transition: color 200ms ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-link:hover::after { transform: scaleX(1); }
+
+  .links { display: flex; gap: 18px; }
+  .links a {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    color: var(--ink-muted);
+    transition: color 200ms ease, background 200ms ease, transform 200ms ease;
+  }
+  .links a:hover {
+    color: var(--ink);
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+  }
+  .links svg { display: block; }
+
+  /* ============ MAIN CONTAINER ============ */
+  .project {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: clamp(120px, 16vh, 180px) clamp(24px, 6vw, 64px) 100px;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 32px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    color: var(--ink-muted);
+    text-transform: lowercase;
+    transition: color 200ms ease, transform 200ms ease;
+  }
+  .back-link:hover {
+    color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+    transform: translateX(-3px);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    margin-bottom: clamp(60px, 8vh, 100px);
+    max-width: 820px;
+  }
+
+  .hero-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: color-mix(in srgb, var(--accent) 75%, var(--ink));
+    text-transform: uppercase;
+  }
+  .meta-sep { opacity: 0.45; }
+
+  .hero-title {
+    margin: 0 0 16px;
+    font-family: var(--sans);
+    font-size: clamp(56px, 8vw, 96px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    /* Guiño cromático: la H1 lleva un sutil tinte del accent al final */
+    background: linear-gradient(
+      90deg,
+      var(--ink) 0%,
+      var(--ink) 75%,
+      color-mix(in srgb, var(--accent) 85%, var(--ink)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-tagline {
+    margin: 0 0 24px;
+    font-family: var(--sans);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 500;
+    line-height: 1.35;
+    color: rgba(20, 20, 30, 0.65);
+    letter-spacing: -0.005em;
+  }
+
+  .hero-summary {
+    margin: 0 0 36px;
+    font-family: var(--sans);
+    font-size: clamp(16px, 1.4vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(20, 20, 30, 0.78);
+    max-width: 640px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* ============ CTAs (tinted by accent) ============ */
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 92%, #000);
+    color: #ffffff;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.06),
+      0 14px 36px color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+  .cta-primary:hover {
+    background: color-mix(in srgb, var(--accent) 100%, #000);
+    transform: translateY(-1px);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.08),
+      0 18px 48px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .cta-primary svg { transition: transform 200ms ease; }
+  .cta-primary:hover svg { transform: translate(2px, -2px); }
+
+  .cta-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 22px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+  }
+  .cta-ghost:hover {
+    background: #fff;
+    border-color: color-mix(in srgb, var(--accent) 40%, rgba(0, 0, 0, 0.18));
+    color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+  }
+
+  /* ============ GALLERY ============ */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: clamp(60px, 8vh, 100px);
+  }
+  .gallery .shot {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid color-mix(in srgb, var(--accent) 18%, rgba(0, 0, 0, 0.06));
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 22px 60px color-mix(in srgb, var(--accent) 12%, rgba(20, 18, 40, 0.1));
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms ease;
+  }
+  .gallery .shot:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 32px 80px color-mix(in srgb, var(--accent) 22%, rgba(20, 18, 40, 0.18));
+  }
+  .gallery .shot.wide { grid-column: 1 / -1; }
+  .gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* ============ DETAILS ============ */
+  .details {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: clamp(60px, 8vh, 100px);
+  }
+  .detail-block {
+    position: relative;
+    padding: 32px 28px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(20px) saturate(170%);
+    -webkit-backdrop-filter: blur(20px) saturate(170%);
+    border: 1px solid color-mix(in srgb, var(--accent) 14%, rgba(0, 0, 0, 0.04));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 14px 36px color-mix(in srgb, var(--accent) 6%, rgba(20, 18, 40, 0.06));
+  }
+  /* Línea de acento sutil arriba */
+  .detail-block::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 28px;
+    right: 28px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--accent) 60%, transparent),
+      color-mix(in srgb, var(--accent2) 60%, transparent),
+      transparent
+    );
+    border-radius: 999px;
+  }
+  .block-num {
+    display: block;
+    margin-bottom: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+  }
+  .detail-block h3 {
+    margin: 0 0 14px;
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .detail-block p {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(20, 20, 30, 0.72);
+  }
+  .stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .stack-list li {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 12%, #fff);
+    border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ BOTTOM CTA ============ */
+  .bottom-cta {
+    text-align: center;
+    padding: clamp(50px, 8vh, 80px) 0 0;
+    border-top: 1px solid color-mix(in srgb, var(--accent) 16%, rgba(0, 0, 0, 0.06));
+  }
+  .cta-text {
+    margin: 0 0 24px;
+    font-family: var(--sans);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .bottom-actions {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    .details { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .gallery { grid-template-columns: 1fr; }
+  }
+</style>

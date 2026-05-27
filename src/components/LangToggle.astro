@@ -1,0 +1,101 @@
+---
+// Toggle ES/EN. Funciona a nivel de página: cualquier elemento con
+// data-en="..." se traduce al inglés al activarlo. El texto en español
+// es el contenido HTML original del elemento.
+//
+// El botón muestra el idioma AL QUE CAMBIARÁS si haces click (no el actual).
+---
+
+<button id="langToggle" class="lang-btn" aria-label="Cambiar idioma" type="button">
+  <span id="langLabel">EN</span>
+</button>
+
+<script>
+  const STORAGE_KEY = "portfolio-lang";
+
+  function applyLang(lang: "es" | "en") {
+    const elements = document.querySelectorAll<HTMLElement>("[data-en]");
+    elements.forEach((el) => {
+      const enText = el.getAttribute("data-en");
+      if (!enText) return;
+      if (lang === "en") {
+        // Guardar versión ES si no está guardada
+        if (!el.dataset.es) el.dataset.es = el.innerHTML;
+        el.innerHTML = enText;
+      } else {
+        // Restaurar versión ES
+        if (el.dataset.es) el.innerHTML = el.dataset.es;
+      }
+    });
+
+    // Atributos placeholder/title/aria-label también pueden traducirse via data-en-attr-*
+    document
+      .querySelectorAll<HTMLElement>("[data-en-title]")
+      .forEach((el) => {
+        if (!el.dataset.esTitle) el.dataset.esTitle = el.title || "";
+        el.title = lang === "en" ? el.dataset.enTitle! : el.dataset.esTitle;
+      });
+
+    // Botón mostrará el OTRO idioma (al que cambiará si haces click)
+    const label = document.getElementById("langLabel");
+    if (label) label.textContent = lang === "es" ? "EN" : "ES";
+
+    document.documentElement.lang = lang;
+    document.documentElement.dataset.lang = lang;
+  }
+
+  function getInitialLang(): "es" | "en" {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === "es" || saved === "en") return saved;
+    // Browser default
+    const nav = navigator.language?.toLowerCase() || "es";
+    return nav.startsWith("en") ? "en" : "es";
+  }
+
+  let current = getInitialLang();
+  applyLang(current);
+
+  const btn = document.getElementById("langToggle");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      current = current === "es" ? "en" : "es";
+      localStorage.setItem(STORAGE_KEY, current);
+      applyLang(current);
+    });
+  }
+</script>
+
+<style>
+  .lang-btn {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    pointer-events: auto;
+    transition:
+      color 200ms ease,
+      background 200ms ease,
+      transform 200ms ease;
+  }
+
+  .lang-btn:hover {
+    color: var(--ink);
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+  }
+
+  :global([data-lang="en"]) .lang-btn,
+  :global(html[data-lang="en"]) .lang-btn {
+    /* mismo estilo, solo cambia el label vía JS */
+  }
+</style>

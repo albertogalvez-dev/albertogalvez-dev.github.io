@@ -1,0 +1,79 @@
+---
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  cover?: ImageMetadata;
+  gallery?: ImageMetadata[];
+  bgVideo?: string;
+  accent: string;
+  accent2: string;
+}
+const { accent, accent2 } = Astro.props;
+---
+
+<div
+  class="bg-stage"
+  style={`--accent: ${accent}; --accent-2: ${accent2};`}
+>
+  <div class="bg-base"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-vignette"></div>
+</div>
+
+<style>
+  .bg-stage {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+    pointer-events: none;
+    background: #06060a;
+  }
+
+  /* Fondo neutro premium con un toque del accent del proyecto, sin movimiento */
+  .bg-base {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse 90% 60% at 30% 25%,
+        color-mix(in srgb, var(--accent) 22%, transparent),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 70% 60% at 75% 80%,
+        color-mix(in srgb, var(--accent-2) 18%, transparent),
+        transparent 60%
+      ),
+      linear-gradient(180deg, #0a0a0e 0%, #06060a 50%, #050508 100%);
+    filter: blur(0);
+  }
+
+  .bg-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 40%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  }
+
+  .bg-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse at center,
+        transparent 30%,
+        rgba(0, 0, 0, 0.5) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.35) 0%,
+        transparent 22%,
+        transparent 78%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+  }
+</style>

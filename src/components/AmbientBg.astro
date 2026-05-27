@@ -1,0 +1,180 @@
+---
+// Fondo premium developer LIGHT: mesh gradient pastel + dot grid sutil.
+// Estilo Linear/Stripe/Apple. Coherente con flash blanco de la intro.
+---
+
+<div class="ambient-bg" aria-hidden="true">
+  <div class="ambient-base"></div>
+
+  <div class="ambient-mesh">
+    <div class="blob blob--1"></div>
+    <div class="blob blob--2"></div>
+    <div class="blob blob--3"></div>
+    <div class="blob blob--4"></div>
+  </div>
+
+  <div class="ambient-dots"></div>
+  <div class="ambient-vignette"></div>
+</div>
+
+<style>
+  .ambient-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  /* === BASE BLANCA ROTA === */
+  .ambient-base {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      #fafafa 0%,
+      #f5f5f7 50%,
+      #f0f0f3 100%
+    );
+  }
+
+  /* === MESH GRADIENT — 4 blobs pastel === */
+  .ambient-mesh {
+    position: absolute;
+    inset: -10%;
+    width: 120%;
+    height: 120%;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    will-change: transform;
+  }
+
+  /* Lavanda arriba-izquierda */
+  .blob--1 {
+    top: -8%;
+    left: -8%;
+    width: 55vw;
+    height: 55vw;
+    background: radial-gradient(
+      circle,
+      rgba(180, 160, 245, 0.55),
+      transparent 65%
+    );
+    animation: float-1 32s ease-in-out infinite;
+  }
+
+  /* Cyan suave derecha */
+  .blob--2 {
+    top: 22%;
+    right: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(
+      circle,
+      rgba(160, 200, 240, 0.5),
+      transparent 65%
+    );
+    animation: float-2 40s ease-in-out infinite;
+  }
+
+  /* Rosa/peach abajo-centro */
+  .blob--3 {
+    bottom: -12%;
+    left: 28%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(
+      circle,
+      rgba(245, 200, 220, 0.42),
+      transparent 65%
+    );
+    animation: float-3 46s ease-in-out infinite;
+  }
+
+  /* Highlight mint-cyan pequeño */
+  .blob--4 {
+    top: 14%;
+    left: 38%;
+    width: 30vw;
+    height: 30vw;
+    background: radial-gradient(
+      circle,
+      rgba(180, 230, 220, 0.45),
+      transparent 65%
+    );
+    animation: float-4 28s ease-in-out infinite;
+  }
+
+  @keyframes float-1 {
+    0%, 100% { transform: translate3d(0vw, 0vh, 0) scale(1); }
+    33%      { transform: translate3d(8vw, 10vh, 0) scale(1.12); }
+    66%      { transform: translate3d(-4vw, 16vh, 0) scale(0.92); }
+  }
+  @keyframes float-2 {
+    0%, 100% { transform: translate3d(0vw, 0vh, 0) scale(1); }
+    50%      { transform: translate3d(-14vw, -10vh, 0) scale(1.18); }
+  }
+  @keyframes float-3 {
+    0%, 100% { transform: translate3d(0vw, 0vh, 0) scale(1); }
+    25%      { transform: translate3d(-10vw, -12vh, 0) scale(1.08); }
+    50%      { transform: translate3d(6vw, -18vh, 0) scale(0.96); }
+    75%      { transform: translate3d(14vw, -8vh, 0) scale(1.04); }
+  }
+  @keyframes float-4 {
+    0%, 100% { transform: translate3d(0vw, 0vh, 0) scale(1); }
+    50%      { transform: translate3d(12vw, 14vh, 0) scale(1.25); }
+  }
+
+  /* === DOT GRID sutil oscuro sobre blanco === */
+  .ambient-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      rgba(20, 20, 30, 0.07) 1px,
+      transparent 1.4px
+    );
+    background-size: 38px 38px;
+    background-position: center;
+    mask-image: radial-gradient(
+      ellipse 90% 80% at 50% 50%,
+      black 50%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 90% 80% at 50% 50%,
+      black 50%,
+      transparent 100%
+    );
+  }
+
+  /* === VIGNETTE muy ligero === */
+  .ambient-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse at center,
+        transparent 50%,
+        rgba(80, 60, 120, 0.08) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 22%,
+        transparent 78%,
+        rgba(245, 240, 250, 0.4) 100%
+      );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation: none; }
+  }
+
+  @media (max-width: 768px) {
+    .blob { filter: blur(70px); }
+  }
+</style>
