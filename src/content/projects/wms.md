@@ -8,8 +8,8 @@ category: "fullstack"
 year: "2026"
 summary: "Sistema completo de almacén con pedidos, picking, packing, etiquetas ZPL, roles y despliegue dockerizado."
 summary_en: "End-to-end warehouse system with orders, picking, packing, ZPL labels, roles and dockerized deployment."
-problem: "Modelar un flujo real de almacén de punta a punta, desde pedidos hasta expediciones y etiquetas."
-build: "Backend Spring Boot, PostgreSQL, roles, pantallas operativas y entorno dockerizado."
+problem: "Modelar un flujo real de almacén punta a punta: pedidos, picking por olas, packing, generación de etiquetas ZPL, expediciones y roles operativos. Sin atajos: implementar el dominio entero como lo viviría un operario real."
+build: "Backend Java + Spring Boot con capa de dominio limpia, persistencia en PostgreSQL, autenticación por roles (admin/operador/picker), pantallas operativas en JS vanilla pensadas para tablet y handheld, generación de ZPL para impresoras industriales y despliegue dockerizado punta a punta."
 stack: ["Java", "Spring Boot", "PostgreSQL", "Docker"]
 cover: "../../assets/projects/wms-dashboard.png"
 gallery:

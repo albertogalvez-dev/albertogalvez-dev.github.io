@@ -103,6 +103,14 @@ import LangToggle from "../components/LangToggle.astro";
           <polyline points="12 5 19 12 12 19"/>
         </svg>
       </a>
+      <a class="cta-secondary" href="/cv.pdf" target="_blank" rel="noreferrer" download>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span data-en="Download CV">Descargar CV</span>
+      </a>
       <a class="cta-ghost" href="/deck/" data-en="← Back to projects">
         ← Volver a proyectos
       </a>
@@ -368,6 +376,33 @@ import LangToggle from "../components/LangToggle.astro";
   .cta-primary:hover svg {
     transform: translateX(3px);
   }
+
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(20, 20, 30, 0.85);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    transition:
+      background 200ms ease,
+      border-color 200ms ease,
+      transform 200ms ease,
+      color 200ms ease;
+  }
+  .cta-secondary svg { opacity: 0.65; transition: opacity 200ms ease, transform 200ms ease; }
+  .cta-secondary:hover {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.22);
+    color: #1a1a22;
+    transform: translateY(-1px);
+  }
+  .cta-secondary:hover svg { opacity: 1; transform: translateY(1px); }
 
   .cta-ghost {
     font-family: var(--sans);

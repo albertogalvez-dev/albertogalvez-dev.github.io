@@ -64,9 +64,30 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
   <main class="deck">
     <p class="intro">FULL STACK DEVELOPER</p>
 
+    <!-- Filter — Todos / Personales / Empresa.
+         Cada proyecto lleva data-type en el slot para que el filtro lo lea. -->
+    <div class="deck-filter" role="tablist" aria-label="Filtro de proyectos">
+      <button type="button" class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+        <span data-en="All">Todos</span>
+        <span class="filter-count">{sorted.length}</span>
+      </button>
+      <button type="button" class="filter-btn" data-filter="personal" role="tab" aria-selected="false">
+        <span data-en="Personal">Personales</span>
+        <span class="filter-count">{sorted.filter(p => p.data.type === "Personal").length}</span>
+      </button>
+      <button type="button" class="filter-btn" data-filter="cliente" role="tab" aria-selected="false">
+        <span data-en="Company">Empresa</span>
+        <span class="filter-count">{sorted.filter(p => p.data.type === "Cliente").length}</span>
+      </button>
+    </div>
+
     <div class="deck-stage" data-current="0">
       {sorted.map((proj, i) => (
-        <div class:list={["deck-slot", { "is-active": i === 0 }]} data-idx={i}>
+        <div
+          class:list={["deck-slot", { "is-active": i === 0 }]}
+          data-idx={i}
+          data-type={proj.data.type === "Cliente" ? "cliente" : "personal"}
+        >
           <ProjectCard
             title={proj.data.title}
             tagline={proj.data.tagline}
@@ -92,7 +113,7 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
 
     <nav class="deck-nav" aria-label="Navegar proyectos">
       <button type="button" class="nav-prev" aria-label="Proyecto anterior" disabled>‹</button>
-      <span class="counter"><span class="counter-current">1</span> / {sorted.length}</span>
+      <span class="counter"><span class="counter-current">1</span> / <span class="counter-total">{sorted.length}</span></span>
       <button type="button" class="nav-next" aria-label="Siguiente proyecto">›</button>
     </nav>
   </main>
@@ -568,7 +589,7 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
     text-align: center;
   }
 
-  /* === DECK STAGE — solo .is-active visible, el resto display:none (bulletproof) === */
+  /* === DECK STAGE — solo .is-active visible, el resto display:none === */
   .deck-stage {
     position: relative;
     width: min(100%, 560px);
@@ -580,90 +601,155 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
   .deck-slot.is-active {
     display: block;
   }
+  /* Slots fuera del filtro nunca aparecen */
+  .deck-slot[data-hidden] {
+    display: none !important;
+  }
   @keyframes deck-fade-in {
     from { opacity: 0; transform: translateY(8px) scale(0.98); }
     to   { opacity: 1; transform: translateY(0) scale(1); }
   }
+
+  /* === FILTRO — tabs minimalistas estilo Linear === */
+  .deck-filter {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 4px 14px rgba(20, 18, 40, 0.06);
+  }
+
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(20, 20, 30, 0.6);
+    cursor: pointer;
+    transition:
+      background 220ms cubic-bezier(0.4, 0, 0.2, 1),
+      color 220ms ease,
+      transform 220ms ease;
+  }
+  .filter-btn:hover {
+    color: var(--ink);
+    background: rgba(0, 0, 0, 0.04);
+  }
+  .filter-btn.is-active {
+    background: #1a1a22;
+    color: #fafafa;
+  }
+  .filter-count {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.06);
+    color: inherit;
+    opacity: 0.7;
+  }
+  .filter-btn.is-active .filter-count {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fafafa;
+    opacity: 0.9;
+  }
 </style>
 
 <script>
-  // Deck navigation: arrows + keyboard arrows + AUTOPLAY (cicla cada 5s).
-  // Pausa cuando el ratón está sobre el stage o cuando el usuario navega manualmente.
+  // Deck navigation: filter (Todos/Personales/Empresa) + arrows + teclado.
+  // Autoplay DESACTIVADO — navegación manual con flechas o teclado izda/dcha.
   const stage = document.querySelector<HTMLDivElement>(".deck-stage");
   if (stage) {
-    const slots = Array.from(stage.querySelectorAll<HTMLDivElement>(".deck-slot"));
+    const allSlots = Array.from(stage.querySelectorAll<HTMLDivElement>(".deck-slot"));
     const prevBtn = document.querySelector<HTMLButtonElement>(".nav-prev");
     const nextBtn = document.querySelector<HTMLButtonElement>(".nav-next");
     const counterCurrent = document.querySelector<HTMLSpanElement>(".counter-current");
+    const counterTotal = document.querySelector<HTMLSpanElement>(".counter-total");
+    const filterBtns = Array.from(document.querySelectorAll<HTMLButtonElement>(".filter-btn"));
+
+    let activeFilter: "all" | "personal" | "cliente" = "all";
+    let visibleSlots: HTMLDivElement[] = allSlots;
     let current = 0;
-    let autoplayTimer: number | null = null;
-    let paused = false;
-    const AUTOPLAY_MS = 5000;
-    const RESUME_AFTER_INTERACTION_MS = 12000;
 
-    function update() {
-      slots.forEach((slot, i) => {
-        slot.classList.toggle("is-active", i === current);
+    function applyFilter() {
+      visibleSlots = allSlots.filter((slot) => {
+        const t = slot.getAttribute("data-type") || "personal";
+        return activeFilter === "all" || activeFilter === t;
       });
-      if (counterCurrent) counterCurrent.textContent = String(current + 1);
-      // Arrows ya no se deshabilitan al inicio/fin — al ser cíclico siempre se puede navegar
-      if (prevBtn) prevBtn.disabled = false;
-      if (nextBtn) nextBtn.disabled = false;
-      stage!.setAttribute("data-current", String(current));
-    }
-
-    function advance() {
-      current = (current + 1) % slots.length;
+      // Slots fuera del filtro: data-hidden true para CSS los oculte
+      allSlots.forEach((slot) => {
+        const t = slot.getAttribute("data-type") || "personal";
+        const inFilter = activeFilter === "all" || activeFilter === t;
+        slot.toggleAttribute("data-hidden", !inFilter);
+      });
+      current = 0;
+      if (counterTotal) counterTotal.textContent = String(visibleSlots.length);
       update();
     }
 
-    function startAutoplay() {
-      if (autoplayTimer !== null) return;
-      autoplayTimer = window.setInterval(() => {
-        if (!paused) advance();
-      }, AUTOPLAY_MS);
-    }
-
-    function pauseAutoplay(durationMs = RESUME_AFTER_INTERACTION_MS) {
-      paused = true;
-      window.setTimeout(() => {
-        paused = false;
-      }, durationMs);
+    function update() {
+      // Solo .is-active dentro de los visibles
+      allSlots.forEach((slot) => slot.classList.remove("is-active"));
+      const active = visibleSlots[current];
+      if (active) active.classList.add("is-active");
+      if (counterCurrent) counterCurrent.textContent = String(current + 1);
+      if (prevBtn) prevBtn.disabled = visibleSlots.length < 2;
+      if (nextBtn) nextBtn.disabled = visibleSlots.length < 2;
     }
 
     prevBtn?.addEventListener("click", () => {
-      current = (current - 1 + slots.length) % slots.length;
+      if (visibleSlots.length < 2) return;
+      current = (current - 1 + visibleSlots.length) % visibleSlots.length;
       update();
-      pauseAutoplay();
     });
 
     nextBtn?.addEventListener("click", () => {
-      current = (current + 1) % slots.length;
+      if (visibleSlots.length < 2) return;
+      current = (current + 1) % visibleSlots.length;
       update();
-      pauseAutoplay();
     });
 
-    // Keyboard navigation (cíclico)
     document.addEventListener("keydown", (e) => {
       const tag = (e.target as HTMLElement)?.tagName?.toLowerCase();
       if (tag === "input" || tag === "textarea") return;
-
+      if (visibleSlots.length < 2) return;
       if (e.key === "ArrowLeft") {
-        current = (current - 1 + slots.length) % slots.length;
+        current = (current - 1 + visibleSlots.length) % visibleSlots.length;
         update();
-        pauseAutoplay();
       } else if (e.key === "ArrowRight") {
-        current = (current + 1) % slots.length;
+        current = (current + 1) % visibleSlots.length;
         update();
-        pauseAutoplay();
       }
     });
 
-    // Pausa el autoplay mientras el ratón está sobre el stage
-    stage.addEventListener("mouseenter", () => { paused = true; });
-    stage.addEventListener("mouseleave", () => { paused = false; });
+    // Click en los filtros
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const f = (btn.getAttribute("data-filter") as typeof activeFilter) || "all";
+        activeFilter = f;
+        filterBtns.forEach((b) => {
+          const isActive = b === btn;
+          b.classList.toggle("is-active", isActive);
+          b.setAttribute("aria-selected", isActive ? "true" : "false");
+        });
+        applyFilter();
+      });
+    });
 
-    update();
-    startAutoplay();
+    applyFilter();
   }
 </script>

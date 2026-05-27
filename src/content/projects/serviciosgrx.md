@@ -8,7 +8,7 @@ category: "personal"
 year: "2026"
 summary: "Directorio editorial que conecta a vecinos de Granada con profesionales verificados (76 pros, 12 categorías, 11 guías)."
 summary_en: "Editorial directory connecting Granada residents with verified pros (76 pros, 12 categories, 11 guides)."
-problem: "Granada necesitaba un punto único para encontrar profesionales locales con reseñas editoriales imparciales, sin el ruido de Google ni el modelo de pago por click. Captar oferta (profesionales) y demanda (vecinos) en la misma plataforma. Dominio propio comprado para tener control total."
+problem: "Granada no tenía un punto único para encontrar profesionales locales verificados editorialmente, sin el ruido de los resultados de Google ni el modelo de pago-por-click. El reto era captar las dos puntas — profesionales y vecinos — en la misma plataforma, con reseñas imparciales como diferenciador."
 build: "WordPress como base con sistema de fichas de profesional (CPT custom), categorías taxonómicas, búsqueda interna, blog de guías editoriales y formulario 'Soy profesional' para captar nuevas altas. Cobertura local Granada."
 stack: ["WordPress", "PHP", "MySQL", "Custom Theme"]
 cover: "../../assets/projects/serviciosgrx-home.png"
