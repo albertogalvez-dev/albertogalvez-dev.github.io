@@ -19,7 +19,6 @@ gallery:
 accent: "#ec4899"
 accent2: "#be185d"
 repo: "https://github.com/albertogalvez-dev/trazo"
-demo: "https://vps23488.cubepath.net/"
 logoIcon: "pen"
 order: 10
 ---
