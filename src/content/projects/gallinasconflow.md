@@ -19,6 +19,7 @@ gallery:
 accent: "#e2890c"
 accent2: "#b45309"
 demo: "https://gallinasconflow.es"
+logoIcon: "egg"
 order: 3
 ---
 

@@ -22,6 +22,7 @@ bgVideo: "/videos/wms-bg.mp4"
 accent: "#1b3a5f"
 accent2: "#2f6f55"
 repo: "https://github.com/albertogalvez-dev/wms-warehouse-management"
+logoIcon: "box"
 order: 6
 ---
 

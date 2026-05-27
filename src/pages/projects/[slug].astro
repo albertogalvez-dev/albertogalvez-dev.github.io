@@ -24,6 +24,17 @@ export async function getStaticPaths() {
 const { proj } = Astro.props;
 const data = proj.data;
 const gallery = data.gallery ?? (data.cover ? [data.cover] : []);
+
+// Extract domain from demo URL for a more concrete CTA label
+function getDomain(url?: string): string | null {
+  if (!url) return null;
+  try {
+    return new URL(url).host.replace(/^www\./, "");
+  } catch {
+    return null;
+  }
+}
+const demoDomain = getDomain(data.demo);
 ---
 
 <Layout title={`${data.title} · Alberto Gálvez`}>
@@ -98,9 +109,12 @@ const gallery = data.gallery ?? (data.cover ? [data.cover] : []);
             </svg>
           </a>
         )}
-        {data.demo && (
-          <a class="cta-ghost" href={data.demo} target="_blank" rel="noreferrer" data-en="Live demo">
-            Demo en vivo
+        {data.demo && demoDomain && (
+          <a class="cta-ghost" href={data.demo} target="_blank" rel="noreferrer" aria-label={`Abrir ${demoDomain}`}>
+            <span>{demoDomain}</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H8M17 7V16"/>
+            </svg>
           </a>
         )}
       </div>
@@ -422,20 +436,31 @@ const gallery = data.gallery ?? (data.cover ? [data.cover] : []);
   .cta-ghost {
     display: inline-flex;
     align-items: center;
+    gap: 8px;
     padding: 13px 22px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.55);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 500;
-    transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+    border: 1px solid color-mix(in srgb, var(--accent) 22%, rgba(0, 0, 0, 0.08));
+    color: color-mix(in srgb, var(--accent) 60%, var(--ink));
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: background 200ms ease, border-color 200ms ease, color 200ms ease, transform 200ms ease;
+  }
+  .cta-ghost svg {
+    opacity: 0.8;
+    transition: transform 200ms ease, opacity 200ms ease;
   }
   .cta-ghost:hover {
     background: #fff;
-    border-color: color-mix(in srgb, var(--accent) 40%, rgba(0, 0, 0, 0.18));
-    color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+    border-color: color-mix(in srgb, var(--accent) 55%, rgba(0, 0, 0, 0.18));
+    color: color-mix(in srgb, var(--accent) 85%, var(--ink));
+    transform: translateY(-1px);
+  }
+  .cta-ghost:hover svg {
+    opacity: 1;
+    transform: translate(2px, -2px);
   }
 
   /* ============ GALLERY ============ */

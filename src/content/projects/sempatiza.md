@@ -19,6 +19,7 @@ gallery:
 accent: "#0891b2"
 accent2: "#155e75"
 demo: "https://sempatiza.es"
+logoIcon: "megaphone"
 order: 4
 ---
 

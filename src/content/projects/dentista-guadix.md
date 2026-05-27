@@ -19,6 +19,7 @@ gallery:
 accent: "#16a34a"
 accent2: "#15803d"
 demo: "https://dentista-guadix.es"
+logoIcon: "tooth"
 order: 2
 ---
 

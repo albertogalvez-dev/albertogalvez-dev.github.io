@@ -31,6 +31,21 @@ const projects = defineCollection({
         "mobile",
         "ia",
       ]),
+      // Icono del logo en el card del deck (cada proyecto debe tener uno distinto).
+      logoIcon: z
+        .enum([
+          "box",
+          "map-pin",
+          "tooth",
+          "egg",
+          "megaphone",
+          "paw",
+          "ticket",
+          "users",
+          "clipboard",
+          "pen",
+        ])
+        .default("box"),
       order: z.number().default(0),
     }),
 });

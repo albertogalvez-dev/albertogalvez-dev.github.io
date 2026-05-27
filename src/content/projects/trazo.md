@@ -11,10 +11,16 @@ summary_en: "AI-powered whiteboard that transforms sketches and handwritten text
 problem: "Convertir una idea rápida (boceto, garabato, texto a mano) en una versión más presentable suele exigir cambiar de herramienta, abrir un chat, generar desde cero. Se rompe el flujo. La IA actual genera bien pero pierde el contexto del lienzo."
 build: "Canvas construido sobre Excalidraw. Flujo: el usuario dibuja, selecciona solo la zona que quiere mejorar, añade un matiz opcional y pulsa Reinterpretar. La IA devuelve una reinterpretación visual dentro del propio canvas, sustituyendo la selección. Panel de IA flotante y arrastrable. Demo pública desplegada en VPS CubePath."
 stack: ["TypeScript", "Excalidraw", "Canvas API", "AI APIs", "Vite"]
+cover: "../../assets/projects/trazo-workspace.png"
+gallery:
+  - "../../assets/projects/trazo-workspace.png"
+  - "../../assets/projects/trazo-welcome.png"
+  - "../../assets/projects/trazo-help.png"
 accent: "#ec4899"
 accent2: "#be185d"
 repo: "https://github.com/albertogalvez-dev/trazo"
 demo: "https://vps23488.cubepath.net/"
+logoIcon: "pen"
 order: 10
 ---
 

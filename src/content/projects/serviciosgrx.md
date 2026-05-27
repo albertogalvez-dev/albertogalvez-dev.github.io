@@ -19,6 +19,7 @@ gallery:
 accent: "#dc2626"
 accent2: "#0a1628"
 demo: "https://serviciosgrx.com"
+logoIcon: "map-pin"
 order: 1
 ---
 
