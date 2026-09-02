@@ -14,6 +14,7 @@ interface Props {
   stack: string[];
   cover?: ImageMetadata;
   gallery?: ImageMetadata[];
+  logo?: string;
   repo?: string;
   demo?: string;
   logoIcon?: string;
@@ -33,6 +34,7 @@ const {
   stack,
   cover,
   gallery,
+  logo,
   repo,
   demo,
   logoIcon,
@@ -70,7 +72,7 @@ const demoDomain = getDomain(demo);
 
   <div class="card-logo">
     <div class="logo-mark" aria-hidden="true">
-      <ProjectIcon name={logoIcon} />
+      {logo ? <img src={logo} alt="" /> : <ProjectIcon name={logoIcon} />}
     </div>
     <span class="logo-title">{title}</span>
     {tagline && <span class="logo-tagline" data-en={tagline_en || tagline}>{tagline}</span>}
@@ -271,6 +273,11 @@ const demoDomain = getDomain(demo);
       0 3px 10px rgba(20, 18, 40, 0.09);
     transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .logo-mark img {
+    display: block;
+    width: 64px;
+    height: 64px;
+  }
 
   .card:hover .logo-mark,
   .card:focus-visible .logo-mark {
@@ -463,6 +470,10 @@ const demoDomain = getDomain(demo);
     .logo-mark svg {
       width: 50px;
       height: 50px;
+    }
+    .logo-mark img {
+      width: 52px;
+      height: 52px;
     }
     .logo-title {
       font-size: clamp(24px, 7vw, 30px);

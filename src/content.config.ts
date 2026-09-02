@@ -19,6 +19,7 @@ const projects = defineCollection({
       cover: image().optional(),
       gallery: z.array(image()).optional(),
       bgVideo: z.string().optional(),
+      logo: z.string().optional(),
       accent: z.string(),
       accent2: z.string(),
       repo: z.string().optional(),
@@ -44,7 +45,6 @@ const projects = defineCollection({
           "users",
           "clipboard",
           "pen",
-          "shield",
           "spark",
         ])
         .default("box"),

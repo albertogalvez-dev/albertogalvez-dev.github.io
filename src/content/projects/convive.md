@@ -12,6 +12,7 @@ problem: "Los centros educativos necesitan registrar, revisar y coordinar comuni
 build: "Frontend en Angular y API REST en Symfony, con PostgreSQL, Docker y contrato OpenAPI. Incluye roles, flujos de comunicación y casos, pruebas automatizadas y CI. La demo pública usa exclusivamente datos ficticios."
 stack: ["Angular", "TypeScript", "Symfony", "PHP", "PostgreSQL", "Docker", "OpenAPI", "GitHub Actions"]
 cover: "../../assets/projects/convive-case-dashboard.png"
+logo: "/project-logos/convive.svg"
 gallery:
   - "../../assets/projects/convive-case-dashboard.png"
   - "../../assets/projects/convive-cases.png"
@@ -19,7 +20,6 @@ accent: "#173462"
 accent2: "#1b9fd0"
 repo: "https://github.com/albertogalvez-dev/Convive"
 demo: "https://conviveaula.com"
-logoIcon: "shield"
 order: 1
 ---
 

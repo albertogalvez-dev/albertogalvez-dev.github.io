@@ -1,5 +1,5 @@
 ---
-title: "Guía Canina"
+title: "Guías Caninas"
 tagline: "Editorial canina con contenido verificado"
 tagline_en: "Dog-care editorial platform with verified content"
 type: "Personal"
