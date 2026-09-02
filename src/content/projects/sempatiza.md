@@ -20,7 +20,7 @@ accent: "#0891b2"
 accent2: "#155e75"
 demo: "https://sempatiza.es"
 logoIcon: "megaphone"
-order: 4
+order: 6
 ---
 
 Sempatiza es la agencia desde la que se desarrollan también Dentista Guadix y Gallinas con Flow. Ofrecen departamento externo de marketing, servicios por horas (web, SEO, e-commerce, Google Ads, contenido, redes sociales, analítica), consultoría IA y formación. Sectores: e-commerce, salud, estética, festivales, hospitality, turismo, legal y banca.

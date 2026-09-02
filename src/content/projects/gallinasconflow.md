@@ -20,7 +20,7 @@ accent: "#e2890c"
 accent2: "#b45309"
 demo: "https://gallinasconflow.es"
 logoIcon: "egg"
-order: 3
+order: 5
 ---
 
 Granja familiar en Granada. Vende huevos ecológicos código 0 (gallinas libres, sin jaulas, dieta ecológica) en suscripción flexible o pedido único. 28,12 €/mes (suscripción) o 33 € (puntual) por 30 huevos con envío incluido. Proyecto desarrollado bajo Sempatiza.

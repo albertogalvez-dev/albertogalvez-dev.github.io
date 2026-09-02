@@ -23,7 +23,7 @@ accent: "#c14515"
 accent2: "#8c2a17"
 repo: "https://github.com/albertogalvez-dev/helpdesk-mvp"
 logoIcon: "ticket"
-order: 7
+order: 9
 ---
 
 Plataforma B2B con arquitectura multi-tenant para equipos de soporte IT que dan servicio a múltiples clientes desde un solo backoffice. SLAs configurables por workspace, alertas de escalado, portal de cliente self-service, agent console con bandeja unificada, reportes y analítica.

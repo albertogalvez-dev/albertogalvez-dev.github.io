@@ -20,7 +20,7 @@ accent: "#16a34a"
 accent2: "#15803d"
 demo: "https://dentista-guadix.es"
 logoIcon: "tooth"
-order: 2
+order: 4
 ---
 
 Clínica de la Dra. Laura Poyatos Aguilar en Guadix (Granada). Proyecto desarrollado bajo Sempatiza (agencia de marketing digital). Servicios: odontología conservadora, endodoncia, periodoncia, prótesis dentales, ortodoncia, cirugía dental.

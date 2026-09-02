@@ -23,7 +23,7 @@ accent: "#1b3a5f"
 accent2: "#2f6f55"
 repo: "https://github.com/albertogalvez-dev/wms-warehouse-management"
 logoIcon: "box"
-order: 6
+order: 8
 ---
 
 Detalles extra del proyecto, si los necesitamos, irían aquí en markdown.

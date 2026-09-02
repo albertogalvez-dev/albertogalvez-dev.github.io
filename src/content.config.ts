@@ -44,6 +44,8 @@ const projects = defineCollection({
           "users",
           "clipboard",
           "pen",
+          "shield",
+          "spark",
         ])
         .default("box"),
       order: z.number().default(0),

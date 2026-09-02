@@ -20,7 +20,7 @@ accent: "#dc2626"
 accent2: "#0a1628"
 demo: "https://serviciosgrx.com"
 logoIcon: "map-pin"
-order: 1
+order: 3
 ---
 
 Proyecto personal con dominio propio (serviciosgrx.com). Directorio editorial granadino con 12 categorías (reformas, salud, legal, logística, eventos, inmobiliaria, funerarias, mascotas, servicios personales, diseño/comunicación, energías renovables, otros), 76 profesionales verificados y 11 guías editoriales publicadas.

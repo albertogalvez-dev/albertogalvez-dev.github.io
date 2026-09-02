@@ -25,7 +25,7 @@ accent: "#14b8a6"
 accent2: "#0f766e"
 repo: "https://github.com/albertogalvez-dev/field-report-pro"
 logoIcon: "clipboard"
-order: 9
+order: 11
 ---
 
 App nativa Android con CI en GitHub Actions. Diseñada para entornos sin cobertura: todo se guarda local primero, luego se sincroniza automáticamente. Tests visuales deterministas, soporte light/dark, anotación in-app sobre las fotos.

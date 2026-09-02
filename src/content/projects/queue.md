@@ -22,7 +22,7 @@ accent: "#6c5ce7"
 accent2: "#4834d4"
 repo: "https://github.com/albertogalvez-dev/QUEUE"
 logoIcon: "users"
-order: 8
+order: 10
 ---
 
 Demo SaaS healthcare. Kiosk con reconocimiento de DNI y selección de servicio, operator console con triaje por prioridad, TV display con "ahora atendiendo" + voz, dashboard analítico con SSE en vivo. Arquitectura híbrida que corre con mocks o contra la API .NET real.

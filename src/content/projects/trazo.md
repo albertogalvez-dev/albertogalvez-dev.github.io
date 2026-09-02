@@ -20,7 +20,7 @@ accent: "#ec4899"
 accent2: "#be185d"
 repo: "https://github.com/albertogalvez-dev/trazo"
 logoIcon: "pen"
-order: 10
+order: 12
 ---
 
 Trazo trabaja sobre una **selección real del lienzo**, no sobre prompts aislados. Reduce el salto entre una idea rápida y una versión más presentable, manteniendo la inmediatez de la pizarra. Demo pública en CubePath.
