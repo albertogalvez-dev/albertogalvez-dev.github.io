@@ -1,5 +1,4 @@
 ---
-import AudioPlayer from "../components/AudioPlayer.astro";
 
 interface Props {
   title?: string;
@@ -23,7 +22,6 @@ const { title = "Alberto Gálvez · Software Developer" } = Astro.props;
   </head>
   <body>
     <slot />
-    <AudioPlayer />
   </body>
 </html>
 

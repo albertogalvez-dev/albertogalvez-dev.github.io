@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-label="ECHO2ACTION logo">
+  <defs>
+    <linearGradient id="e2a-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97757"/>
+      <stop offset="100%" stop-color="#b85f3f"/>
+    </linearGradient>
+  </defs>
+  <!-- rounded square backdrop -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#e2a-grad)"/>
+  <!-- inner concentric arcs = "echo" ripples -->
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="2.6">
+    <path d="M18 32 Q24 22 32 22" opacity="0.45"/>
+    <path d="M14 32 Q22 18 32 18" opacity="0.65"/>
+    <path d="M10 32 Q20 14 32 14" opacity="0.85"/>
+  </g>
+  <!-- forward arrow = "action" -->
+  <path d="M34 22 L46 32 L34 42 L34 36 L24 36 L24 28 L34 28 Z" fill="#ffffff"/>
+</svg>

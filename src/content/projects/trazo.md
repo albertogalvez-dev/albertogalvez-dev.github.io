@@ -1,5 +1,6 @@
 ---
 title: "Trazo"
+logo: "/project-logos/trazo.svg"
 tagline: "Pizarra con IA que reinterpreta bocetos"
 tagline_en: "AI whiteboard that reinterprets sketches"
 type: "Personal"
@@ -9,7 +10,9 @@ year: "2026"
 summary: "Pizarra digital con IA pensada para transformar bocetos y texto manuscrito en piezas visuales más claras sin salir del canvas."
 summary_en: "AI-powered whiteboard that transforms sketches and handwritten text into clearer visual pieces without leaving the canvas."
 problem: "Convertir una idea rápida (boceto, garabato, texto a mano) en una versión más presentable suele exigir cambiar de herramienta, abrir un chat, generar desde cero. Se rompe el flujo. La IA actual genera bien pero pierde el contexto del lienzo."
+problem_en: "Turning a quick idea—a sketch, doodle or handwritten note—into a more presentable version usually means switching tools, opening a chat or generating from scratch. The flow breaks. Current AI generates well but loses canvas context."
 build: "Canvas construido sobre Excalidraw. Flujo: el usuario dibuja, selecciona solo la zona que quiere mejorar, añade un matiz opcional y pulsa Reinterpretar. La IA devuelve una reinterpretación visual dentro del propio canvas, sustituyendo la selección. Panel de IA flotante y arrastrable. Demo pública desplegada en VPS CubePath."
+build_en: "Built on Excalidraw. Users draw, select only the area to improve, add an optional nuance and press Reinterpret. The AI returns a visual reinterpretation directly in the canvas, replacing the selection. Includes a floating, draggable AI panel and a public demo deployed on CubePath VPS."
 stack: ["TypeScript", "Excalidraw", "Canvas API", "AI APIs", "Vite"]
 cover: "../../assets/projects/trazo-workspace.png"
 gallery:
