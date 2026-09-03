@@ -3,15 +3,17 @@
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 const {
   title = "Alberto Gálvez · Software Developer",
   description = "Alberto Gálvez Aguado — Full Stack Developer · Junior. Proyectos, trayectoria y CV.",
+  ogImage: ogImageProp,
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://albertogalvez-dev.github.io");
 const canonical = new URL(Astro.url.pathname, site).href;
-const ogImage = new URL("/social-card-v2.jpg", site).href;
+const ogImage = new URL(ogImageProp ?? "/social-card-v2.jpg", site).href;
 ---
 
 <!doctype html>
