@@ -29,3 +29,7 @@ pnpm-debug.log*
 .playwright-mcp/
 test-results/
 playwright-report/
+
+# CV render working files
+output/
+tmp/

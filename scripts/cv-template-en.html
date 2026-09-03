@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alberto Gálvez Aguado - CV</title>
+    <link rel="icon" type="image/svg+xml" href="../public/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @page { size: A4; margin: 0; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #fff; color: #111a35; font-family: "Inter", "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+      .sheet { width: 210mm; height: 297mm; overflow: hidden; }
+      .page { width: 255mm; min-height: 361mm; padding: 15mm 12mm 13mm; transform: scale(.8235); transform-origin: top left; }
+      h1, h2, .eyebrow, .mini, .subhead, .timeline-title, .date, .project-title, .card strong, .edu strong { font-family: "Space Grotesk", "Segoe UI", Arial, sans-serif; }
+
+      .hero { display:grid; grid-template-columns: 31mm 1fr 48mm; gap: 9mm; align-items:center; padding: 3mm 0 8mm; border-bottom: 1px solid #dfe4ef; }
+      .portrait { width: 31mm; height: 31mm; border-radius: 50%; object-fit: cover; object-position: 50% 37%; box-shadow: 0 6px 18px #17255416; }
+      .eyebrow, .mini { margin:0; color:#4f46e5; font-size:7.6pt; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; }
+      h1 { margin: 3mm 0 3.4mm; font-size: 27pt; line-height: .98; letter-spacing: -1px; font-weight:700; }
+      .intro { margin:0; color:#465571; font-size:10pt; line-height:1.42; max-width:120mm; }
+      .contact { display:flex; flex-direction:column; align-items:flex-end; gap:3.6mm; }
+      .contact-lines { margin:0; text-align:right; color:#465571; font-size:8.4pt; line-height:1.7; white-space:nowrap; font-style:normal; }
+      .contact-lines a { color:inherit; text-decoration:none; }
+      .socials { display:flex; gap:2.6mm; }
+      .socials a { display:grid; place-items:center; width:8.6mm; height:8.6mm; border-radius:50%; background:#4f46e5; color:#fff; }
+      .socials svg { width:4.4mm; height:4.4mm; fill:currentColor; }
+
+      .main { display:grid; grid-template-columns: 1.9fr .92fr; gap: 8mm; padding-top:7mm; }
+      h2 { margin:0 0 3mm; font-size:15pt; letter-spacing:-.4px; font-weight:600; }
+      h2::after { display:block; width:24mm; height:2.2mm; margin-top:2mm; border-radius:4mm; background:#4f46e5; content:""; }
+      .section { margin-bottom: 6mm; }
+
+      .project { display:grid; grid-template-columns: 12mm 1fr; gap:3.6mm; padding: 3.6mm 0; border-bottom:1px solid #edf0f5; }
+      .project:last-child { border-bottom:0; }
+      .project-logo { width:11mm; height:11mm; object-fit:contain; align-self:start; }
+      .project-title { display:flex; gap:2mm; align-items:center; font-size:11pt; font-weight:600; }
+      .project-title a { color:inherit; text-decoration:none; border-bottom:1px solid #c3cbdb; }
+      .project-title .go { color:#9aa6bd; font-weight:400; font-family:"Inter",sans-serif; }
+      .project-title .tag { font-family:"Inter",sans-serif; font-weight:600; font-size:6.6pt; letter-spacing:.5px; text-transform:uppercase; color:#8a94a8; }
+      .award { padding: .6mm 1.7mm; border-radius:2mm; background:#fff2b6; color:#785200; font-size:6.3pt; font-weight:700; letter-spacing:.25px; font-family:"Inter",sans-serif; }
+      .project p { margin:1.4mm 0 1.8mm; color:#465571; font-size:8.6pt; line-height:1.36; }
+      .techline { color:#4f46e5; font-size:7.8pt; font-weight:600; }
+
+      .timeline-title { margin:0 0 3.2mm; color:#465571; font-size:7.4pt; letter-spacing:1.1px; font-weight:700; }
+      .job { position:relative; padding:0 0 4.2mm 4.5mm; border-left:1px solid #dfe4ef; }
+      .job:last-child { padding-bottom:0; }
+      .job::before { position:absolute; left:-2.15mm; top:1.5mm; width:3.5mm; height:3.5mm; border-radius:50%; background:#4f46e5; content:""; }
+      .job-head { display:grid; grid-template-columns: 9mm 1fr auto; gap:2.6mm; align-items:center; }
+      .job-logo { width:9mm; height:9mm; object-fit:contain; }
+      .job strong { font-size:9.6pt; font-weight:600; }
+      .date { padding:1mm 1.9mm; border-radius:2mm; background:#e4e8ff; color:#4f46e5; font-size:6.8pt; font-weight:700; white-space:nowrap; }
+      .job p { margin:1.6mm 0 0; color:#465571; font-size:8pt; line-height:1.34; }
+
+      .side { padding:5mm; border-radius:7mm; background:#f7f8fb; }
+      .side .section { margin-bottom:6mm; }
+      .side .section:last-child { margin-bottom:0; }
+      .side h2 { font-size:13pt; }
+      .subhead { margin:4mm 0 2.2mm; font-size:7.2pt; letter-spacing:.95px; color:#26334d; font-weight:700; }
+      .subhead:first-of-type { margin-top:0; }
+      .pills { display:flex; flex-wrap:wrap; gap:1.5mm; }
+      .pill { display:inline-flex; align-items:center; gap:1mm; padding:1.15mm 1.9mm; border:1px solid #dce3ee; border-radius:7mm; background:#fff; color:#465571; font-size:7.3pt; font-weight:600; }
+      .pill img { width:3.4mm; height:3.4mm; object-fit:contain; }
+
+      .edu { display:grid; grid-template-columns:9mm 1fr; gap:2.6mm; margin-top:3.6mm; align-items:start; }
+      .edu:first-of-type { margin-top:0; }
+      .edu img { width:9mm; height:9mm; object-fit:contain; }
+      .edu img.edu-photo { object-fit:cover; border-radius:1.6mm; }
+      .edu strong { display:block; font-size:8.5pt; line-height:1.22; font-weight:600; }
+      .edu span { display:block; margin-top:.9mm; color:#465571; font-size:7.4pt; line-height:1.3; }
+
+      .list { margin:3mm 0 0; padding:0; list-style:none; }
+      .list li { display:flex; gap:2mm; margin:0 0 2.5mm; color:#465571; font-size:7.8pt; line-height:1.34; }
+      .list li:last-child { margin-bottom:0; }
+      .list li::before { content:""; flex:0 0 2.2mm; width:2.2mm; height:2.2mm; margin-top:0.9mm; border-radius:50%; background:#4f46e5; }
+    </style>
+  </head>
+  <body>
+    <div class="sheet"><main class="page">
+      <header class="hero">
+        <img class="portrait" src="../public/photos/photo-1.jpg" alt="Alberto Gálvez Aguado" />
+        <div>
+          <p class="eyebrow">Full Stack Developer · Junior</p>
+          <h1>Alberto Gálvez Aguado</h1>
+          <p class="intro">Full-stack developer —from the API to the front end— with two award-winning projects and prior experience in operations and logistics. I build clear, measurable and maintainable web tools, designed around the real process of the people who use them.</p>
+        </div>
+        <address class="contact">
+          <p class="contact-lines"><a href="mailto:albertogalvezde0@gmail.com">albertogalvezde0@gmail.com</a><br />(+34) 615 914 882<br />Granada, Spain</p>
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/alberto-galvez-aguado/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/></svg></a>
+            <a href="https://github.com/albertogalvez-dev" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.04-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5Z"/></svg></a>
+            <a href="https://albertogalvez-dev.github.io/" aria-label="Portfolio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.93 6h-2.95a15.7 15.7 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8ZM12 4c.83 1.2 1.48 2.53 1.91 4h-3.82c.43-1.47 1.08-2.8 1.91-4ZM4.26 14a7.96 7.96 0 0 1 0-4h3.38a16.6 16.6 0 0 0 0 4H4.26Zm.81 2h2.95c.37 1.32.83 2.5 1.38 3.56A8.03 8.03 0 0 1 5.07 16Zm2.95-8H5.07a8.03 8.03 0 0 1 4.33-3.56A15.7 15.7 0 0 0 8.02 8ZM12 20c-.83-1.2-1.48-2.53-1.91-4h3.82c-.43 1.47-1.08 2.8-1.91 4Zm2.36-6H9.64a14.7 14.7 0 0 1 0-4h4.72a14.7 14.7 0 0 1 0 4Zm.68 5.56c.55-1.06 1.01-2.24 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56ZM16.36 14a16.6 16.6 0 0 0 0-4h3.38a7.96 7.96 0 0 1 0 4h-3.38Z"/></svg></a>
+          </div>
+        </address>
+      </header>
+
+      <div class="main">
+        <div>
+          <section class="section">
+            <h2>Featured projects</h2>
+            <article class="project">
+              <img class="project-logo" src="../public/project-logos/convive.svg" alt="Convive" />
+              <div><div class="project-title"><a href="https://conviveaula.com" target="_blank" rel="noopener">Convive <span class="go" aria-hidden="true">↗</span></a> <span class="award">AIRCURY SUMMER OF CODE · €3,000 GRANT</span></div><p>Open-source platform for secure communication and case management in schools. End-to-end design with an OpenAPI contract, automated tests and CI.</p><div class="techline">Angular · TypeScript · Symfony · PHP · PostgreSQL · Docker · OpenAPI</div></div>
+            </article>
+            <article class="project">
+              <img class="project-logo" src="../public/project-logos/echo2action.svg" alt="Echo2Action" />
+              <div><div class="project-title"><a href="https://albertogalvez-dev.github.io/projects/echo2action/" target="_blank" rel="noopener">Echo2Action <span class="go" aria-hidden="true">↗</span></a> <span class="award">SIDN GEN AI ARENA · WINNER</span> <span class="tag">team project</span></div><p>Generative AI that turns public reviews of physical stores into prioritized problems and concrete actions for marketing, support and operations.</p><div class="techline">Next.js · React · TypeScript · FastAPI · Python · Vertex AI · Gemini</div></div>
+            </article>
+            <article class="project">
+              <img class="project-logo" src="../public/project-logos/guias-caninas.svg" alt="Guías Caninas" />
+              <div><div class="project-title"><a href="https://guiascaninas.com" target="_blank" rel="noopener">Guías Caninas <span class="go" aria-hidden="true">↗</span></a></div><p>Dog-care editorial platform in production. Headless CMS, in-house tools and a pipeline that requires sources and traceability before publishing.</p><div class="techline">Astro · Payload CMS · TypeScript · PostgreSQL · Docker</div></div>
+            </article>
+            <article class="project">
+              <img class="project-logo" src="../public/project-logos/serviciosgrx.png" alt="Servicios GRX" />
+              <div><div class="project-title"><a href="https://serviciosgrx.com" target="_blank" rel="noopener">Servicios GRX <span class="go" aria-hidden="true">↗</span></a></div><p>Curated directory of verified professionals in Granada: 76 pros, 12 categories, 11 guides and a local SEO strategy.</p><div class="techline">WordPress · PHP · MySQL · Custom theme</div></div>
+            </article>
+          </section>
+
+          <section class="section">
+            <h2>Professional experience</h2>
+            <p class="timeline-title">FROM OPERATIONS TO WEB DEVELOPMENT</p>
+            <article class="job"><div class="job-head"><img class="job-logo" src="../public/brands/sempatiza.png" alt="Sempatiza" /><strong>Sempatiza · Web Development &amp; SEO</strong><span class="date">Apr. 2026 - Aug. 2026</span></div><p>Web development on live production sites: WordPress/Gutenberg, layout and migrations, performance (Core Web Vitals) and technical SEO.</p></article>
+            <article class="job"><div class="job-head"><img class="job-logo" src="../public/brands/silicoderm.png" alt="Silicoderm Cosmetics" /><strong>Silicoderm Cosmetics · Logistics Supervisor</strong><span class="date">May 2024 - Dec. 2025</span></div><p>Day-to-day ERP/WMS, stock and traceability management. Incident resolution, workflow improvements and decision-support reporting.</p></article>
+            <article class="job"><div class="job-head"><img class="job-logo" src="../public/brands/telepizza-red.svg" alt="Telepizza" /><strong>Telepizza · Store Management &amp; Operations</strong><span class="date">Aug. 2021 - Aug. 2025</span></div><p>Progressed to leading an 11-person team and running full shifts: demand planning, quality control and customer service.</p></article>
+            <article class="job"><div class="job-head"><img class="job-logo" src="../public/brands/a-forged-tool.svg" alt="A Forged Tool" /><strong>A Forged Tool · Warehouse Operator</strong><span class="date">Aug. 2020 - Apr. 2024</span></div><p>Inventory, order picking and warehouse-flow control in an industrial setting using ERP and handheld devices.</p></article>
+          </section>
+
+        </div>
+
+        <aside class="side">
+          <section class="section">
+            <h2>Tech stack</h2>
+            <p class="subhead">BACKEND &amp; DATA</p><div class="pills"><span class="pill"><img src="../public/favicons/openjdk.ico" />Java</span><span class="pill"><img src="../public/favicons/springboot.svg" />Spring Boot</span><span class="pill"><img src="../public/favicons/php.ico" />PHP</span><span class="pill"><img src="../public/favicons/symfony.ico" />Symfony</span><span class="pill"><img src="../public/favicons/python.ico" />Python</span><span class="pill"><img src="../public/favicons/fastapi.png" />FastAPI</span><span class="pill"><img src="../public/favicons/postgresql.ico" />PostgreSQL</span><span class="pill"><img src="../public/favicons/mysql.ico" />MySQL</span><span class="pill"><img src="../public/favicons/redis.ico" />Redis</span></div>
+            <p class="subhead">FRONTEND &amp; WEB</p><div class="pills"><span class="pill"><img src="../public/favicons/typescript.ico" />TypeScript</span><span class="pill"><img src="../public/favicons/angular.ico" />Angular</span><span class="pill"><img src="../public/favicons/react.ico" />React</span><span class="pill"><img src="../public/favicons/nextdotjs.ico" />Next.js</span><span class="pill"><img src="../public/favicons/astro.svg" />Astro</span><span class="pill"><img src="../public/favicons/tailwindcss.ico" />Tailwind CSS</span></div>
+            <p class="subhead">PRODUCT &amp; DELIVERY</p><div class="pills"><span class="pill"><img src="../public/favicons/docker.ico" />Docker</span><span class="pill"><img src="../public/favicons/githubactions.ico" />GitHub Actions</span><span class="pill"><img src="../public/favicons/swagger.ico" />OpenAPI</span><span class="pill"><img src="../public/favicons/wordpress.ico" />WordPress</span><span class="pill"><img src="../public/favicons/cloudflare.ico" />Cloudflare</span></div>
+          </section>
+          <section class="section"><h2>Education</h2><div class="edu"><img src="../public/education/instituto-foc.png" alt="Instituto FOC" /><div><strong>Multi-platform &amp; Web Application Development (DAM + DAW)</strong><span>Instituto FOC · 2025 - 2027 · ongoing</span></div></div><div class="edu"><img src="../public/education/ugr.png" alt="University of Granada" /><div><strong>Business Administration + Law</strong><span>University of Granada · 2017 - 2021 · 4 years completed</span></div></div><div class="edu"><img class="edu-photo" src="../public/education/ies-manuel-de-falla.jpg" alt="IES Manuel de Falla" /><div><strong>Baccalaureate · Social Sciences</strong><span>IES Manuel de Falla · 2015 - 2017</span></div></div></section>
+          <section class="section"><h2>Certifications</h2><ul class="list"><li>AWS Certified Cloud Practitioner · 2026</li><li>Linux Essentials — Linux Professional Institute (LPI) · 2026</li></ul></section>
+          <section class="section"><h2>Transferable skills</h2><ul class="list"><li>I translate operational needs into clear, prioritized requirements.</li><li>I read real processes (ERP/WMS, ticketing) and propose data-backed improvements.</li><li>End-to-end ownership: from problem to deployment.</li><li>Documentation and traceability of decisions and incidents.</li></ul></section>
+          <section class="section"><h2>Languages</h2><ul class="list"><li>Spanish · native</li><li>English · working proficiency (B1) · fluent technical reading</li></ul></section>
+        </aside>
+      </div>
+    </main></div>
+  </body>
+</html>

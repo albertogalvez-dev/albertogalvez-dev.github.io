@@ -1,0 +1,75 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { doc: "es" },
+      props: {
+        file: "/cv-es.pdf",
+        name: "Alberto-Galvez-Aguado-CV.pdf",
+        title: "CV · Alberto Gálvez Aguado",
+      },
+    },
+    {
+      params: { doc: "en" },
+      props: {
+        file: "/cv-en.pdf",
+        name: "Alberto-Galvez-Aguado-CV-EN.pdf",
+        title: "CV (English) · Alberto Gálvez Aguado",
+      },
+    },
+    {
+      params: { doc: "es-ats" },
+      props: {
+        file: "/cv-es-ats.pdf",
+        name: "Alberto-Galvez-Aguado-CV-ATS.pdf",
+        title: "CV ATS · Alberto Gálvez Aguado",
+      },
+    },
+    {
+      params: { doc: "en-ats" },
+      props: {
+        file: "/cv-en-ats.pdf",
+        name: "Alberto-Galvez-Aguado-CV-EN-ATS.pdf",
+        title: "CV (English, ATS) · Alberto Gálvez Aguado",
+      },
+    },
+  ];
+}
+
+const { file, name, title } = Astro.props;
+---
+
+<Layout title={title}>
+  <div class="viewer">
+    <nav class="bar">
+      <a class="back" href="/cv/">← CV</a>
+      <a class="dl" href={file} download={name}>↓ Descargar PDF</a>
+    </nav>
+    <iframe src={`${file}#view=FitH`} title={title} loading="eager"></iframe>
+  </div>
+</Layout>
+
+<style is:global>
+  html, body { height: 100%; background: #33343a; }
+</style>
+
+<style>
+  .viewer { position: fixed; inset: 0; display: flex; flex-direction: column; }
+  .bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px; background: #1c1d22; border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .bar a {
+    font-family: var(--mono, ui-monospace, monospace); font-size: 12px; font-weight: 600;
+    text-decoration: none; letter-spacing: .04em;
+  }
+  .back { color: rgba(255,255,255,.6); }
+  .back:hover { color: #fff; }
+  .dl {
+    padding: 8px 14px; border-radius: 999px; background: #4f46e5; color: #fff;
+  }
+  .dl:hover { background: #6259f0; }
+  iframe { flex: 1; width: 100%; border: 0; background: #33343a; }
+</style>
