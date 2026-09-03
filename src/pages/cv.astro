@@ -3,63 +3,93 @@ import Layout from "../layouts/Layout.astro";
 import AmbientBg from "../components/AmbientBg.astro";
 import TopNav from "../components/TopNav.astro";
 
-const versions = [
+const groups = [
   {
-    href: "/cv/es/",
-    label: "CV · Español",
-    labelEn: "CV · Spanish",
-    note: "Versión con diseño. Para enviar por email o compartir directamente.",
-    noteEn: "Designed version. To send by email or share directly.",
-    primary: true,
+    label: "CON DISEÑO",
+    labelEn: "DESIGNED",
+    meta: "PDF · 1 página",
+    metaEn: "PDF · 1 page",
+    rows: [
+      {
+        href: "/cv/es/",
+        mark: "ES",
+        title: "Currículum · Español",
+        titleEn: "Résumé · Spanish",
+        note: "Para enviar por email, adjuntar o compartir el enlace.",
+        noteEn: "To email, attach, or share as a link.",
+      },
+      {
+        href: "/cv/en/",
+        mark: "EN",
+        title: "Résumé · English",
+        titleEn: "Résumé · English",
+        note: "La misma maqueta, en inglés.",
+        noteEn: "The same layout, in English.",
+      },
+    ],
   },
   {
-    href: "/cv/en/",
-    label: "CV · English",
-    labelEn: "CV · English",
-    note: "Versión con diseño, en inglés.",
-    noteEn: "Designed version, in English.",
-    primary: true,
-  },
-  {
-    href: "/cv/es-ats/",
-    label: "CV ATS · Español",
-    labelEn: "ATS CV · Spanish",
-    note: "Una columna, texto plano. Para portales de empleo (Workday, Greenhouse…).",
-    noteEn: "Single column, plain text. For job portals (Workday, Greenhouse…).",
-  },
-  {
-    href: "/cv/en-ats/",
-    label: "CV ATS · English",
-    labelEn: "ATS CV · English",
-    note: "Una columna, texto plano, en inglés.",
-    noteEn: "Single column, plain text, in English.",
+    label: "FORMATO ATS",
+    labelEn: "ATS FORMAT",
+    meta: "PDF · texto plano",
+    metaEn: "PDF · plain text",
+    rows: [
+      {
+        href: "/cv/es-ats/",
+        mark: "ES",
+        title: "Currículum ATS · Español",
+        titleEn: "ATS résumé · Spanish",
+        note: "Una columna, sin gráficos. Para portales tipo Workday o Greenhouse.",
+        noteEn: "Single column, no graphics. For portals like Workday or Greenhouse.",
+      },
+      {
+        href: "/cv/en-ats/",
+        mark: "EN",
+        title: "ATS résumé · English",
+        titleEn: "ATS résumé · English",
+        note: "Una columna, texto plano, en inglés.",
+        noteEn: "Single column, plain text, in English.",
+      },
+    ],
   },
 ];
 ---
 
-<Layout title="CV · Alberto Gálvez">
+<Layout title="CV · Alberto Gálvez Aguado">
   <AmbientBg />
   <TopNav />
 
   <main class="cv">
     <header class="cv-head">
-      <p class="eyebrow" data-en="CURRICULUM">CURRÍCULUM</p>
+      <p class="eyebrow" data-en="CURRICULUM VITAE">CURRÍCULUM</p>
       <h1>Alberto Gálvez Aguado</h1>
-      <p class="lead" data-en="Full Stack Developer · Junior — pick the format you need.">Full Stack Developer · Junior — elige el formato que necesitas.</p>
+      <p class="lead" data-en="Full Stack Developer · Junior. Pick a language and format.">
+        Full Stack Developer · Junior. Elige idioma y formato.
+      </p>
     </header>
 
-    <ul class="grid">
-      {versions.map((v) => (
-        <li class:list={["card", { primary: v.primary }]}>
-          <a href={v.href} target="_blank" rel="noreferrer">
-            <span class="card-label" data-en={v.labelEn}>{v.label}</span>
-            <span class="card-note" data-en={v.noteEn}>{v.note}</span>
-            <span class="card-cta" aria-hidden="true">PDF ↗</span>
+    {groups.map((group) => (
+      <section class="cv-group">
+        <div class="section-heading">
+          <p data-en={group.labelEn}>{group.label}</p>
+          <span data-en={group.metaEn}>{group.meta}</span>
+        </div>
+        {group.rows.map((row) => (
+          <a class="row" href={row.href}>
+            <span class="mark">{row.mark}</span>
+            <div>
+              <strong data-en={row.titleEn}>{row.title}</strong>
+              <span data-en={row.noteEn}>{row.note}</span>
+            </div>
+            <b aria-hidden="true">↗</b>
           </a>
-        </li>
-      ))}
-    </ul>
+        ))}
+      </section>
+    ))}
 
+    <p class="foot" data-en="Each link opens a viewer; the “Download” button saves the PDF with a clean file name.">
+      Cada enlace abre un visor; el botón «Descargar» guarda el PDF con el nombre correcto.
+    </p>
     <a class="back" href="/about/" data-en="← Back to about">← Volver a sobre mí</a>
   </main>
 </Layout>
@@ -69,18 +99,31 @@ const versions = [
 </style>
 
 <style>
-  .cv { width: min(720px, calc(100% - 48px)); margin: 0 auto; padding: 132px 0 64px; }
-  .cv-head { padding-bottom: 26px; border-bottom: 1px solid rgba(24,24,32,.12); }
+  .cv { width: min(720px, calc(100% - 48px)); margin: 0 auto; padding: 132px 0 80px; }
+
+  .cv-head { padding-bottom: 24px; border-bottom: 1px solid rgba(24,24,32,.12); }
   .eyebrow { margin: 0; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .16em; color: var(--ink-muted); }
-  .cv-head h1 { margin: 12px 0 10px; font-size: clamp(34px, 5vw, 48px); line-height: .95; letter-spacing: -.05em; }
-  .lead { margin: 0; color: var(--ink-muted); font-size: 14px; }
-  .grid { list-style: none; margin: 26px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .card a { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 20px; border: 1px solid rgba(24,24,32,.14); border-radius: 14px; background: #fff; color: inherit; text-decoration: none; transition: .18s; }
-  .card a:hover { border-color: var(--ink); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(24,24,32,.08); }
-  .card.primary a { border-color: rgba(79,70,229,.4); }
-  .card-label { font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
-  .card-note { flex: 1; color: var(--ink-muted); font-size: 12px; line-height: 1.5; }
-  .card-cta { margin-top: 4px; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .1em; color: #4f46e5; }
-  .back { display: inline-block; margin-top: 28px; font-family: var(--mono); font-size: 11px; color: var(--ink-muted); border-bottom: 1px solid currentColor; }
-  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } .cv { padding-top: 104px; } }
+  .cv-head h1 { margin: 13px 0 12px; font-size: clamp(38px, 5vw, 56px); line-height: .9; letter-spacing: -.06em; }
+  .lead { margin: 0; max-width: 46ch; color: var(--ink-muted); font-size: 14px; line-height: 1.55; }
+
+  .cv-group { margin-top: 8px; }
+  .section-heading { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-bottom: 9px; border-bottom: 1px solid rgba(24,24,32,.12); }
+  .section-heading p, .section-heading span { margin: 0; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .16em; color: var(--ink-muted); }
+
+  .row { display: grid; grid-template-columns: 40px minmax(0, 1fr) 18px; gap: 14px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(24,24,32,.12); color: inherit; text-decoration: none; transition: padding .2s ease; }
+  .row:hover { padding-left: 5px; }
+  .mark { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: rgba(38,58,98,.08); color: #263a62; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .04em; }
+  .row strong { display: block; margin-bottom: 3px; font-size: 15px; letter-spacing: -.02em; }
+  .row div > span { display: block; color: var(--ink-muted); font-size: 11px; line-height: 1.4; }
+  .row b { color: var(--ink-muted); font-size: 18px; font-weight: 400; }
+
+  .foot { margin: 26px 0 0; color: var(--ink-muted); font-size: 11px; line-height: 1.5; }
+  .back { display: inline-block; margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--ink-muted); border-bottom: 1px solid currentColor; }
+
+  @media (max-width: 560px) {
+    .cv { padding-top: 104px; }
+    .cv-head h1 { font-size: 34px; }
+    .row { grid-template-columns: 34px minmax(0, 1fr) 15px; gap: 11px; }
+    .mark { width: 34px; height: 34px; font-size: 9px; }
+  }
 </style>
