@@ -11,7 +11,7 @@ const projects = (await getCollection("projects")).sort((a, b) => a.data.order -
 <Layout title="Alberto Gálvez · Software Developer">
   <AmbientBg /><PhotosCarousel />
   <TopNav />
-  <main class="deck">
+  <main class="deck" id="projects">
     <p class="intro">FULL STACK DEVELOPER</p>
     <div class="deck-filter" role="tablist">
       <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true"><span data-en="All">Todos</span><b>{projects.length}</b></button>
@@ -27,12 +27,90 @@ const projects = (await getCollection("projects")).sort((a, b) => a.data.order -
 <style>.links .cv-link{width:auto;height:auto;padding:0 3px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:lowercase}</style>
 
 <style is:global>
-  html,body{overflow-x:hidden}body{background:#fafafa!important;color:#1a1a22!important;--ink:#1a1a22;--ink-muted:rgba(20,20,30,.55);--ink-soft:rgba(20,20,30,.78);--glass-border:rgba(0,0,0,.06);--glass-strong:rgba(0,0,0,.16)}.btn-primary{background:#1a1a22!important;color:#fafafa!important;border-color:#1a1a22!important}.btn-primary:hover{background:#34343d!important;color:#fafafa!important}
+  html,body{height:100%;overflow:hidden}body{background:#fafafa!important;color:#1a1a22!important;--ink:#1a1a22;--ink-muted:rgba(20,20,30,.55);--ink-soft:rgba(20,20,30,.78);--glass-border:rgba(0,0,0,.06);--glass-strong:rgba(0,0,0,.16)}.btn-primary{background:#1a1a22!important;color:#fafafa!important;border-color:#1a1a22!important}.btn-primary:hover{background:#34343d!important;color:#fafafa!important}
 </style>
 <style>
   .topbar{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:24px clamp(20px,5vw,56px);pointer-events:none}.topbar-left,.brand,.nav-link,.links a{pointer-events:auto}.topbar-left,.links{display:flex;align-items:center}.topbar-left{gap:22px}.brand,.nav-link{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:lowercase;color:var(--ink-muted)}.brand{color:var(--ink-soft)}.nav-link{position:relative;padding:4px 0}.nav-link:after{content:"";position:absolute;inset:auto 0 0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .28s}.nav-link:hover:after{transform:scaleX(1)}.links{gap:18px}.links a{display:grid;width:36px;height:36px;place-items:center;border-radius:999px;color:var(--ink-muted);transition:.2s}.links a:hover{background:rgba(0,0,0,.05);color:var(--ink);transform:translateY(-1px)}
-  .deck{display:grid;min-height:100vh;place-items:center;align-content:center;gap:26px;padding:110px 20px 60px}.intro{margin:0;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.32em;color:var(--ink-muted)}.deck-filter{display:flex;gap:4px;padding:4px;border:1px solid rgba(0,0,0,.06);border-radius:999px;background:rgba(255,255,255,.55);box-shadow:inset 0 1px rgba(255,255,255,.7),0 4px 14px rgba(20,18,40,.06);backdrop-filter:blur(18px)}.filter-btn{display:inline-flex;gap:8px;align-items:center;padding:8px 16px;border-radius:999px;color:rgba(20,20,30,.6);font-size:13px;font-weight:500}.filter-btn:hover{background:rgba(0,0,0,.04);color:var(--ink)}.filter-btn.is-active{background:#1a1a22;color:#fafafa}.filter-btn b{padding:2px 7px;border-radius:999px;background:rgba(0,0,0,.06);font-family:var(--mono);font-size:10px}.filter-btn.is-active b{background:rgba(255,255,255,.18)}.deck-stage{position:relative;width:min(100%,560px)}.deck-slot{display:none;animation:fade .38s cubic-bezier(.4,0,.2,1)}.deck-slot.is-active{display:block}.deck-slot[data-hidden]{display:none!important}@keyframes fade{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}.deck-nav{display:flex;gap:18px;align-items:center;color:var(--ink-muted);font-family:var(--mono);font-size:13px}.deck-nav button{display:grid;width:44px;height:44px;place-items:center;border:1px solid var(--glass-border);border-radius:999px;background:rgba(255,255,255,.04);color:var(--ink-soft);font-size:22px}.deck-nav button:hover:not(:disabled){background:rgba(255,255,255,.45);border-color:var(--glass-strong)}.deck-nav button:disabled{opacity:.3;cursor:not-allowed}.deck-nav span{min-width:60px;text-align:center}.deck-nav i{font-style:normal}@media(max-width:720px){.topbar{padding:18px 14px}.topbar-left{gap:14px}.links{gap:8px}.links a{width:32px;height:32px}.links svg{width:18px;height:18px}.deck{gap:18px;padding:96px 14px 80px}.intro{font-size:11px;letter-spacing:.24em}.deck-filter{justify-content:center}.filter-btn{padding:6px 12px;font-size:12px}.deck-nav button{width:38px;height:38px}}
+  .deck{display:grid;height:100svh;min-height:0;box-sizing:border-box;place-items:center;align-content:center;gap:clamp(8px,1.5vh,14px);padding:0 20px 12px;overflow:hidden}.intro{margin:0;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--ink-muted)}.deck-filter{display:flex;gap:4px;padding:4px;border:1px solid rgba(0,0,0,.06);border-radius:999px;background:rgba(255,255,255,.55);box-shadow:inset 0 1px rgba(255,255,255,.7),0 4px 14px rgba(20,18,40,.06);backdrop-filter:blur(18px)}.filter-btn{display:inline-flex;gap:8px;align-items:center;padding:7px 14px;border-radius:999px;color:rgba(20,20,30,.6);font-size:12px;font-weight:500}.filter-btn:hover{background:rgba(0,0,0,.04);color:var(--ink)}.filter-btn.is-active{background:#1a1a22;color:#fafafa}.filter-btn b{padding:2px 7px;border-radius:999px;background:rgba(0,0,0,.06);font-family:var(--mono);font-size:10px}.filter-btn.is-active b{background:rgba(255,255,255,.18)}.deck-stage{position:relative;display:grid;align-items:center;width:min(100%,520px);min-height:460px}.deck-slot{grid-area:1/1;width:100%;display:none;animation:fade .38s cubic-bezier(.4,0,.2,1)}.deck-slot.is-active{display:block}.deck-slot[data-hidden]{display:none!important}@keyframes fade{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}.deck-nav{display:flex;gap:12px;align-items:center;color:var(--ink-muted);font-family:var(--mono);font-size:12px}.deck-nav button{display:grid;width:36px;height:36px;place-items:center;border:1px solid var(--glass-border);border-radius:999px;background:rgba(255,255,255,.04);color:var(--ink-soft);font-size:20px}.deck-nav button:hover:not(:disabled){background:rgba(255,255,255,.45);border-color:var(--glass-strong)}.deck-nav button:disabled{opacity:.3;cursor:not-allowed}.deck-nav span{min-width:54px;text-align:center}.deck-nav i{font-style:normal}@media(max-width:720px){.topbar{padding:12px 14px}.topbar-left{gap:12px}.links{gap:6px}.links a{width:30px;height:30px}.links svg{width:17px;height:17px}.deck{gap:clamp(7px,1.2vh,11px);padding:62px 12px 8px}.deck-stage{min-height:clamp(350px,57svh,420px)}.intro{font-size:10px;letter-spacing:.22em}.filter-btn{padding:5px 10px;font-size:11px}.deck-nav{gap:10px}.deck-nav button{width:34px;height:34px}}
 </style>
 <script>
-  const stage=document.querySelector<HTMLDivElement>(".deck-stage");if(stage){const all=[...stage.querySelectorAll<HTMLDivElement>(".deck-slot")],prev=document.querySelector<HTMLButtonElement>(".nav-prev"),next=document.querySelector<HTMLButtonElement>(".nav-next"),currentLabel=document.querySelector<HTMLElement>(".counter-current"),totalLabel=document.querySelector<HTMLElement>(".counter-total"),filters=[...document.querySelectorAll<HTMLButtonElement>(".filter-btn")];let visible=all,current=0;const update=()=>{all.forEach(s=>s.classList.remove("is-active"));visible[current]?.classList.add("is-active");if(currentLabel)currentLabel.textContent=String(current+1);if(prev)prev.disabled=visible.length<2;if(next)next.disabled=visible.length<2};const move=(direction:number)=>{if(visible.length>1){current=(current+direction+visible.length)%visible.length;update()}};prev?.addEventListener("click",()=>move(-1));next?.addEventListener("click",()=>move(1));filters.forEach(button=>button.addEventListener("click",()=>{const filter=button.dataset.filter||"all";visible=all.filter(slot=>filter==="all"||slot.dataset.type===filter);all.forEach(slot=>slot.toggleAttribute("data-hidden",!visible.includes(slot)));filters.forEach(item=>{const chosen=item===button;item.classList.toggle("is-active",chosen);item.setAttribute("aria-selected",String(chosen))});current=0;if(totalLabel)totalLabel.textContent=String(visible.length);update()}));document.addEventListener("keydown",event=>{if((event.target as HTMLElement)?.tagName==="INPUT")return;if(event.key==="ArrowLeft")move(-1);if(event.key==="ArrowRight")move(1)});window.setInterval(()=>{if(!document.hidden)move(1)},7000);update()}
+  const stage = document.querySelector<HTMLDivElement>(".deck-stage");
+  if (stage) {
+    const all = [...stage.querySelectorAll<HTMLDivElement>(".deck-slot")];
+    const prev = document.querySelector<HTMLButtonElement>(".nav-prev");
+    const next = document.querySelector<HTMLButtonElement>(".nav-next");
+    const currentLabel = document.querySelector<HTMLElement>(".counter-current");
+    const totalLabel = document.querySelector<HTMLElement>(".counter-total");
+    const filters = [...document.querySelectorAll<HTMLButtonElement>(".filter-btn")];
+    let visible = all;
+    let current = 0;
+    let autoplayTimer: number | undefined;
+    let move: (direction: number) => void;
+
+    const pauseAutoplay = () => {
+      if (autoplayTimer !== undefined) {
+        window.clearTimeout(autoplayTimer);
+        autoplayTimer = undefined;
+      }
+    };
+
+    const scheduleAutoplay = () => {
+      pauseAutoplay();
+      if (document.hidden) return;
+
+      autoplayTimer = window.setTimeout(() => {
+        autoplayTimer = undefined;
+        move(1);
+      }, 7000);
+    };
+
+    const update = () => {
+      all.forEach((slot) => slot.classList.remove("is-active"));
+      visible[current]?.classList.add("is-active");
+      if (currentLabel) currentLabel.textContent = String(current + 1);
+      if (prev) prev.disabled = visible.length < 2;
+      if (next) next.disabled = visible.length < 2;
+    };
+
+    move = (direction: number) => {
+      if (visible.length > 1) {
+        current = (current + direction + visible.length) % visible.length;
+        update();
+      }
+      scheduleAutoplay();
+    };
+
+    prev?.addEventListener("click", () => move(-1));
+    next?.addEventListener("click", () => move(1));
+
+    filters.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter || "all";
+        visible = all.filter((slot) => filter === "all" || slot.dataset.type === filter);
+        all.forEach((slot) => slot.toggleAttribute("data-hidden", !visible.includes(slot)));
+        filters.forEach((item) => {
+          const chosen = item === button;
+          item.classList.toggle("is-active", chosen);
+          item.setAttribute("aria-selected", String(chosen));
+        });
+        current = 0;
+        if (totalLabel) totalLabel.textContent = String(visible.length);
+        update();
+        scheduleAutoplay();
+      });
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) pauseAutoplay();
+      else scheduleAutoplay();
+    });
+    document.addEventListener("keydown", (event) => {
+      if ((event.target as HTMLElement)?.tagName === "INPUT") return;
+      if (event.key === "ArrowLeft") move(-1);
+      if (event.key === "ArrowRight") move(1);
+    });
+
+    update();
+    scheduleAutoplay();
+  }
 </script>

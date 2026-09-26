@@ -7,5 +7,6 @@ import react from '@astrojs/react';
 export default defineConfig({
   // Deployment target: GitHub Pages personal site (root domain, no base path)
   site: 'https://albertogalvez-dev.github.io',
+  trailingSlash: 'always',
   integrations: [react()],
 });

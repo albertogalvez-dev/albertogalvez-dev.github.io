@@ -1,5 +1,18 @@
 ---
-import Deck from "./deck.astro";
+// GitHub Pages sirve el sitio estático desde /; mantener esta entrada como
+// redirección evita publicar una copia de la home que vive en /deck/.
 ---
-
-<Deck />
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content="0;url=/deck/" />
+    <link rel="canonical" href="https://albertogalvez-dev.github.io/deck/" />
+    <title>Alberto Gálvez · Software Developer</title>
+    <script>window.location.replace("/deck/");</script>
+  </head>
+  <body>
+    <p>Redirigiendo a <a href="/deck/">la página de inicio</a>…</p>
+  </body>
+</html>

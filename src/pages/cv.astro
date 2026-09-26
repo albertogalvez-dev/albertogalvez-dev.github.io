@@ -72,29 +72,31 @@ const groups = [
       </p>
     </header>
 
-    {groups.map((group) => (
-      <section class="cv-group">
-        <div class="section-heading">
-          <p data-en={group.labelEn}>{group.label}</p>
-          <span data-en={group.metaEn}>{group.meta}</span>
-        </div>
-        {group.rows.map((row) => (
-          <a class="row" href={row.href}>
-            <span class="mark">{row.mark}</span>
-            <div>
-              <strong data-en={row.titleEn}>{row.title}</strong>
-              <span data-en={row.noteEn}>{row.note}</span>
-            </div>
-            <b aria-hidden="true">↗</b>
-          </a>
-        ))}
-      </section>
-    ))}
+    <div class="cv-formats">
+      {groups.map((group) => (
+        <section class="cv-group">
+          <div class="section-heading">
+            <p data-en={group.labelEn}>{group.label}</p>
+            <span data-en={group.metaEn}>{group.meta}</span>
+          </div>
+          {group.rows.map((row) => (
+            <a class="row" href={row.href}>
+              <span class="mark">{row.mark}</span>
+              <div>
+                <strong data-en={row.titleEn}>{row.title}</strong>
+                <span data-en={row.noteEn}>{row.note}</span>
+              </div>
+              <b aria-hidden="true">↗</b>
+            </a>
+          ))}
+        </section>
+      ))}
+    </div>
 
     <p class="foot" data-en="Each link opens a viewer; the “Download” button saves the PDF with a clean file name.">
       Cada enlace abre un visor; el botón «Descargar» guarda el PDF con el nombre correcto.
     </p>
-    <a class="back" href="/about/" data-en="← Back to about">← Volver a sobre mí</a>
+    <a class="back" href="/deck/" data-en="← Back to home">← Volver al inicio</a>
   </main>
 </Layout>
 
@@ -103,15 +105,16 @@ const groups = [
 </style>
 
 <style>
-  .cv { width: min(720px, calc(100% - 48px)); margin: 0 auto; padding: 132px 0 80px; }
+  .cv { width: min(920px, calc(100% - 48px)); margin: 0 auto; padding: 132px 0 64px; }
 
   .cv-head { padding-bottom: 24px; border-bottom: 1px solid rgba(24,24,32,.12); }
   .eyebrow { margin: 0; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .16em; color: var(--ink-muted); }
   .cv-head h1 { margin: 13px 0 12px; font-size: clamp(38px, 5vw, 56px); line-height: .9; letter-spacing: -.06em; }
   .lead { margin: 0; max-width: 46ch; color: var(--ink-muted); font-size: 14px; line-height: 1.55; }
 
-  .cv-group { margin-top: 8px; }
-  .section-heading { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-bottom: 9px; border-bottom: 1px solid rgba(24,24,32,.12); }
+  .cv-formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; margin-top: 8px; }
+  .cv-group { min-width: 0; }
+  .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 30px; padding-bottom: 9px; border-bottom: 1px solid rgba(24,24,32,.12); }
   .section-heading p, .section-heading span { margin: 0; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .16em; color: var(--ink-muted); }
 
   .row { display: grid; grid-template-columns: 40px minmax(0, 1fr) 18px; gap: 14px; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(24,24,32,.12); color: inherit; text-decoration: none; transition: padding .2s ease; }
@@ -124,8 +127,10 @@ const groups = [
   .foot { margin: 26px 0 0; color: var(--ink-muted); font-size: 11px; line-height: 1.5; }
   .back { display: inline-block; margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--ink-muted); border-bottom: 1px solid currentColor; }
 
-  @media (max-width: 560px) {
+  @media (max-width: 680px) {
     .cv { padding-top: 104px; }
+    .cv-formats { grid-template-columns: 1fr; gap: 8px; }
+    .section-heading { margin-top: 22px; }
     .cv-head h1 { font-size: 34px; }
     .row { grid-template-columns: 34px minmax(0, 1fr) 15px; gap: 11px; }
     .mark { width: 34px; height: 34px; font-size: 9px; }

@@ -100,11 +100,11 @@ const heroImage = gallery[0];
 
       <footer class="project-footer">
         <nav class="case-navigation" aria-label="Navegación entre proyectos">
-          <a class="case-link case-link-prev" href={`/projects/${prevProj.id}`} style={`--case-accent: ${prev.accent};`}>
+          <a class="case-link case-link-prev" href={`/projects/${prevProj.id}/`} style={`--case-accent: ${prev.accent};`}>
             <span class="section-kicker" data-en="Previous case">Caso anterior</span><strong><i aria-hidden="true">←</i>{prev.title}</strong>
           </a>
           <span class="case-divider" aria-hidden="true"></span>
-          <a class="case-link case-link-next" href={`/projects/${nextProj.id}`} style={`--case-accent: ${next.accent};`}>
+          <a class="case-link case-link-next" href={`/projects/${nextProj.id}/`} style={`--case-accent: ${next.accent};`}>
             <span class="section-kicker" data-en="Next case">Siguiente caso</span><strong>{next.title}<i aria-hidden="true">→</i></strong>
           </a>
         </nav>

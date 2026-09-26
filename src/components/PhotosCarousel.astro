@@ -6,7 +6,8 @@ const photos = [
   "/photos/photo-2.jpg",
   "/photos/aircury-summer-of-code.jpg",
 ];
-const cycle = photos.length * 7; // duración total del ciclo (7s por foto)
+const photoStep = 11;
+const cycle = photos.length * photoStep;
 ---
 
 <div class="photos-carousel" aria-hidden="true">
@@ -16,7 +17,7 @@ const cycle = photos.length * 7; // duración total del ciclo (7s por foto)
         src={src}
         alt=""
         class="photo"
-        style={`animation-delay: ${i * 7}s; animation-duration: ${cycle}s;`}
+        style={`animation-delay: ${i * photoStep}s; animation-duration: ${cycle}s;`}
         loading={i === 0 ? "eager" : "lazy"}
         decoding="async"
       />
