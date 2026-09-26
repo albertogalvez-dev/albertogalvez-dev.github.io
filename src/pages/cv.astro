@@ -61,7 +61,7 @@ const groups = [
   ogImage="/og-cv-v4.jpg"
 >
   <AmbientBg />
-  <TopNav />
+  <TopNav showCv={false} />
 
   <main class="cv">
     <header class="cv-head">
@@ -102,10 +102,11 @@ const groups = [
 
 <style is:global>
   body { background: #fafafa !important; color: #181820; --ink: #181820; --ink-muted: rgba(24,24,32,.56); }
+  html, body { height:100%; overflow:hidden; }
 </style>
 
 <style>
-  .cv { width: min(920px, calc(100% - 48px)); margin: 0 auto; padding: 132px 0 64px; }
+  .cv { width: min(920px, calc(100% - 48px)); height:100svh; margin: 0 auto; padding: 112px 0 24px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; }
 
   .cv-head { padding-bottom: 24px; border-bottom: 1px solid rgba(24,24,32,.12); }
   .eyebrow { margin: 0; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .16em; color: var(--ink-muted); }
@@ -128,11 +129,28 @@ const groups = [
   .back { display: inline-block; margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--ink-muted); border-bottom: 1px solid currentColor; }
 
   @media (max-width: 680px) {
-    .cv { padding-top: 104px; }
-    .cv-formats { grid-template-columns: 1fr; gap: 8px; }
-    .section-heading { margin-top: 22px; }
-    .cv-head h1 { font-size: 34px; }
-    .row { grid-template-columns: 34px minmax(0, 1fr) 15px; gap: 11px; }
-    .mark { width: 34px; height: 34px; font-size: 9px; }
+    .cv { width:calc(100% - 32px); padding:64px 0 10px; }
+    .cv-head { padding-bottom:12px; }
+    .cv-head h1 { margin:9px 0 7px; font-size:clamp(25px,7.2vw,31px); line-height:.98; }
+    .lead { font-size:11px; line-height:1.35; }
+    .cv-formats { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:0; }
+    .section-heading { flex-wrap:wrap; gap:3px 6px; margin-top:12px; padding-bottom:6px; }
+    .section-heading p,.section-heading span { font-size:7px; letter-spacing:.07em; }
+    .row { grid-template-columns:26px minmax(0,1fr); gap:7px; padding:9px 0; }
+    .mark { width:26px; height:26px; border-radius:8px; font-size:8px; }
+    .row strong { font-size:11px; line-height:1.2; }
+    .row div > span { margin-top:3px; font-size:9px; line-height:1.3; }
+    .row b { display:none; }
+    .foot { margin-top:14px; font-size:10px; line-height:1.35; }
+    .back { margin-top:8px; font-size:10px; }
+  }
+  @media (max-width:380px) {
+    .cv { width:calc(100% - 24px); padding-top:58px; }
+    .cv-formats { gap:9px; }
+    .row { grid-template-columns:22px minmax(0,1fr); gap:5px; padding:7px 0; }
+    .mark { width:22px; height:22px; }
+    .row strong { font-size:10px; }
+    .row div > span { font-size:8px; }
+    .foot { font-size:9px; }
   }
 </style>

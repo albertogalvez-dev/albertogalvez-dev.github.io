@@ -35,6 +35,7 @@ import TopNav from "../components/TopNav.astro";
 </Layout>
 
 <style is:global>
+  html, body { height:100%; overflow:hidden; }
   body {
     background: #fafafa !important;
     color: #1a1a22 !important;
@@ -97,7 +98,8 @@ import TopNav from "../components/TopNav.astro";
 
   /* === MAIN === */
   .not-found {
-    min-height: 100vh;
+    height: 100svh;
+    min-height: 0;
     display: grid;
     place-items: center;
     padding: 120px clamp(24px, 6vw, 56px) 80px;

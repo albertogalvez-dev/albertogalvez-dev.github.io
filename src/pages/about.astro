@@ -21,167 +21,250 @@ const stackGroups = [
 
 <Layout title="Sobre mí · Alberto Gálvez">
   <AmbientBg />
-  <TopNav />
+  <TopNav showAbout={false} />
 
-  <main class="about">
-    <section class="intro" aria-labelledby="about-title">
-      <div class="featured">
-        <div class="section-heading">
-          <p data-en="FEATURED PROJECTS">PROYECTOS DESTACADOS</p>
-          <a href="/deck/" data-en="view all">ver todos ↗</a>
-        </div>
-
-        <a href="/projects/convive/" class="project convive">
-          <img src="/project-logos/convive.svg" alt="Logo de Convive" />
-          <div>
-            <small>AIRCURY SUMMER OF CODE · 2026</small>
-            <strong>Convive</strong>
-            <span data-en="Secure communication and case management for educational institutions.">Comunicación y gestión segura de casos educativos.</span>
-          </div>
-          <b aria-hidden="true">↗</b>
-        </a>
-
-        <a href="/projects/guiacanina/" class="project">
-          <img src="/brands/guias-caninas.svg" alt="Logo de Guías Caninas" />
-          <div>
-            <small data-en="EDITORIAL PRODUCT · 2026">PRODUCTO EDITORIAL · 2026</small>
-            <strong>Guías Caninas</strong>
-            <span data-en="Traceable content, in-house tools and a headless CMS.">Contenido trazable, herramientas propias y CMS headless.</span>
-          </div>
-          <b aria-hidden="true">↗</b>
-        </a>
-
-        <a href="/projects/serviciosgrx/" class="project">
-          <img src="/brands/servicios-grx.png" alt="Logo de Servicios GRX" />
-          <div>
-            <small data-en="LOCAL DIRECTORY · 2026">DIRECTORIO LOCAL · 2026</small>
-            <strong>Servicios GRX</strong>
-            <span data-en="Editorial directory of verified professionals in Granada.">Directorio editorial de profesionales verificados en Granada.</span>
-          </div>
-          <b aria-hidden="true">↗</b>
-        </a>
-      </div>
-
+  <main class="about" aria-labelledby="about-title">
+    <section class="intro">
       <div class="identity">
         <p class="eyebrow">FULL STACK DEVELOPER</p>
         <h1 id="about-title">Alberto<br />Gálvez</h1>
         <p class="lead" data-en="I build clear, fast and maintainable web products: from the experience of the people who use them to the architecture that supports them.">Construyo productos web claros, rápidos y mantenibles: desde la experiencia de quien los usa hasta la arquitectura que los sostiene.</p>
         <span class="location" data-en="Granada, Spain">Granada, España</span>
       </div>
-
       <div class="portrait-block">
         <figure class="portrait"><img src="/photos/photo-1.jpg" alt="Alberto Gálvez" /></figure>
         <a class="cv-button" href="/cv/" data-en="View CV <span aria-hidden=&quot;true&quot;>↗</span>">Ver CV <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
-    <section class="resume" aria-label="Professional summary">
-      <article class="stack">
-        <p class="eyebrow" data-en="TECHNOLOGIES">TECNOLOGÍAS</p>
-        <div class="tech-groups">
-          {stackGroups.map((group) => (
-            <div class="tech-group">
-              <p data-en={group.labelEn || group.label}>{group.label}</p>
-              <div class="tech-list">
-                {group.items.map(([name, icon]) => (
-                  <span class="tech"><img src={`/favicons/${icon}`} alt="" loading="lazy" />{name}</span>
-                ))}
-              </div>
+    <div class="about-tabs" role="tablist" aria-label="Sobre mí">
+      <button id="tab-projects" class="about-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-projects" tabindex="0" data-panel="panel-projects" data-en="PROJECTS">PROYECTOS</button>
+      <button id="tab-tech" class="about-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-tech" tabindex="-1" data-panel="panel-tech" data-en="TECH STACK">TECNOLOGÍAS</button>
+      <button id="tab-education" class="about-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-education" tabindex="-1" data-panel="panel-education" data-en="EDUCATION">FORMACIÓN</button>
+      <button id="tab-experience" class="about-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-experience" tabindex="-1" data-panel="panel-experience" data-en="EXPERIENCE">EXPERIENCIA</button>
+    </div>
+
+    <section id="panel-projects" class="about-panel is-active" role="tabpanel" aria-labelledby="tab-projects" tabindex="0">
+      <div class="panel-heading">
+        <p class="eyebrow" data-en="FEATURED PROJECTS">PROYECTOS DESTACADOS</p>
+        <a href="/deck/" data-en="view all">ver todos ↗</a>
+      </div>
+      <div class="project-list">
+        <a href="/projects/convive/" class="project">
+          <img src="/project-logos/convive.svg" alt="Logo de Convive" />
+          <div><small>AIRCURY SUMMER OF CODE · 2026</small><strong>Convive</strong><span data-en="Secure communication and case management for educational institutions.">Comunicación y gestión segura de casos educativos.</span></div>
+          <b aria-hidden="true">↗</b>
+        </a>
+        <a href="/projects/guiacanina/" class="project">
+          <img src="/brands/guias-caninas.svg" alt="Logo de Guías Caninas" />
+          <div><small data-en="EDITORIAL PRODUCT · 2026">PRODUCTO EDITORIAL · 2026</small><strong>Guías Caninas</strong><span data-en="Traceable content, in-house tools and a headless CMS.">Contenido trazable, herramientas propias y CMS headless.</span></div>
+          <b aria-hidden="true">↗</b>
+        </a>
+        <a href="/projects/serviciosgrx/" class="project">
+          <img src="/brands/servicios-grx.png" alt="Logo de Servicios GRX" />
+          <div><small data-en="LOCAL DIRECTORY · 2026">DIRECTORIO LOCAL · 2026</small><strong>Servicios GRX</strong><span data-en="Editorial directory of verified professionals in Granada.">Directorio editorial de profesionales verificados en Granada.</span></div>
+          <b aria-hidden="true">↗</b>
+        </a>
+      </div>
+    </section>
+
+    <section id="panel-tech" class="about-panel" role="tabpanel" aria-labelledby="tab-tech" tabindex="0" hidden>
+      <div class="panel-heading"><p class="eyebrow" data-en="TECHNOLOGIES">TECNOLOGÍAS</p></div>
+      <div class="tech-categories" role="tablist" aria-label="Categorías de tecnologías">
+        <button id="tech-tab-0" class="tech-category is-active" type="button" role="tab" aria-selected="true" aria-controls="tech-group-0" tabindex="0" data-group="tech-group-0" data-en="FRONTEND">FRONTEND</button>
+        <button id="tech-tab-1" class="tech-category" type="button" role="tab" aria-selected="false" aria-controls="tech-group-1" tabindex="-1" data-group="tech-group-1" data-en="BACKEND & DATA">BACKEND</button>
+        <button id="tech-tab-2" class="tech-category" type="button" role="tab" aria-selected="false" aria-controls="tech-group-2" tabindex="-1" data-group="tech-group-2" data-en="PRODUCT & INFRA">PRODUCTO</button>
+      </div>
+      <div class="tech-groups">
+        {stackGroups.map((group, index) => (
+          <div id={`tech-group-${index}`} class="tech-group" role="tabpanel" aria-labelledby={`tech-tab-${index}`} data-active={String(index === 0)}>
+            <p data-en={group.labelEn || group.label}>{group.label}</p>
+            <div class="tech-list">
+              {group.items.map(([name, icon]) => (
+                <span class="tech"><img src={`/favicons/${icon}`} alt="" />{name}</span>
+              ))}
             </div>
-          ))}
-        </div>
-      </article>
+          </div>
+        ))}
+      </div>
+    </section>
 
-      <article>
-        <p class="eyebrow" data-en="EDUCATION">FORMACIÓN</p>
-        <div class="resume-item education-item">
-          <img class="education-logo" src="/education/instituto-foc.png" alt="Logo de Instituto FOC" />
-          <div><strong data-en="Web Application Development">Desarrollo de Aplicaciones Web</strong><span>Instituto FOC · 2025 — 2027</span></div>
-        </div>
-        <div class="resume-item education-item">
-          <img class="education-logo" src="/education/ugr.png" alt="Logo de la Universidad de Granada" />
-          <div><strong data-en="Business Administration + Law <em>· not completed</em>">ADE + Derecho <em>· no finalizado</em></strong><span>University of Granada · 2017 — 2021</span></div>
-        </div>
-        <div class="resume-item education-item">
-          <img class="education-logo" src="/education/ies-manuel-de-falla.jpg" alt="IES Manuel de Falla" />
-          <div><strong data-en="Upper Secondary School, Social Sciences">Bachillerato en Ciencias Sociales</strong><span>IES Manuel de Falla · 2015 — 2017</span></div>
-        </div>
-        <div class="resume-item education-item">
-          <img class="education-logo" src="/education/ies-manuel-de-falla.jpg" alt="IES Manuel de Falla" />
-          <div><strong data-en="Compulsory Secondary Education">Educación Secundaria Obligatoria</strong><span>IES Manuel de Falla</span></div>
-        </div>
-      </article>
+    <section id="panel-education" class="about-panel" role="tabpanel" aria-labelledby="tab-education" tabindex="0" hidden>
+      <div class="panel-heading"><p class="eyebrow" data-en="EDUCATION">FORMACIÓN</p></div>
+      <div class="timeline-list">
+        <div class="timeline-item"><img src="/education/instituto-foc.png" alt="" /><div><strong data-en="Web Application Development">Desarrollo de Aplicaciones Web</strong><span>Instituto FOC · 2025 — 2027</span></div></div>
+        <div class="timeline-item"><img src="/education/ugr.png" alt="" /><div><strong data-en="Business Administration + Law · not completed">ADE + Derecho · no finalizado</strong><span>University of Granada · 2017 — 2021</span></div></div>
+        <div class="timeline-item"><img src="/education/ies-manuel-de-falla.jpg" alt="" /><div><strong data-en="Upper Secondary School, Social Sciences">Bachillerato en Ciencias Sociales</strong><span>IES Manuel de Falla · 2015 — 2017</span></div></div>
+        <div class="timeline-item"><img src="/education/ies-manuel-de-falla.jpg" alt="" /><div><strong data-en="Compulsory Secondary Education">Educación Secundaria Obligatoria</strong><span>IES Manuel de Falla</span></div></div>
+      </div>
+    </section>
 
-      <article>
-        <p class="eyebrow" data-en="EXPERIENCE">EXPERIENCIA</p>
-        <div class="resume-item experience-item">
-          <img class="company-mark company-logo" src="/brands/sempatiza.png" alt="Logo de Sempatiza" />
-          <div><strong>Sempatiza</strong><span data-en="Freelance web development and SEO · 2026 — present">Desarrollo web y SEO freelance · 2026 — actualidad</span></div>
-        </div>
-        <div class="resume-item experience-item">
-          <img class="company-mark company-logo" src="/brands/silicoderm.png" alt="Logo de Silicoderm Cosmetics" />
-          <div><strong>Silicoderm Cosmetics</strong><span data-en="Logistics supervisor · May 2024 — Dec 2025">Supervisor de logística · May. 2024 — Dic. 2025</span></div>
-        </div>
-        <div class="resume-item experience-item">
-          <img class="company-mark company-logo telepizza-logo" src="/brands/telepizza-red.svg" alt="Logo de Telepizza" />
-          <div><strong>Telepizza</strong><span data-en="Management and operations · Aug 2021 — Aug 2025">Gerencia y operaciones · Ago. 2021 — Ago. 2025</span></div>
-        </div>
-        <div class="resume-item experience-item">
-          <img class="company-mark company-logo aft-logo" src="/brands/a-forged-tool.svg" alt="Logo de A Forged Tool" />
-          <div><strong>A Forged Tool</strong><span data-en="Logistics operator · Aug 2020 — Apr 2024">Operario logístico · Ago. 2020 — Abr. 2024</span></div>
-        </div>
-      </article>
+    <section id="panel-experience" class="about-panel" role="tabpanel" aria-labelledby="tab-experience" tabindex="0" hidden>
+      <div class="panel-heading"><p class="eyebrow" data-en="EXPERIENCE">EXPERIENCIA</p></div>
+      <div class="timeline-list">
+        <div class="timeline-item"><img src="/brands/sempatiza.png" alt="" /><div><strong>Sempatiza</strong><span data-en="Freelance web development and SEO · 2026 — present">Desarrollo web y SEO freelance · 2026 — actualidad</span></div></div>
+        <div class="timeline-item"><img src="/brands/silicoderm.png" alt="" /><div><strong>Silicoderm Cosmetics</strong><span data-en="Logistics supervisor · May 2024 — Dec 2025">Supervisor de logística · May. 2024 — Dic. 2025</span></div></div>
+        <div class="timeline-item"><img src="/brands/telepizza-red.svg" alt="" /><div><strong>Telepizza</strong><span data-en="Management and operations · Aug 2021 — Aug 2025">Gerencia y operaciones · Ago. 2021 — Ago. 2025</span></div></div>
+        <div class="timeline-item"><img src="/brands/a-forged-tool.svg" alt="" /><div><strong>A Forged Tool</strong><span data-en="Logistics operator · Aug 2020 — Apr 2024">Operario logístico · Ago. 2020 — Abr. 2024</span></div></div>
+      </div>
     </section>
   </main>
+
+  <script>
+    const tabs = [...document.querySelectorAll<HTMLButtonElement>(".about-tab")];
+    const panels = [...document.querySelectorAll<HTMLElement>(".about-panel")];
+    const techTabs = [...document.querySelectorAll<HTMLButtonElement>(".tech-category")];
+    const techGroups = [...document.querySelectorAll<HTMLElement>(".tech-group")];
+
+    const activateTab = (tab: HTMLButtonElement, moveFocus = false) => {
+      tabs.forEach((item) => {
+        const selected = item === tab;
+        item.classList.toggle("is-active", selected);
+        item.setAttribute("aria-selected", String(selected));
+        item.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach((panel) => {
+        const selected = panel.id === tab.dataset.panel;
+        panel.hidden = !selected;
+        panel.classList.toggle("is-active", selected);
+      });
+      if (moveFocus) tab.focus();
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => activateTab(tab));
+      tab.addEventListener("keydown", (event) => {
+        const direction = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+        const target = event.key === "Home" ? tabs[0] : event.key === "End" ? tabs[tabs.length - 1] : tabs[(index + direction + tabs.length) % tabs.length];
+        if (direction || event.key === "Home" || event.key === "End") {
+          event.preventDefault();
+          activateTab(target, true);
+        }
+      });
+    });
+
+    const activateTechTab = (tab: HTMLButtonElement, moveFocus = false) => {
+      techTabs.forEach((item) => {
+        const selected = item === tab;
+        item.classList.toggle("is-active", selected);
+        item.setAttribute("aria-selected", String(selected));
+        item.tabIndex = selected ? 0 : -1;
+      });
+      techGroups.forEach((group) => group.dataset.active = String(group.id === tab.dataset.group));
+      if (moveFocus) tab.focus();
+    };
+
+    techTabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => activateTechTab(tab));
+      tab.addEventListener("keydown", (event) => {
+        const direction = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+        const target = event.key === "Home" ? techTabs[0] : event.key === "End" ? techTabs[techTabs.length - 1] : techTabs[(index + direction + techTabs.length) % techTabs.length];
+        if (direction || event.key === "Home" || event.key === "End") {
+          event.preventDefault();
+          activateTechTab(target, true);
+        }
+      });
+    });
+  </script>
 </Layout>
 
 <style is:global>
   body { background: #fafafa !important; color: #181820; --ink: #181820; --ink-soft: #262634; --ink-muted: rgba(24,24,32,.56); }
+  html, body { height:100%; overflow:hidden; }
 </style>
 
 <style>
-  .about { width: min(1160px, calc(100% - 60px)); margin: 0 auto; padding: 126px 0 54px; }
-  .intro { display: grid; grid-template-columns: minmax(330px, 1.15fr) minmax(230px, .72fr) 172px; gap: 42px; align-items: center; padding-bottom: 30px; border-bottom: 1px solid rgba(24,24,32,.12); }
-  .section-heading { display: flex; align-items: center; justify-content: space-between; padding-bottom: 9px; border-bottom: 1px solid rgba(24,24,32,.12); }
-  .section-heading p, .eyebrow, .project small, .portrait figcaption { margin: 0; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .16em; color: var(--ink-muted); }
-  .section-heading a { font-family: var(--mono); font-size: 10px; color: var(--ink-muted); border-bottom: 1px solid currentColor; }
-  .project { display: grid; grid-template-columns: 44px minmax(0, 1fr) 18px; gap: 13px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(24,24,32,.12); transition: padding .2s ease; }
-  .project:hover { padding-left: 5px; }
-  .project img, .project-mark { width: 44px; height: 44px; border-radius: 11px; object-fit: contain; }
-  .project img { background: transparent; box-shadow: none; mix-blend-mode: multiply; }
-  .project-mark { display: grid; place-items: center; padding: 0; font-family: var(--mono); font-size: 10px; font-weight: 700; color: #263a62; background: rgba(38,58,98,.08); box-shadow: none; }
-  .project strong, .project span { display: block; }
-  .project strong { margin: 3px 0; font-size: 15px; letter-spacing: -.02em; }
-  .project span { overflow: hidden; color: var(--ink-muted); font-size: 11px; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
-  .project b { color: var(--ink-muted); font-size: 18px; font-weight: 400; }
-  .identity { align-self: stretch; display: flex; flex-direction: column; justify-content: center; }
-  .identity h1 { margin: 14px 0 17px; font-size: clamp(42px, 4.6vw, 62px); line-height: .9; letter-spacing: -.07em; }
-  .lead { margin: 0; max-width: 300px; color: var(--ink-muted); font-size: 14px; line-height: 1.55; }
-  .location { margin-top: 18px; font-family: var(--mono); font-size: 10px; letter-spacing: .08em; color: var(--ink-muted); }
-  .portrait-block { display: grid; justify-items: center; gap: 13px; }
-  .portrait { width: 154px; height: 188px; margin: 0; overflow: hidden; border-radius: 50%; background: #e7e6e4; }
-  .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 77% 38%; filter: saturate(.9); }
-  .cv-button { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border: 1px solid rgba(24,24,32,.18); border-radius: 999px; color: var(--ink); font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .06em; transition: .2s; }
-  .cv-button:hover { background: var(--ink); border-color: var(--ink); color: #fff; transform: translateY(-1px); }
-  .resume { display: grid; grid-template-columns: 1.6fr .88fr 1.08fr; gap: 36px; padding-top: 29px; }
-  .resume article + article { padding-left: 30px; border-left: 1px solid rgba(24,24,32,.12); }
-  .tech-groups { display: grid; gap: 12px; margin-top: 14px; }
-  .tech-group > p { margin: 0 0 6px; font-family: var(--mono); font-size: 8px; font-weight: 700; letter-spacing: .14em; color: var(--ink-muted); }
-  .tech-list { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tech { display: inline-flex; align-items: center; gap: 6px; padding: 6px 8px; border: 1px solid rgba(24,24,32,.12); border-radius: 7px; font-family: var(--mono); font-size: 9px; color: var(--ink-muted); }
-  .tech img { width: 13px; height: 13px; }
-  .resume-item { margin-top: 16px; }
-  .resume-item strong, .resume-item span { display: block; }
-  .resume-item strong { font-size: 13px; letter-spacing: -.015em; }
-  .resume-item strong em { color: var(--ink-muted); font-style: normal; font-weight: 400; }
-  .resume-item span { margin-top: 4px; color: var(--ink-muted); font-size: 11px; line-height: 1.45; }
-  .education-item { display: grid; grid-template-columns: 29px minmax(0, 1fr); gap: 9px; align-items: start; }
-  .education-logo { width: 29px; height: 29px; object-fit: contain; border-radius: 5px; mix-blend-mode: multiply; }
-  .experience-item { display: grid; grid-template-columns: 42px 1fr; gap: 9px; align-items: start; }
-  .company-mark { display: grid; width: 29px; height: 29px; place-items: center; border-radius: 8px; background: #20202a; color: #fff; font-family: var(--mono); font-size: 11px; font-weight: 700; }
-  .company-logo { box-sizing: border-box; padding: 0; background: transparent; border: 0; object-fit: contain; mix-blend-mode: multiply; }
-  .company-logo.aft-logo { width: 40px; height: 27px; mix-blend-mode: normal; }
-  .company-logo.telepizza-logo { width: 40px; height: 26px; mix-blend-mode: normal; }
-  @media (max-width: 940px) { .about { width: min(760px, calc(100% - 40px)); }.intro { grid-template-columns: 1fr 180px; gap: 28px; }.identity { grid-column: 1; grid-row: 1; }.featured { grid-column: 1 / -1; grid-row: 2; }.portrait-block { grid-column: 2; grid-row: 1; }.resume { grid-template-columns: 1.2fr 1fr; }.resume article:last-child { grid-column: 1 / -1; padding-left: 0; border-left: 0; border-top: 1px solid rgba(24,24,32,.12); padding-top: 24px; } }
-  @media (max-width: 620px) { .about { width: min(100% - 32px, 520px); padding-top: 94px; }.intro { grid-template-columns: 1fr 115px; gap: 21px; }.identity h1 { font-size: 43px; }.lead { font-size: 13px; }.portrait { width: 105px; height: 128px; }.cv-button { padding: 6px 8px; font-size: 8px; }.featured { margin-top: 5px; }.project { grid-template-columns: 40px minmax(0, 1fr) 15px; gap: 10px; }.project img, .project-mark { width: 40px; height: 40px; }.project span { font-size: 10px; }.resume { grid-template-columns: 1fr; gap: 25px; }.resume article + article, .resume article:last-child { padding: 23px 0 0; border-left: 0; border-top: 1px solid rgba(24,24,32,.12); }.tech-list { gap: 6px; } }
+  .about { width:min(1120px,calc(100% - 64px)); height:100svh; margin:0 auto; padding:clamp(88px,12vh,128px) 0 24px; display:grid; grid-template-rows:auto auto minmax(0,1fr); gap:clamp(14px,2.2vh,22px); overflow:hidden; }
+  .intro { min-height:0; display:grid; grid-template-columns:minmax(0,1fr) 150px; gap:36px; align-items:center; }
+  .identity { min-width:0; }
+  .eyebrow,.project small,.tech-group>p { margin:0; font-family:var(--mono); font-size:9px; font-weight:700; letter-spacing:.15em; color:var(--ink-muted); }
+  .identity h1 { margin:10px 0 9px; font-size:clamp(40px,5.3vw,64px); line-height:.9; letter-spacing:-.07em; }
+  .lead { max-width:50ch; margin:0; color:var(--ink-muted); font-size:clamp(12px,1.15vw,15px); line-height:1.48; }
+  .location { display:block; margin-top:10px; font-family:var(--mono); font-size:10px; letter-spacing:.08em; color:var(--ink-muted); }
+  .portrait-block { display:grid; justify-items:center; gap:8px; }
+  .portrait { width:112px; height:126px; margin:0; overflow:hidden; border-radius:50%; background:#e7e6e4; }
+  .portrait img { display:block; width:100%; height:100%; object-fit:cover; object-position:77% 38%; filter:saturate(.9); }
+  .cv-button { display:inline-flex; align-items:center; gap:7px; padding:6px 10px; border:1px solid rgba(24,24,32,.18); border-radius:999px; color:var(--ink); font-family:var(--mono); font-size:9px; font-weight:700; letter-spacing:.06em; transition:.2s; }
+  .cv-button:hover { background:var(--ink); border-color:var(--ink); color:#fff; transform:translateY(-1px); }
+  .about-tabs { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px; padding:4px; border:1px solid rgba(24,24,32,.1); border-radius:9px; background:rgba(255,255,255,.6); }
+  .about-tab { min-width:0; min-height:38px; padding:7px 10px; border-radius:6px; color:var(--ink-muted); font-family:var(--mono); font-size:9px; font-weight:700; letter-spacing:.09em; }
+  .about-tab:hover { color:var(--ink); background:rgba(24,24,32,.04); }
+  .about-tab.is-active { color:#fff; background:#20202a; }
+  .about-panel { min-height:0; display:grid; grid-template-rows:auto minmax(0,1fr); overflow:hidden; padding:17px 20px; border:1px solid rgba(24,24,32,.1); border-radius:10px; background:rgba(255,255,255,.42); }
+  .about-panel[hidden] { display:none !important; }
+  #panel-tech { grid-template-rows:auto minmax(0,1fr); }
+  .panel-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; padding-bottom:9px; border-bottom:1px solid rgba(24,24,32,.12); }
+  .panel-heading a { font-family:var(--mono); font-size:10px; color:var(--ink-muted); border-bottom:1px solid currentColor; }
+  .project-list { min-height:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); align-content:center; gap:14px; }
+  .project { min-width:0; display:grid; grid-template-columns:38px minmax(0,1fr) 14px; gap:10px; align-items:center; padding:12px 4px; border-bottom:1px solid rgba(24,24,32,.12); transition:padding .2s ease; }
+  .project:hover { padding-left:8px; }
+  .project img { width:36px; height:36px; object-fit:contain; mix-blend-mode:multiply; }
+  .project strong,.project span { display:block; }
+  .project small { display:block; overflow:hidden; font-size:7px; letter-spacing:.1em; text-overflow:ellipsis; white-space:nowrap; }
+  .project strong { margin:4px 0; font-size:14px; letter-spacing:-.02em; }
+  .project span { display:-webkit-box; overflow:hidden; color:var(--ink-muted); font-size:10px; line-height:1.35; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
+  .project b { color:var(--ink-muted); font-size:18px; font-weight:400; }
+  .tech-groups { min-height:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); align-content:center; gap:18px; padding-top:12px; }
+  .tech-categories { display:none; }
+  .tech-categories { align-self:start; }
+  .tech-category { min-width:0; min-height:32px; padding:6px 5px; border-radius:5px; color:var(--ink-muted); font-family:var(--mono); font-size:8px; font-weight:700; letter-spacing:.04em; }
+  .tech-category.is-active { color:#fff; background:#20202a; }
+  .tech-list { display:flex; flex-wrap:wrap; gap:5px; margin-top:8px; }
+  .tech { display:inline-flex; align-items:center; gap:5px; padding:5px 7px; border:1px solid rgba(24,24,32,.12); border-radius:6px; color:var(--ink-muted); font-family:var(--mono); font-size:9px; white-space:nowrap; }
+  .tech img { width:12px; height:12px; object-fit:contain; }
+  .timeline-list { min-height:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:repeat(2,minmax(0,1fr)); align-content:center; gap:8px 24px; padding-top:10px; }
+  .timeline-item { min-width:0; display:grid; grid-template-columns:32px minmax(0,1fr); gap:10px; align-items:center; padding:8px 0; border-bottom:1px solid rgba(24,24,32,.1); }
+  .timeline-item img { width:28px; height:28px; object-fit:contain; border-radius:5px; mix-blend-mode:multiply; }
+  .timeline-item strong,.timeline-item span { display:block; }
+  .timeline-item strong { font-size:12px; letter-spacing:-.015em; }
+  .timeline-item span { margin-top:4px; color:var(--ink-muted); font-size:10px; line-height:1.35; }
+  @media (max-width:720px) {
+    .about { width:calc(100% - 28px); padding:60px 0 10px; grid-template-rows:auto 40px minmax(0,1fr); gap:10px; }
+    .intro { grid-template-columns:minmax(0,1fr) 76px; gap:12px; }
+    .identity h1 { margin:7px 0 6px; font-size:clamp(32px,9vw,39px); }
+    .eyebrow { font-size:8px; letter-spacing:.12em; }
+    .lead { max-width:36ch; font-size:11px; line-height:1.34; }
+    .location { margin-top:7px; font-size:9px; }
+    .portrait-block { gap:5px; }
+    .portrait { width:68px; height:82px; }
+    .cv-button { gap:4px; padding:5px 6px; font-size:8px; }
+    .about-tabs { gap:3px; padding:3px; }
+    .about-tab { min-height:32px; padding:5px 3px; font-size:clamp(7px,2.1vw,8px); letter-spacing:.035em; }
+    .about-panel { padding:11px 12px; border-radius:8px; }
+    .panel-heading { padding-bottom:7px; }
+    .panel-heading a { font-size:9px; }
+    .project-list { grid-template-columns:1fr; align-content:center; gap:4px; }
+    .project { grid-template-columns:34px minmax(0,1fr) 12px; gap:8px; padding:7px 1px; }
+    .project img { width:30px; height:30px; }
+    .project small { font-size:7px; }
+    .project strong { margin:2px 0; font-size:12px; }
+    .project span { font-size:9px; -webkit-line-clamp:1; }
+    .tech-groups { grid-template-columns:repeat(2,minmax(0,1fr)); align-content:center; gap:10px 9px; padding-top:8px; }
+    #panel-tech { grid-template-rows:auto auto minmax(0,1fr); }
+    .tech-categories { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; padding-top:7px; }
+    .tech-groups { grid-template-columns:1fr; align-content:start; gap:0; padding-top:8px; }
+    .tech-group:not([data-active="true"]) { display:none; }
+    .tech-category { min-height:30px; padding:5px 2px; font-size:7px; }
+    .tech-group>p { font-size:7px; letter-spacing:.08em; }
+    .tech-list { gap:4px; margin-top:5px; }
+    .tech { gap:4px; padding:4px 5px; font-size:8px; }
+    .tech img { width:11px; height:11px; }
+    .timeline-list { grid-template-columns:1fr; grid-template-rows:repeat(4,minmax(0,1fr)); gap:0; padding-top:4px; }
+    .timeline-item { grid-template-columns:28px minmax(0,1fr); gap:8px; padding:5px 0; }
+    .timeline-item img { width:24px; height:24px; }
+    .timeline-item strong { font-size:11px; }
+    .timeline-item span { margin-top:2px; font-size:9px; }
+  }
+  @media (max-height:700px) {
+    .about { padding-top:54px; padding-bottom:6px; gap:7px; }
+    .intro { grid-template-columns:minmax(0,1fr) 68px; }
+    .identity h1 { font-size:31px; }
+    .lead { font-size:10px; }
+    .portrait { width:62px; height:72px; }
+    .about-tabs { min-height:34px; }
+    .about-tab { min-height:26px; }
+    .about-panel { padding:8px 10px; }
+    .project { padding:5px 1px; }
+    .timeline-item { padding:3px 0; }
+  }
 </style>
