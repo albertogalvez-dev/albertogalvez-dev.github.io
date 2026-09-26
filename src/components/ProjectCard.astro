@@ -117,7 +117,7 @@ const demoDomain = getDomain(demo);
             target="_blank"
             rel="noreferrer"
             class="btn-secondary"
-            data-en="REPO"
+            aria-label={`Abrir repositorio de ${title}`}
           >
             REPO
           </a>
@@ -521,5 +521,20 @@ const demoDomain = getDomain(demo);
       padding: 8px 11px;
       font-size: 10px;
     }
+  }
+
+  @media (max-width: 360px) {
+    .actions { flex-wrap: nowrap; gap: 4px; }
+    .actions .btn-primary,
+    .actions .btn-secondary,
+    .actions .btn-ghost {
+      min-width: 0;
+      min-height: 32px;
+      padding: 6px;
+      font-size: 9px;
+      letter-spacing: .035em;
+      white-space: nowrap;
+    }
+    .btn-ghost-text { overflow: hidden; text-overflow: ellipsis; }
   }
 </style>
