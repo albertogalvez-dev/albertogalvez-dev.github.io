@@ -10,7 +10,7 @@ const projects = (await getCollection("projects")).sort((a, b) => a.data.order -
 
 <Layout title="Alberto Gálvez · Software Developer">
   <AmbientBg /><PhotosCarousel />
-  <TopNav />
+  <TopNav showProjects={false} />
   <main class="deck" id="projects">
     <p class="intro">FULL STACK DEVELOPER</p>
     <div class="deck-filter" role="tablist">
