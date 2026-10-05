@@ -31,6 +31,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Patch Spanish CV language level
+        run: |
+          python -m pip install --disable-pip-version-check "PyMuPDF==1.26.4"
+          python scripts/patch-cv-b2.py
+
       - name: Build
         run: npm run build
         env:
