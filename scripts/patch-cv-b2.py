@@ -7,21 +7,21 @@ PUBLIC = ROOT / "public"
 
 
 def patch_visual(path: Path) -> None:
-    """Patch only the B1 digit in the designed Spanish CV, preserving its layout."""
+    """Replace the full English-level line in the designed Spanish CV."""
     doc = fitz.open(path)
     page = doc[0]
 
     # Coordinates come from the committed one-page CV asset.
-    digit = fitz.Rect(506.49, 811.29, 509.11, 818.43)
-    page.add_redact_annot(digit, fill=(247 / 255, 248 / 255, 251 / 255))
+    line = fitz.Rect(418.60, 810.90, 552.50, 828.20)
+    page.add_redact_annot(line, fill=(247 / 255, 248 / 255, 251 / 255))
     page.apply_redactions(
         images=fitz.PDF_REDACT_IMAGE_NONE,
         graphics=fitz.PDF_REDACT_LINE_ART_NONE,
         text=fitz.PDF_REDACT_TEXT_REMOVE,
     )
     page.insert_text(
-        (506.49, 817.12),
-        "2",
+        (418.87, 817.12),
+        "Inglés · B2 · lectura técnica fluida",
         fontsize=6.42,
         fontname="helv",
         color=(70 / 255, 85 / 255, 113 / 255),
@@ -35,11 +35,11 @@ def patch_visual(path: Path) -> None:
 
 
 def patch_ats(path: Path) -> None:
-    """Replace the whole English line so ATS text extraction contains B2."""
+    """Replace the full English-level line so ATS extraction contains B2 cleanly."""
     doc = fitz.open(path)
     page = doc[1]
 
-    line = fitz.Rect(55.50, 457.40, 300.00, 470.30)
+    line = fitz.Rect(55.40, 457.20, 320.00, 470.50)
     page.add_redact_annot(line, fill=(1, 1, 1))
     page.apply_redactions(
         images=fitz.PDF_REDACT_IMAGE_NONE,
@@ -48,7 +48,7 @@ def patch_ats(path: Path) -> None:
     )
     page.insert_text(
         (55.75, 467.25),
-        "Inglés — profesional básico (B2), lectura técnica fluida",
+        "Inglés — B2, lectura técnica fluida",
         fontsize=10.0,
         fontname="helv",
         color=(17 / 255, 17 / 255, 17 / 255),
