@@ -21,7 +21,7 @@ import TopNav from "../components/TopNav.astro";
     </p>
 
     <div class="error-actions">
-      <a class="cta-primary" href="/">
+      <a class="cta-primary" href="/#projects">
         <span data-en="See projects">Ver proyectos</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <line x1="5" y1="12" x2="19" y2="12"/>
@@ -35,7 +35,6 @@ import TopNav from "../components/TopNav.astro";
 </Layout>
 
 <style is:global>
-  html, body { height:100%; overflow:hidden; }
   body {
     background: #fafafa !important;
     color: #1a1a22 !important;
@@ -46,63 +45,12 @@ import TopNav from "../components/TopNav.astro";
 </style>
 
 <style>
-  .topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px clamp(20px, 5vw, 56px);
-    pointer-events: none;
-  }
-  .topbar-left, .brand, .nav-link, .links a { pointer-events: auto; }
-  .topbar-left { display: flex; align-items: center; gap: 22px; }
-  .brand {
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: lowercase;
-    color: var(--ink-soft);
-  }
-  .nav-link {
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: lowercase;
-    color: var(--ink-muted);
-    padding: 4px 0;
-    transition: color 200ms ease;
-  }
-  .nav-link:hover { color: var(--ink); }
-  .links { display: flex; gap: 18px; }
-  .links a {
-    display: grid;
-    place-items: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 999px;
-    color: var(--ink-muted);
-    transition: color 200ms ease, background 200ms ease, transform 200ms ease;
-  }
-  .links a:hover {
-    color: var(--ink);
-    background: rgba(0, 0, 0, 0.05);
-    transform: translateY(-1px);
-  }
-  .links svg { display: block; }
-
   /* === MAIN === */
   .not-found {
-    height: 100svh;
-    min-height: 0;
+    min-height: 100vh;
     display: grid;
     place-items: center;
-    padding: 120px clamp(24px, 6vw, 56px) 80px;
+    padding: 48px clamp(24px, 6vw, 56px) 80px;
     text-align: center;
   }
 
@@ -181,11 +129,4 @@ import TopNav from "../components/TopNav.astro";
   }
   .cta-ghost:hover { color: var(--ink, #1a1a22); }
 
-  @media (max-width: 720px) {
-    .topbar { padding: 18px 14px; }
-    .topbar-left { gap: 14px; }
-    .links { gap: 8px; }
-    .links a { width: 32px; height: 32px; }
-    .links svg { width: 18px; height: 18px; }
-  }
 </style>
