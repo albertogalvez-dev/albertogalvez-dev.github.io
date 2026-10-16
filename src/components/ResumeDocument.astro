@@ -1,0 +1,88 @@
+---
+// Reuse the PDF source content, with a separate fluid screen layout.
+// These are trusted, repository-owned templates; no visitor HTML is rendered.
+import designedEs from "../../scripts/cv-template.html?raw";
+import designedEn from "../../scripts/cv-template-en.html?raw";
+import atsEs from "../../scripts/cv-ats-es.html?raw";
+import atsEn from "../../scripts/cv-ats-en.html?raw";
+
+interface Props { doc: string; }
+const templates: Record<string, string> = { es: designedEs, en: designedEn, "es-ats": atsEs, "en-ats": atsEn };
+const { doc } = Astro.props;
+const template = templates[doc];
+if (!template) throw new Error(`Unknown résumé: ${doc}`);
+const content = template.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1]
+  .replaceAll("../public/", "/")
+  .replace(/<main class="page">/g, '<div class="page">')
+  .replace(/<\/main>/g, "</div>")
+  .replace(/<img(?![^>]*\balt=)/g, '<img alt=""');
+---
+
+<main class:list={["resume-document", { "resume-ats": doc.endsWith("-ats") }]} lang={doc.startsWith("en") ? "en" : "es"}>
+  <Fragment set:html={content} />
+</main>
+
+<style is:global>
+  .resume-document { width: min(1120px, calc(100% - 48px)); margin: 32px auto 64px; padding: clamp(24px, 4vw, 48px); background: #fff; border: 1px solid #dfe4ef; border-radius: 20px; color: #18213a; font: 400 15px/1.6 var(--sans); overflow-wrap: anywhere; box-shadow: 0 16px 48px #18213a0a; }
+  .resume-document * { min-width: 0; }
+  .resume-document h1 { margin: 8px 0 16px; font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -.045em; }
+  .resume-document h2 { margin: 0 0 20px; font-size: 23px; line-height: 1.25; letter-spacing: -.025em; }
+  .resume-document h2::after { content: ""; display: block; width: 64px; height: 4px; margin-top: 12px; background: #4f46e5; border-radius: 4px; }
+  .resume-document p { margin: 0 0 12px; }
+  .resume-document a { color: #4338ca; text-decoration: underline; text-underline-offset: 4px; }
+  .resume-document a { display: inline-flex; align-items: center; min-height: 44px; }
+  .resume-document .hero { display: grid; grid-template-columns: 100px minmax(0,1fr); gap: 24px; align-items: center; padding-bottom: 28px; border-bottom: 1px solid #dfe4ef; }
+  .resume-document .portrait { display: block; width: 100px; height: auto; aspect-ratio: 1393 / 2000; object-fit: contain; border-radius: 12px; }
+  .resume-document .eyebrow, .resume-document .timeline-title, .resume-document .subhead { color: #4338ca; font-size: 12px; line-height: 1.5; font-weight: 700; letter-spacing: .08em; }
+  .resume-document .intro, .resume-document .project p, .resume-document .job p { color: #465571; }
+  .resume-document .contact { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-style: normal; }
+  .resume-document .contact-lines { margin: 0; }
+  .resume-document .socials { display: flex; gap: 8px; }
+  .resume-document .socials a { display: grid; place-items: center; width: 48px; height: 48px; color: #fff; background: #4f46e5; border-radius: 50%; }
+  .resume-document .socials svg { width: 22px; height: 22px; fill: currentColor; }
+  .resume-document .main { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(0,1fr); gap: 32px; padding-top: 32px; }
+  .resume-document .section { margin-bottom: 32px; }
+  .resume-document .section:last-child { margin-bottom: 0; }
+  .resume-document .project { display: grid; grid-template-columns: 44px minmax(0,1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid #edf0f5; }
+  .resume-document .project:first-of-type { padding-top: 0; }
+  .resume-document .project-logo { width: 44px; height: 44px; object-fit: contain; }
+  .resume-document .project-title { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-size: 18px; font-weight: 700; }
+  .resume-document .project-title .tag, .resume-document .award { font-size: 11px; line-height: 1.5; font-weight: 600; }
+  .resume-document .award { padding: 6px 8px; border-radius: 6px; background: #fff2b6; color: #785200; }
+  .resume-document .techline { color: #4338ca; font-size: 13px; font-weight: 500; }
+  .resume-document .job { margin: 0 0 24px; padding-left: 16px; border-left: 2px solid #dfe4ef; }
+  .resume-document .job-head { display: grid; grid-template-columns: 36px minmax(0,1fr); align-items: center; gap: 8px 12px; margin-bottom: 8px; }
+  .resume-document .job-logo { width: 36px; height: 36px; object-fit: contain; }
+  .resume-document .date { grid-column: 2; justify-self: start; padding: 4px 8px; border-radius: 6px; background: #eef0ff; color: #4338ca; font-size: 12px; }
+  .resume-document .side { padding: 24px; background: #f7f8fb; border-radius: 16px; }
+  .resume-document .subhead { margin-top: 20px; }
+  .resume-document .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .resume-document .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border: 1px solid #dce3ee; border-radius: 8px; font-size: 12px; background: #fff; }
+  .resume-document .pill img { width: 16px; height: 16px; object-fit: contain; }
+  .resume-document .edu { display: grid; grid-template-columns: 36px minmax(0,1fr); gap: 12px; margin-bottom: 20px; }
+  .resume-document .edu img { width: 36px; height: 36px; object-fit: contain; }
+  .resume-document .edu strong, .resume-document .edu span { display: block; }
+  .resume-document .edu span { color: #465571; font-size: 13px; margin-top: 6px; }
+  .resume-document .list { padding-left: 20px; margin: 0; }
+  .resume-document .list li { margin-bottom: 10px; }
+  .resume-document.resume-ats { max-width: 850px; }
+  .resume-ats h2 { margin: 32px 0 16px; }
+  .resume-ats .contact { display: block; }
+  .resume-ats .role, .resume-ats .item-head { font-weight: 700; }
+  .resume-ats .item { margin-bottom: 24px; }
+  .resume-ats .item-sub { color: #465571; }
+  .resume-ats li { margin-bottom: 8px; }
+  @media (max-width: 800px) {
+    .resume-document .main { grid-template-columns: minmax(0,1fr); }
+  }
+  @media (max-width: 560px) {
+    .resume-document { width: calc(100% - 24px); padding: 24px 16px; margin: 16px auto 32px; border-radius: 12px; }
+    .resume-document .hero { grid-template-columns: minmax(0,1fr); gap: 16px; }
+    .resume-document .portrait { width: 80px; height: auto; }
+    .resume-document .contact { grid-column: auto; }
+    .resume-document .side { padding: 20px 16px; }
+    .resume-document .project { grid-template-columns: 32px minmax(0,1fr); gap: 10px; }
+    .resume-document .project-logo { width: 32px; height: 32px; }
+    .resume-document .project-title { font-size: 17px; }
+  }
+</style>

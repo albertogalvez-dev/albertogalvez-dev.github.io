@@ -4,11 +4,13 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  lang?: string;
 }
 const {
   title = "Alberto Gálvez · Software Developer",
   description = "Alberto Gálvez Aguado — Full Stack Developer · Junior. Proyectos, trayectoria y CV.",
   ogImage: ogImageProp,
+  lang = "es",
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://albertogalvez-dev.github.io");
@@ -17,7 +19,7 @@ const ogImage = new URL(ogImageProp ?? "/social-card-v3.jpg", site).href;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -100,5 +102,12 @@ const ogImage = new URL(ogImageProp ?? "/social-card-v3.jpg", site).href;
     color: inherit;
     font: inherit;
     cursor: pointer;
+  }
+
+  :where(a, button):focus-visible { outline: 3px solid #6366f1; outline-offset: 4px; }
+  :where(button, a) { touch-action: manipulation; }
+  :where(img, video) { max-width: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   }
 </style>
