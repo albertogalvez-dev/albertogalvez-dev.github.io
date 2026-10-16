@@ -540,4 +540,56 @@ const demoDomain = getDomain(demo);
     .actions { gap: 8px; }
     .stack li { font-size: 11px; padding: 5px 8px; }
   }
+
+  /* The home is a single screen. Allocate space to the actions first, then
+     compact the preview text when the available card height is smaller. */
+  .card-wrap, .card { height: 100%; min-height: 0; }
+  .card { display: flex; flex-direction: column; }
+  .card-logo { flex: 0 0 auto; aspect-ratio: auto; padding: 18px 20px; gap: 8px; }
+  .card-body { align-self: stretch; display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; padding: 16px 20px; gap: 10px; }
+  .meta, .summary, .stack { margin: 0; }
+  .summary { font-size: 13px; line-height: 1.4; min-height: 0; overflow: hidden; }
+  .actions { margin-top: auto; gap: 6px; flex: 0 0 auto; }
+  .actions a { min-height: 44px; padding: 10px 12px; font-size: 12px; }
+  .stack { gap: 4px; min-height: 0; overflow: hidden; }
+  .stack li { font-size: 10px; padding: 4px 7px; }
+  @media (max-width: 720px) { .actions .btn-primary { flex-basis: 100%; } }
+  @container (max-height: 450px) {
+    .card-logo { display: grid; grid-template-columns: 48px minmax(0,1fr); text-align: left; gap: 6px 12px; padding: 12px 16px; }
+    .logo-mark { grid-row: 1 / 3; width: 48px; height: 48px; }
+    .logo-mark img { width: 36px; height: 36px; }
+    .logo-title { font-size: 23px; margin: 0; align-self: end; }
+    .logo-tagline { font-size: 9px; line-height: 1.3; align-self: start; }
+    .card-body { padding: 12px 16px; gap: 8px; }
+    .summary { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+    .stack { max-height: 52px; overflow: hidden; }
+  }
+  @container (max-height: 350px) {
+    .card-logo { padding: 8px 14px; }
+    .logo-tagline { display: none; }
+    .logo-mark { grid-row: auto; width: 40px; height: 40px; border-radius: 12px; }
+    .logo-title { align-self: center; font-size: 22px; }
+    .summary { -webkit-line-clamp: 2; }
+    .card-body { padding: 10px 14px; gap: 6px; }
+    .stack { max-height: 44px; }
+    .stack li { padding: 3px 6px; font-size: 9px; }
+    .meta { font-size: 10px; }
+    .meta-type { padding: 4px 8px; }
+  }
+  @media (max-height: 600px) and (min-width: 520px) {
+    .card-wrap { width: 100%; }
+    .card { display: grid; grid-template-columns: minmax(110px,.35fr) minmax(0,1fr); }
+    .card-logo { display: flex; padding: 12px; border-bottom: 0; border-right: 1px solid var(--glass-border); text-align: center; }
+    .logo-mark { width: 44px; height: 44px; }
+    .logo-title { font-size: 22px; align-self: auto; }
+    .logo-tagline { display: none; }
+    .card-body { padding: 10px 14px; }
+    .stack { display: none; }
+    .actions a, .actions .btn-primary { flex: 1 1 auto; font-size: 11px; padding: 8px; }
+  }
+  @media (max-width: 380px) {
+    .card-logo { padding: 12px 16px; gap: 6px; }
+    .logo-mark { width: 40px; height: 40px; }
+    .logo-tagline { display: none; }
+  }
 </style>
