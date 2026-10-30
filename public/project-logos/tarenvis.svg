@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-labelledby="title desc">
+  <title id="title">Símbolo de Tarenvis</title>
+  <desc id="desc">Cuatro módulos geométricos que se ordenan para formar una marca compacta.</desc>
+  <g fill="currentColor">
+    <path d="M48 0h80v64H0V48C0 21.49 21.49 0 48 0Z"/>
+    <path d="M160 0h32v64c0 17.673-14.327 32-32 32h-24V24c0-13.255 10.745-24 24-24Z"/>
+    <path d="M0 72h40c26.51 0 48 21.49 48 48v72H48c-26.51 0-48-21.49-48-48V72Z"/>
+    <path d="M96 104h40c30.928 0 56 25.072 56 56v32H96v-88Z"/>
+  </g>
+</svg>
