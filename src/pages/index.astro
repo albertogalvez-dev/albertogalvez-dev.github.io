@@ -17,9 +17,10 @@ const projects = (await getCollection("projects")).sort((a, b) => a.data.order -
       <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true"><span data-en="All">Todos</span><b>{projects.length}</b></button>
       <button class="filter-btn" data-filter="personal" role="tab" aria-selected="false"><span data-en="Personal">Personales</span><b>{projects.filter(p => p.data.type === "Personal").length}</b></button>
       <button class="filter-btn" data-filter="cliente" role="tab" aria-selected="false"><span data-en="Company">Empresa</span><b>{projects.filter(p => p.data.type === "Cliente").length}</b></button>
+      <button class="filter-btn" data-filter="equipo" role="tab" aria-selected="false"><span data-en="Team">Equipo</span><b>{projects.filter(p => p.data.type === "Equipo").length}</b></button>
     </div>
     <div class="deck-stage">
-      {projects.map((project, index) => <div class:list={["deck-slot", {"is-active": index === 0}]} data-type={project.data.type === "Cliente" ? "cliente" : "personal"}><ProjectCard {...project.data} slug={project.id} /></div>)}
+      {projects.map((project, index) => <div class:list={["deck-slot", {"is-active": index === 0}]} data-type={project.data.type === "Cliente" ? "cliente" : project.data.type === "Equipo" ? "equipo" : "personal"}><ProjectCard {...project.data} slug={project.id} /></div>)}
     </div>
     <nav class="deck-nav" aria-label="Navegar proyectos"><button class="nav-prev" aria-label="Proyecto anterior" disabled>‹</button><span><i class="counter-current">1</i> / <i class="counter-total">{projects.length}</i></span><button class="nav-next" aria-label="Siguiente proyecto">›</button></nav>
   </main>
@@ -28,7 +29,7 @@ const projects = (await getCollection("projects")).sort((a, b) => a.data.order -
   html,body{height:100%;overflow:hidden;overscroll-behavior:none}body{background:#fafafa!important;color:#1a1a22!important;--ink:#1a1a22;--ink-muted:rgba(20,20,30,.55);--ink-soft:rgba(20,20,30,.78);--glass-border:rgba(0,0,0,.06);--glass-strong:rgba(0,0,0,.16)}.btn-primary{background:#1a1a22!important;color:#fafafa!important;border-color:#1a1a22!important}.btn-primary:hover{background:#34343d!important;color:#fafafa!important}
 </style>
 <style>
-  .deck { height: 100svh; height: 100dvh; display: grid; grid-template-rows: auto auto minmax(0,460px) auto; justify-items: center; align-content: center; gap: 10px; padding: 96px 20px 16px; }
+  .deck { height: 100svh; height: 100dvh; display: grid; grid-template-rows: auto auto minmax(0,280px) auto; justify-items: center; align-content: center; gap: 10px; padding: 96px 20px 16px; }
   .intro { margin: 0; font: 600 11px/1.3 var(--mono); letter-spacing: .28em; color: var(--ink-muted); }
   .deck-filter { display: flex; gap: 4px; padding: 4px; max-width: 100%; border: 1px solid rgba(0,0,0,.06); border-radius: 999px; background: rgba(255,255,255,.55); box-shadow: inset 0 1px rgba(255,255,255,.7),0 4px 14px rgba(20,18,40,.06); backdrop-filter: blur(18px); }
   .filter-btn { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 14px; border-radius: 999px; font-size: 12px; color: var(--ink-muted); }
@@ -49,12 +50,18 @@ const projects = (await getCollection("projects")).sort((a, b) => a.data.order -
   @media (max-width: 720px) {
     .deck { padding: 80px 12px max(8px,env(safe-area-inset-bottom)); gap: 8px; }
     .intro { font-size: 10px; letter-spacing: .22em; }
-    .filter-btn { padding: 8px 10px; gap: 6px; }
+    .filter-btn { padding: 8px 8px; gap: 5px; font-size: 11px; }
+    .filter-btn b { padding: 2px 5px; }
+  }
+  @media (max-width: 360px) {
+    .deck-filter { gap: 0; }
+    .filter-btn { padding: 8px 5px; gap: 3px; font-size: 10px; }
+    .filter-btn b { padding: 2px 4px; font-size: 9px; }
   }
   @media (max-height: 600px) and (min-width: 520px) {
-    .deck { grid-template-rows: auto minmax(0,360px) auto; padding-top: 66px; gap: 6px; }
+    .deck { grid-template-rows: auto minmax(0,220px) auto; padding-top: 66px; gap: 6px; }
     .intro { display: none; }
-    .deck-stage { width: min(100%,850px); }
+    .deck-stage { width: min(100%,480px); }
   }
 </style>
 <script>
